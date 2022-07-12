@@ -20,7 +20,7 @@ jobs:
       run: |
         sudo apt-get install trang
     
-    - name: Run trang 30
+    - name: Run trang
       continue-on-error: true
       run: |
         rm -rf main/xsd/epub-test
