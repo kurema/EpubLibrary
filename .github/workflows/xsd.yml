@@ -1,0 +1,12 @@
+name: Make *.xsd files
+on:
+  workflow_dispatch:
+jobs:
+  Xsd:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Tree
+      run: |
+        tree /f C:\Program Files (x86)\Microsoft SDKs\Windows\
