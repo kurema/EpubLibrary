@@ -21,6 +21,7 @@ jobs:
         sudo apt-get install trang
     
     - name: Run trang
+      continue-on-error: true
       run: |
         cd epub/src/main/resources/com/adobe/epubcheck/schema/30
         for f in `ls *.rnc`; do mkdir -p ../../../../../../../../../main/xsd/${f%.rnc}; trang -I rnc -O xsd $f ../../../../../../../../../main/xsd/${f%.rnc}/${f%.rnc}.xsd 2> ../../../../../../../../../main/xsd/${f%.rnc}/errors.log; done
