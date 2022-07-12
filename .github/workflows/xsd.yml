@@ -11,6 +11,7 @@ jobs:
       run: |
         Get-ChildItem ".\xsd\epub-test\30\" | ForEach-Object {
           $fn = $_.FullName + "\" + $_.BaseName + ".xsd"
+          echo $fn
           if(-not( Test-Path -Path $fn )){
             continue
           }
