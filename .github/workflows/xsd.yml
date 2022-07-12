@@ -16,8 +16,7 @@ jobs:
           if(-not( Test-Path -Path $fn )){
             return
           }
-          cmd.exe /c "echo $($_.FullName) ${items} ${outdir}"
-          cmd.exe /c "cd $($_.FullName)&'C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe' ${items} /classes /language:CS /namespace:kurema.EpubLibrary.Models.Epub30 /outputdir:'${outdir}'"
+          cmd.exe /c "cd ""$($_.FullName)""&""C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" ${items} /classes /language:CS /namespace:kurema.EpubLibrary.Models.Epub30 /outputdir:""${outdir}"""
         }
         tree /f .
       
