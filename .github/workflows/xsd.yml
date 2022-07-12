@@ -5,6 +5,15 @@ jobs:
   Xsd:
     runs-on: windows-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Tree
       run: |
-        tree "C:\Program Files (x86)\Microsoft SDKs\Windows\"
+        Get-ChildItem ".\xsd\epub-test\30\" | ForEach-Object {
+          $fn = $_.FullName + "\" + $_.BaseName + ".xsd"
+          if(-not( Test-Path -Path $fn )){
+            continue
+          }
+          "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 $fn Tools\xsd.exe" /classes /language:CS /namespace:kurema.EpubLibrary.Models.Epub30 -outputdir:.\CS\Models\Epub30
+        }
+        
