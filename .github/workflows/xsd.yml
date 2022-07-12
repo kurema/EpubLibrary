@@ -1,4 +1,4 @@
-name: Make *.xsd files
+name: Run xsd.exe
 on:
   workflow_dispatch:
 jobs:
