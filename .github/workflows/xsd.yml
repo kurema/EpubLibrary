@@ -24,7 +24,7 @@ jobs:
       continue-on-error: true
       run: |
         cd epub/src/main/resources/com/adobe/epubcheck/schema/30
-        for f in `ls *.rnc`; do mkdir -p ../../../../../../../../../main/xsd/epub-test/${f%.rnc}; trang -I rnc -O xsd $f ../../../../../../../../../main/xsd/epub-test/${f%.rnc}/${f%.rnc}.xsd 2> ../../../../../../../../../main/xsd/epub-test/${f%.rnc}/errors.log || echo Ignoring error...; done
+        for f in `ls *.rnc`; do mkdir -p ../../../../../../../../../main/xsd/epub-test/${f%.rnc}; trang -I rnc -O xsd $f ../../../../../../../../../main/xsd/epub-test/${f%.rnc}/${f%.rnc}.xsd 2> ../../../../../../../../../main/xsd/epub-test/${f%.rnc}/errors || echo Ignoring error...; done
         
     - name: Git push
       run: |
