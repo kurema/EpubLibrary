@@ -13,9 +13,9 @@ jobs:
           $fn = $_.FullName + "\" + $_.BaseName + ".xsd"
           echo $fn
           if(-not( Test-Path -Path $fn )){
-            continue
+            return
           }
           Start-Process -FilePath "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe" -ArgumentList $fn,"/classes","/language:CS","/namespace:kurema.EpubLibrary.Models.Epub30","-outputdir:'.\CS\Models\Epub30'" -Wait
         }
-        tree CS/
+        tree .
       
