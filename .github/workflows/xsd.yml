@@ -22,10 +22,9 @@ jobs:
     
     - name: Run trang
       run: |
-        cd epub/src/main/resources/com/adobe/epubcheck/schema
-        ls ../../../../../../../../
-        for f in `ls *.rnc`; do mkdir -p ../../../../../../../../main/xsd/${f%.rnc}; trang -I rnc -O xsd $f ../../../../../../../../main/xsd/${f%.rnc}/${f%.rnc}.xsd 2> ../../../../../../../../main/xsd/${f%.rnc}/errors.log; done
+        cd epub/src/main/resources/com/adobe/epubcheck/schema/30
+        for f in `ls *.rnc`; do mkdir -p ../../../../../../../../../main/xsd/${f%.rnc}; trang -I rnc -O xsd $f ../../../../../../../../../main/xsd/${f%.rnc}/${f%.rnc}.xsd 2> ../../../../../../../../../main/xsd/${f%.rnc}/errors.log; done
         
     - name: Tree
       run: |
-        find . | sort
+        find main | sort
