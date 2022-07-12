@@ -1,0 +1,31 @@
+name: Make *.xsd files
+on:
+  workflow_dispatch:
+jobs:
+  Xsd:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        path: main
+
+    - name: Checkout epubcheck
+      uses: actions/checkout@v3
+      with:
+        repository: w3c/epubcheck
+        path: epub
+    
+    - name: Install trang
+      run: |
+        sudo apt-get install trang
+    
+    - name: Run trang
+      run: |
+        cd epub/src/main/resources/com/adobe/epubcheck/schema
+        ls ../../../../../../../../
+        for f in `ls *.rnc`; do mkdir -p ../../../../../../../../main/xsd/${f%.rnc}; trang -I rnc -O xsd $f ../../../../../../../../main/xsd/${f%.rnc}/${f%.rnc}.xsd 2> ../../../../../../../../main/xsd/${f%.rnc}/errors.log; done
+        
+     - name: Tree
+       run: |
+         find . | sort
