@@ -7,16 +7,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-    - name: Tree
+    - name: Run xsd.exe
       run: |
         Get-ChildItem ".\xsd\epub-test\30\" | ForEach-Object {
           $fn = $_.FullName + "\" + $_.BaseName + ".xsd"
-          $outdir = ".CS\Models\Epub30\" + $_.BaseName
+          $outdir = "CS\Models\Epub30\" + $_.BaseName
           New-Item -Path $outdir -ItemType Directory -Force
           if(-not( Test-Path -Path $fn )){
             return
           }
-          Start-Process -FilePath "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe" -ArgumentList $fn,"/classes","/language:CS","/namespace:kurema.EpubLibrary.Models.Epub30","/outputdir:'${outdir}'" -Wait
+          cmd.exe /c "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe" $fn /classes /language:CS /namespace:kurema.EpubLibrary.Models.Epub30 /outputdir:'${outdir}'
         }
         tree /f .
       
