@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="epub-xhtml-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-xhtml-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:element name="html">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:html.inner">
+          <xs:attributeGroup ref="xhtml:html.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="html.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="manifest" type="common.data.uri.non-empty"/>
+    <xs:attribute ref="epub:prefix"/>
+  </xs:attributeGroup>
+  <xs:complexType name="html.inner">
+    <xs:sequence>
+      <xs:element ref="xhtml:head"/>
+      <xs:element ref="xhtml:body"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="head">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:head.inner">
+          <xs:attributeGroup ref="xhtml:head.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="head.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+  </xs:attributeGroup>
+  <!--
+    		head.attrs.profile =
+    			attribute profile {
+    				common.data.uris #REVISIT should these be absolute (zero or more)
+    			}
+  -->
+  <!--
+    	head.inner =
+    		(	meta.elem.encoding?
+    		,	(	title.elem
+    			&	base.elem? # REVISIT need a non-schema checker or Schematron
+    			&	common.inner.metadata
+    			)
+    		)
+  -->
+  <xs:element name="body">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:body.inner">
+          <xs:attributeGroup ref="xhtml:body.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="body.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="application"/>
+          <xs:enumeration value="document"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="onafterprint" type="common.data.functionbody"/>
+    <xs:attribute name="onbeforeprint" type="common.data.functionbody"/>
+    <xs:attribute name="onbeforeunload" type="common.data.functionbody"/>
+    <xs:attribute name="onhashchange" type="common.data.functionbody"/>
+    <xs:attribute name="onmessage" type="common.data.functionbody"/>
+    <xs:attribute name="onoffline" type="common.data.functionbody"/>
+    <xs:attribute name="ononline" type="common.data.functionbody"/>
+    <xs:attribute name="onpagehide" type="common.data.functionbody"/>
+    <xs:attribute name="onpageshow" type="common.data.functionbody"/>
+    <xs:attribute name="onpopstate" type="common.data.functionbody"/>
+    <xs:attribute name="onstorage" type="common.data.functionbody"/>
+    <xs:attribute name="onunload" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:complexType name="body.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+  <xs:attributeGroup name="body.attrs.onafterprint">
+    <xs:attribute name="onafterprint" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onbeforeprint">
+    <xs:attribute name="onbeforeprint" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onbeforeunload">
+    <xs:attribute name="onbeforeunload" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onhashchange">
+    <xs:attribute name="onhashchange" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onmessage">
+    <xs:attribute name="onmessage" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onoffline">
+    <xs:attribute name="onoffline" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.ononline">
+    <xs:attribute name="ononline" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onpopstate">
+    <xs:attribute name="onpopstate" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onpagehide">
+    <xs:attribute name="onpagehide" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onpageshow">
+    <xs:attribute name="onpageshow" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onredo">
+    <xs:attribute name="onredo" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onresize">
+    <xs:attribute name="onresize" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onstorage">
+    <xs:attribute name="onstorage" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onundo">
+    <xs:attribute name="onundo" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="body.attrs.onunload">
+    <xs:attribute name="onunload" use="required" type="common.data.functionbody"/>
+  </xs:attributeGroup>
+  <xs:element name="title">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="xhtml:title.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="title.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+  </xs:attributeGroup>
+  <xs:element name="base">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:base.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="base.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attribute name="href" type="common.data.uri"/>
+    <xs:attribute name="target" type="common.data.browsing-context-or-keyword"/>
+    <xs:attributeGroup ref="xhtml:common.attrs.microdata"/>
+    <xs:attributeGroup ref="xhtml:common.attrs.rdfa.no-rel"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="base.attrs.href">
+    <xs:attribute name="href" use="required" type="common.data.uri"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="base.attrs.target">
+    <xs:attribute name="target" use="required" type="common.data.browsing-context-or-keyword"/>
+  </xs:attributeGroup>
+  <xs:group name="link.elem">
+    <xs:annotation>
+      <xs:documentation>Global Relationships: &lt;link&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="link">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:link.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="link.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attributeGroup ref="xhtml:link.attrs.href"/>
+    <xs:attributeGroup ref="xhtml:link.attrs.rel"/>
+    <xs:attribute name="as">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="audio"/>
+          <xs:enumeration value="audioworklet"/>
+          <xs:enumeration value="document"/>
+          <xs:enumeration value="embed"/>
+          <xs:enumeration value="fetch"/>
+          <xs:enumeration value="font"/>
+          <xs:enumeration value="image"/>
+          <xs:enumeration value="manifest"/>
+          <xs:enumeration value="object"/>
+          <xs:enumeration value="paintworklet"/>
+          <xs:enumeration value="report"/>
+          <xs:enumeration value="script"/>
+          <xs:enumeration value="serviceworker"/>
+          <xs:enumeration value="sharedworker"/>
+          <xs:enumeration value="style"/>
+          <xs:enumeration value="track"/>
+          <xs:enumeration value="video"/>
+          <xs:enumeration value="worker"/>
+          <xs:enumeration value="xslt"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="integrity" type="common.data.integrity"/>
+    <xs:attribute name="hreflang" type="common.data.langcode"/>
+    <xs:attribute name="media" type="common.data.mediaquery"/>
+    <xs:attribute name="type" type="common.data.mimetype"/>
+    <xs:attribute name="referrerpolicy">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="no-referrer"/>
+          <xs:enumeration value="no-referrer-when-downgrade"/>
+          <xs:enumeration value="same-origin"/>
+          <xs:enumeration value="origin"/>
+          <xs:enumeration value="strict-origin"/>
+          <xs:enumeration value="origin-when-cross-origin"/>
+          <xs:enumeration value="strict-origin-when-cross-origin"/>
+          <xs:enumeration value="unsafe-url"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="sizes">
+      <xs:simpleType>
+        <xs:union memberTypes="common.data.sizes">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="any"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="color" type="common.data.color"/>
+    <xs:attribute name="disabled">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="disabled"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="scope" type="common.data.uri"/>
+    <xs:attribute name="updateviacache">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="imports"/>
+          <xs:enumeration value="all"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="workertype">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="classic"/>
+          <xs:enumeration value="module"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="crossorigin">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="anonymous"/>
+          <xs:enumeration value="use-credentials"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.role.link"/>
+    <xs:attribute name="itemref" type="common.data.idrefs"/>
+    <xs:attribute name="itemscope">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="itemscope"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="itemtype">
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list itemType="common.data.uri.absolute"/>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="itemid" type="common.data.uri"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.href">
+    <xs:attribute name="href" use="required" type="common.data.uri.non-empty"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.rel">
+    <xs:attribute name="rel" type="xs:string"/>
+    <xs:attribute name="itemprop" type="common.data.microdata-properties"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.as">
+    <xs:attribute name="as" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="audio"/>
+          <xs:enumeration value="audioworklet"/>
+          <xs:enumeration value="document"/>
+          <xs:enumeration value="embed"/>
+          <xs:enumeration value="fetch"/>
+          <xs:enumeration value="font"/>
+          <xs:enumeration value="image"/>
+          <xs:enumeration value="manifest"/>
+          <xs:enumeration value="object"/>
+          <xs:enumeration value="paintworklet"/>
+          <xs:enumeration value="report"/>
+          <xs:enumeration value="script"/>
+          <xs:enumeration value="serviceworker"/>
+          <xs:enumeration value="sharedworker"/>
+          <xs:enumeration value="style"/>
+          <xs:enumeration value="track"/>
+          <xs:enumeration value="video"/>
+          <xs:enumeration value="worker"/>
+          <xs:enumeration value="xslt"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.integrity">
+    <xs:attribute name="integrity" use="required" type="common.data.integrity"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.sizes">
+    <xs:attribute name="sizes" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="common.data.sizes">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="any"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.color">
+    <xs:attribute name="color" use="required" type="common.data.color"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.disabled">
+    <xs:attribute name="disabled" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="disabled"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.scope">
+    <xs:attribute name="scope" use="required" type="common.data.uri"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.updateviacache">
+    <xs:attribute name="updateviacache" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="imports"/>
+          <xs:enumeration value="all"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="link.attrs.workertype">
+    <xs:attribute name="workertype" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="classic"/>
+          <xs:enumeration value="module"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="style">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:style.inner">
+          <xs:attributeGroup ref="xhtml:style.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="style.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="type"/>
+    <xs:attribute name="media" type="common.data.mediaquery"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="style.attrs.type">
+    <xs:attribute name="type" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="style.attrs.media">
+    <xs:attribute name="media" use="required" type="common.data.mediaquery"/>
+  </xs:attributeGroup>
+  <xs:complexType name="style.inner">
+    <xs:complexContent>
+      <xs:extension base="common.inner.anything"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:group name="meta.name.elem">
+    <xs:annotation>
+      <xs:documentation>Name-Value Metadata: &lt;meta name&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="meta">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:meta.name.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="meta.name.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attributeGroup ref="xhtml:meta.name.attrs.name"/>
+    <xs:attributeGroup ref="xhtml:meta.name.attrs.content"/>
+    <xs:attribute name="itemref" type="common.data.idrefs"/>
+    <xs:attribute name="itemscope">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="itemscope"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="itemtype">
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list itemType="common.data.uri.absolute"/>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="itemid" type="common.data.uri"/>
+    <xs:attributeGroup ref="xhtml:common.attrs.rdfa.no-content-noproperty"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.name.attrs.name">
+    <xs:attribute name="name" use="required" type="xhtml:datatype.string.nonempty"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.name.attrs.content">
+    <xs:attribute name="content" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:group name="meta.http-equiv.refresh.elem">
+    <xs:annotation>
+      <xs:documentation>"refresh" pragma directive: &lt;meta http-equiv='refresh'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="meta">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:meta.http-equiv.refresh.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="meta.http-equiv.refresh.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.http-equiv.refresh"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.content.refresh"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.content.refresh">
+    <xs:attribute name="content" use="required" type="common.data.refresh"/>
+  </xs:attributeGroup>
+  <!--
+    not quite right per spec
+    if the definition is 
+    reused in another language
+  -->
+  <xs:group name="meta.http-equiv.default-style.elem">
+    <xs:annotation>
+      <xs:documentation>"default-style" pragma directive: &lt;meta http-equiv='default-style'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="meta">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:meta.http-equiv.default-style.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="meta.http-equiv.default-style.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.http-equiv.default-style"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.content.default-style"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.content.default-style">
+    <xs:attribute name="content" use="required" type="common.data.default-style"/>
+  </xs:attributeGroup>
+  <!--
+    not quite right per spec
+    if the definition is 
+    reused in another language
+  -->
+  <xs:group name="meta.http-equiv.content-security-policy.elem">
+    <xs:annotation>
+      <xs:documentation>Content Security Policy pragma directive: &lt;meta http-equiv='content-security-policy'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="meta">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:meta.http-equiv.content-security-policy.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="meta.http-equiv.content-security-policy.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.http-equiv.content-security-policy"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.content.content-security-policy"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.content.content-security-policy">
+    <xs:attribute name="content" use="required" type="common.data.content-security-policy"/>
+  </xs:attributeGroup>
+  <xs:group name="meta.http-equiv.x-ua-compatible.elem">
+    <xs:annotation>
+      <xs:documentation>"x-ua-compatible" pragma directive: &lt;meta http-equiv='x-ua-compatible'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="meta">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:meta.http-equiv.x-ua-compatible.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="meta.http-equiv.x-ua-compatible.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.http-equiv.x-ua-compatible"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.content.x-ua-compatible"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.content.x-ua-compatible">
+    <xs:attribute name="content" use="required" type="common.data.x-ua-compatible"/>
+  </xs:attributeGroup>
+  <xs:group name="meta.charset.elem">
+    <xs:annotation>
+      <xs:documentation>Inline Character Encoding Statement for HTML: &lt;meta charset&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="meta">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:meta.charset.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="meta.charset.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attributeGroup ref="xhtml:meta.charset.attrs.charset"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.charset.attrs.charset">
+    <xs:attribute name="charset" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[uU][tT][fF]-8"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.content-type.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.http-equiv.content-type"/>
+    <xs:attributeGroup ref="xhtml:meta.http-equiv.attrs.content.content-type"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.content.content-type">
+    <xs:attribute name="content" use="required" type="common.data.meta-charset"/>
+  </xs:attributeGroup>
+</xs:schema>

@@ -1,0 +1,3507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="epub-nav-30.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:attributeGroup name="aria.global">
+    <xs:annotation>
+      <xs:documentation>	RELAX NG Schema for HTML 5: Accessible Rich Internet Applications #</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-atomic">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-busy">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-controls" type="common.data.idrefs"/>
+    <xs:attribute name="aria-current">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="page"/>
+          <xs:enumeration value="step"/>
+          <xs:enumeration value="location"/>
+          <xs:enumeration value="date"/>
+          <xs:enumeration value="time"/>
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-describedby" type="common.data.idrefs"/>
+    <xs:attribute name="aria-details" type="common.data.idref"/>
+    <xs:attribute name="aria-disabled">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-dropeffect">
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list>
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="copy"/>
+                  <xs:enumeration value="execute"/>
+                  <xs:enumeration value="link"/>
+                  <xs:enumeration value="move"/>
+                  <xs:enumeration value="none"/>
+                  <xs:enumeration value="popup"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:list>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-errormessage" type="common.data.idref"/>
+    <xs:attribute name="aria-flowto" type="common.data.idrefs"/>
+    <xs:attribute name="aria-grabbed">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-haspopup">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="menu"/>
+          <xs:enumeration value="listbox"/>
+          <xs:enumeration value="tree"/>
+          <xs:enumeration value="grid"/>
+          <xs:enumeration value="dialog"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-hidden">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-invalid">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="grammar"/>
+          <xs:enumeration value="spelling"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-keyshortcuts" type="xs:string"/>
+    <xs:attribute name="aria-label" type="xs:string"/>
+    <xs:attribute name="aria-labelledby" type="common.data.idrefs"/>
+    <xs:attribute name="aria-live">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="off"/>
+          <xs:enumeration value="polite"/>
+          <xs:enumeration value="assertive"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-owns" type="common.data.idrefs"/>
+    <xs:attribute name="aria-relevant">
+      <xs:simpleType>
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="all"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="additions"/>
+                      <xs:enumeration value="removals"/>
+                      <xs:enumeration value="text"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="additions"/>
+                      <xs:enumeration value="text"/>
+                      <xs:enumeration value="removals"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="removals"/>
+                      <xs:enumeration value="additions"/>
+                      <xs:enumeration value="text"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="removals"/>
+                      <xs:enumeration value="text"/>
+                      <xs:enumeration value="additions"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="text"/>
+                      <xs:enumeration value="additions"/>
+                      <xs:enumeration value="removals"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="text"/>
+                      <xs:enumeration value="removals"/>
+                      <xs:enumeration value="additions"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-roledescription" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.implicit.definition">
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.implicit.term">
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!--
+    common.attrs.aria.implicit.select |=
+    		(	aria.state.invalid?
+    	&	aria.prop.required?
+    	&	aria.prop.atomic?
+    	&	aria.state.busy?
+    	&	aria.prop.channel?
+    	&	aria.prop.controls?
+    	&	aria.prop.live?
+    	&	aria.prop.relevant?
+    	)
+  -->
+  <!--
+    section
+      |
+      |_ region
+           |
+           |_ article
+           |
+           |_ landmark
+           |     |_ banner
+           |     |_ complementary
+           |     |_ contentinfo
+           |     |_ main
+           |     |_ navigation
+           |
+           |_ list
+           |
+           |_ status
+  -->
+  <!-- ##################################################################### -->
+  <xs:attributeGroup name="aria.state.busy">
+    <xs:annotation>
+      <xs:documentation>States</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-busy" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.current">
+    <xs:annotation>
+      <xs:documentation>current</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-current" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="page"/>
+          <xs:enumeration value="step"/>
+          <xs:enumeration value="location"/>
+          <xs:enumeration value="date"/>
+          <xs:enumeration value="time"/>
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.checked">
+    <xs:annotation>
+      <xs:documentation>checked</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-checked" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.disabled">
+    <xs:annotation>
+      <xs:documentation>disabled</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-disabled" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.dropeffect">
+    <xs:annotation>
+      <xs:documentation>dropeffect</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-dropeffect" use="required">
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list>
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="copy"/>
+                  <xs:enumeration value="execute"/>
+                  <xs:enumeration value="link"/>
+                  <xs:enumeration value="move"/>
+                  <xs:enumeration value="none"/>
+                  <xs:enumeration value="popup"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:list>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.expanded">
+    <xs:annotation>
+      <xs:documentation>expanded</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-expanded" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.grabbed">
+    <xs:annotation>
+      <xs:documentation>grabbed</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-grabbed" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.hidden">
+    <xs:annotation>
+      <xs:documentation>hidden</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-hidden" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.invalid">
+    <xs:annotation>
+      <xs:documentation>invalid</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-invalid" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="grammar"/>
+          <xs:enumeration value="spelling"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.pressed">
+    <xs:annotation>
+      <xs:documentation>pressed</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-pressed" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.state.selected">
+    <xs:annotation>
+      <xs:documentation>selected</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-selected" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!-- ##################################################################### -->
+  <xs:attributeGroup name="aria.prop.activedescendant">
+    <xs:annotation>
+      <xs:documentation>Properties</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-activedescendant" use="required" type="common.data.idref"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.atomic">
+    <xs:annotation>
+      <xs:documentation>atomic</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-atomic" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.autocomplete">
+    <xs:annotation>
+      <xs:documentation>autocomplete</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-autocomplete" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="inline"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="both"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.colcount">
+    <xs:annotation>
+      <xs:documentation>colcount</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-colcount" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.colindex">
+    <xs:annotation>
+      <xs:documentation>colindex</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-colindex" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.colspan">
+    <xs:annotation>
+      <xs:documentation>colspan</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-colspan" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.controls">
+    <xs:annotation>
+      <xs:documentation>controls</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-controls" use="required" type="common.data.idrefs"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.describedby">
+    <xs:annotation>
+      <xs:documentation>describedby</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-describedby" use="required" type="common.data.idrefs"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.details">
+    <xs:annotation>
+      <xs:documentation>details</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-details" use="required" type="common.data.idref"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.errormessage">
+    <xs:annotation>
+      <xs:documentation>errormessage</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-errormessage" use="required" type="common.data.idref"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.flowto">
+    <xs:annotation>
+      <xs:documentation>flowto</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-flowto" use="required" type="common.data.idrefs"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.haspopup">
+    <xs:annotation>
+      <xs:documentation>haspopup</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-haspopup" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="menu"/>
+          <xs:enumeration value="listbox"/>
+          <xs:enumeration value="tree"/>
+          <xs:enumeration value="grid"/>
+          <xs:enumeration value="dialog"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.keyshortcuts">
+    <xs:annotation>
+      <xs:documentation>keyshortcuts</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-keyshortcuts" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.label">
+    <xs:annotation>
+      <xs:documentation>label</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-label" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.labelledby">
+    <xs:annotation>
+      <xs:documentation>labelledby</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-labelledby" use="required" type="common.data.idrefs"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.level">
+    <xs:annotation>
+      <xs:documentation>level</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-level" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.live">
+    <xs:annotation>
+      <xs:documentation>live</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-live" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="off"/>
+          <xs:enumeration value="polite"/>
+          <xs:enumeration value="assertive"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.modal">
+    <xs:annotation>
+      <xs:documentation>modal</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-modal" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.multiline">
+    <xs:annotation>
+      <xs:documentation>multiline</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-multiline" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.multiselectable">
+    <xs:annotation>
+      <xs:documentation>multiselectable</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-multiselectable" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.orientation">
+    <xs:annotation>
+      <xs:documentation>orientation</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-orientation" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.owns">
+    <xs:annotation>
+      <xs:documentation>owns</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-owns" use="required" type="common.data.idrefs"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.placeholder">
+    <xs:annotation>
+      <xs:documentation>placeholder</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-placeholder" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.posinset">
+    <xs:annotation>
+      <xs:documentation>posinset</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-posinset" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.readonly">
+    <xs:annotation>
+      <xs:documentation>readonly</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-readonly" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.relevant">
+    <xs:annotation>
+      <xs:documentation>relevant</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-relevant" use="required">
+      <xs:simpleType>
+        <xs:union>
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="all"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="additions"/>
+                      <xs:enumeration value="removals"/>
+                      <xs:enumeration value="text"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="additions"/>
+                      <xs:enumeration value="text"/>
+                      <xs:enumeration value="removals"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="removals"/>
+                      <xs:enumeration value="additions"/>
+                      <xs:enumeration value="text"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="removals"/>
+                      <xs:enumeration value="text"/>
+                      <xs:enumeration value="additions"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="text"/>
+                      <xs:enumeration value="additions"/>
+                      <xs:enumeration value="removals"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction>
+              <xs:simpleType>
+                <xs:list>
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="text"/>
+                      <xs:enumeration value="removals"/>
+                      <xs:enumeration value="additions"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:list>
+              </xs:simpleType>
+              <xs:minLength value="1"/>
+              <xs:maxLength value="3"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.required">
+    <xs:annotation>
+      <xs:documentation>required</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-required" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.roledescription">
+    <xs:annotation>
+      <xs:documentation>roledescription</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-roledescription" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.rowcount">
+    <xs:annotation>
+      <xs:documentation>rowcount</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-rowcount" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.rowindex">
+    <xs:annotation>
+      <xs:documentation>rowindex</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-rowindex" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.rowspan">
+    <xs:annotation>
+      <xs:documentation>rowspan</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-rowspan" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.setsize">
+    <xs:annotation>
+      <xs:documentation>setsize</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-setsize" use="required" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.sort">
+    <xs:annotation>
+      <xs:documentation>sort</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-sort" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ascending"/>
+          <xs:enumeration value="descending"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="other"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.valuemax">
+    <xs:annotation>
+      <xs:documentation>valuemax</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-valuemax" use="required" type="common.data.float"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.valuemin">
+    <xs:annotation>
+      <xs:documentation>valuemin</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-valuemin" use="required" type="common.data.float"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.valuenow">
+    <xs:annotation>
+      <xs:documentation>valuenow</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-valuenow" use="required" type="common.data.float"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.prop.valuetext">
+    <xs:annotation>
+      <xs:documentation>valuetext</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="aria-valuetext" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <!-- ##################################################################### -->
+  <xs:attributeGroup name="aria.alert">
+    <xs:annotation>
+      <xs:documentation>Roles</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.alert"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.alert">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="alert"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.alertdialog">
+    <xs:annotation>
+      <xs:documentation>alertdialog</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.alertdialog"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-modal">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.alertdialog">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="alertdialog"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.application">
+    <xs:annotation>
+      <xs:documentation>application</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.application"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.application">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="application"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.article">
+    <xs:annotation>
+      <xs:documentation>article</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.article"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.article">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="article"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.banner">
+    <xs:annotation>
+      <xs:documentation>banner</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.banner"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.banner">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="banner"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.button">
+    <xs:annotation>
+      <xs:documentation>button</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.button"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-pressed">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.button">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.cell">
+    <xs:annotation>
+      <xs:documentation>cell</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.cell"/>
+    <xs:attribute name="aria-colspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowindex" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.cell">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="cell"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.checkbox">
+    <xs:annotation>
+      <xs:documentation>checkbox</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.checkbox"/>
+    <xs:attributeGroup ref="aria.state.checked"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.checkbox">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="checkbox"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!-- columnheader -->
+  <xs:attributeGroup name="aria.columnheader">
+    <xs:attributeGroup ref="aria.role.columnheader"/>
+    <xs:attribute name="aria-sort">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ascending"/>
+          <xs:enumeration value="descending"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="other"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-colspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowindex" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.columnheader">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="columnheader"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.combobox">
+    <xs:annotation>
+      <xs:documentation>combobox</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.combobox"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attributeGroup ref="aria.state.expanded"/>
+    <xs:attribute name="aria-autocomplete">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="inline"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="both"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.combobox">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="combobox"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.complementary">
+    <xs:annotation>
+      <xs:documentation>complementary</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.complementary"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.complementary">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="complementary"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.contentinfo">
+    <xs:annotation>
+      <xs:documentation>contentinfo</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.contentinfo"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.contentinfo">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="contentinfo"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.definition">
+    <xs:annotation>
+      <xs:documentation>definition</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.definition"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.definition">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="definition"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.role.definition">
+    <xs:attributeGroup ref="aria.definition"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.dialog">
+    <xs:annotation>
+      <xs:documentation>dialog</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.dialog"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-modal">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.dialog">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="dialog"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.directory">
+    <xs:annotation>
+      <xs:documentation>directory</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.directory"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.directory">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="directory"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.document">
+    <xs:annotation>
+      <xs:documentation>document</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.document"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.document">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="document"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.feed">
+    <xs:annotation>
+      <xs:documentation>feed</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.feed"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.feed">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="feed"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.figure">
+    <xs:annotation>
+      <xs:documentation>figure</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.figure"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.figure">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="figure"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.form">
+    <xs:annotation>
+      <xs:documentation>form</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.form"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.form">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="form"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.grid">
+    <xs:annotation>
+      <xs:documentation>grid</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.grid"/>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-colcount" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowcount" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.grid">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="grid"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.gridcell">
+    <xs:annotation>
+      <xs:documentation>gridcell</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.gridcell"/>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-colspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowindex" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.gridcell">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="gridcell"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.group">
+    <xs:annotation>
+      <xs:documentation>group</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.group"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.group">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="group"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.graphics-document">
+    <xs:annotation>
+      <xs:documentation>graphics-document</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.graphics-document"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.graphics-document">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="graphics-document"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.role.graphics-document">
+    <xs:attributeGroup ref="aria.graphics-document"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.graphics-object">
+    <xs:annotation>
+      <xs:documentation>graphics-object</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.graphics-object"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.graphics-object">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="graphics-object"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.role.graphics-object">
+    <xs:attributeGroup ref="aria.graphics-object"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.graphics-symbol">
+    <xs:annotation>
+      <xs:documentation>graphics-symbol</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.graphics-symbol"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.graphics-symbol">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="graphics-symbol"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.role.graphics-symbol">
+    <xs:attributeGroup ref="aria.graphics-symbol"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.heading">
+    <xs:annotation>
+      <xs:documentation>heading</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.heading"/>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.heading">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="heading"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.img">
+    <xs:annotation>
+      <xs:documentation>img</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.img"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.img">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="img"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.link">
+    <xs:annotation>
+      <xs:documentation>link</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.link"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.link">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="link"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.list">
+    <xs:annotation>
+      <xs:documentation>list</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.list"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.list">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="list"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.listbox">
+    <xs:annotation>
+      <xs:documentation>listbox</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.listbox"/>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.listbox">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="listbox"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.listitem">
+    <xs:annotation>
+      <xs:documentation>listitem</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.listitem"/>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.listitem">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="listitem"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.log">
+    <xs:annotation>
+      <xs:documentation>log</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.log"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.log">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="log"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.main">
+    <xs:annotation>
+      <xs:documentation>main</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.main"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.main">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="main"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.marquee">
+    <xs:annotation>
+      <xs:documentation>marquee</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.marquee"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.marquee">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="marquee"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.math">
+    <xs:annotation>
+      <xs:documentation>math</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.math"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.math">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="math"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.role.math">
+    <xs:attributeGroup ref="aria.math"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.menu">
+    <xs:annotation>
+      <xs:documentation>menu</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.menu"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.menu">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="menu"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.menubar">
+    <xs:annotation>
+      <xs:documentation>menubar</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.menubar"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.menubar">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="menubar"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.menuitem">
+    <xs:annotation>
+      <xs:documentation>menuitem</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.menuitem"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.menuitem">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="menuitem"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.menuitemcheckbox">
+    <xs:annotation>
+      <xs:documentation>menuitemcheckbox</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.menuitemcheckbox"/>
+    <xs:attributeGroup ref="aria.state.checked"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.menuitemcheckbox">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="menuitemcheckbox"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.menuitemradio">
+    <xs:annotation>
+      <xs:documentation>menuitemradio</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.menuitemradio"/>
+    <xs:attributeGroup ref="aria.state.checked"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.menuitemradio">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="menuitemradio"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.navigation">
+    <xs:annotation>
+      <xs:documentation>navigation</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.navigation"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.navigation">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="navigation"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.none">
+    <xs:annotation>
+      <xs:documentation>none</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.none"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.none">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.role.none">
+    <xs:attributeGroup ref="aria.none"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.note">
+    <xs:annotation>
+      <xs:documentation>note</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.note"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.note">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="note"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.option">
+    <xs:annotation>
+      <xs:documentation>option</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.option"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.option">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="option"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.presentation">
+    <xs:annotation>
+      <xs:documentation>presentation</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.presentation"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.presentation">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="presentation"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.progressbar">
+    <xs:annotation>
+      <xs:documentation>progressbar</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.progressbar"/>
+    <xs:attribute name="aria-valuemax" type="common.data.float"/>
+    <xs:attribute name="aria-valuemin" type="common.data.float"/>
+    <xs:attribute name="aria-valuenow" type="common.data.float"/>
+    <xs:attribute name="aria-valuetext" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.progressbar">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="progressbar"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.radio">
+    <xs:annotation>
+      <xs:documentation>radio</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.radio"/>
+    <xs:attributeGroup ref="aria.state.checked"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.radio">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="radio"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.radiogroup">
+    <xs:annotation>
+      <xs:documentation>radiogroup</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.radiogroup"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.radiogroup">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="radiogroup"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.region">
+    <xs:annotation>
+      <xs:documentation>region</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.region"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.region">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="region"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.row">
+    <xs:annotation>
+      <xs:documentation>row</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.row"/>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-colindex" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowindex" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.row">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="row"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.rowgroup">
+    <xs:annotation>
+      <xs:documentation>rowgroup</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.rowgroup"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.rowgroup">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="rowgroup"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!-- rowheader -->
+  <xs:attributeGroup name="aria.rowheader">
+    <xs:attributeGroup ref="aria.role.rowheader"/>
+    <xs:attribute name="aria-sort">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ascending"/>
+          <xs:enumeration value="descending"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="other"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-colspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowspan" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowindex" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.rowheader">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="rowheader"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.searchbox">
+    <xs:annotation>
+      <xs:documentation>searchbox</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.searchbox"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-autocomplete">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="inline"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="both"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-multiline">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-placeholder" type="xs:string"/>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.searchbox">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="searchbox"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.scrollbar">
+    <xs:annotation>
+      <xs:documentation>scrollbar</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.scrollbar"/>
+    <xs:attributeGroup ref="aria.prop.orientation"/>
+    <xs:attributeGroup ref="aria.prop.valuemax"/>
+    <xs:attributeGroup ref="aria.prop.valuemin"/>
+    <xs:attributeGroup ref="aria.prop.valuenow"/>
+    <xs:attribute name="aria-valuetext" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.scrollbar">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="scrollbar"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.role.scrollbar">
+    <xs:attributeGroup ref="aria.scrollbar"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.search">
+    <xs:annotation>
+      <xs:documentation>search</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.search"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.search">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="search"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.separator">
+    <xs:annotation>
+      <xs:documentation>separator</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.separator"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.separator">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="separator"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.slider">
+    <xs:annotation>
+      <xs:documentation>slider</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.slider"/>
+    <xs:attributeGroup ref="aria.prop.valuemax"/>
+    <xs:attributeGroup ref="aria.prop.valuemin"/>
+    <xs:attributeGroup ref="aria.prop.valuenow"/>
+    <xs:attribute name="aria-valuetext" type="xs:string"/>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.slider">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="slider"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.spinbutton">
+    <xs:annotation>
+      <xs:documentation>spinbutton</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.spinbutton"/>
+    <xs:attributeGroup ref="aria.prop.valuemax"/>
+    <xs:attributeGroup ref="aria.prop.valuemin"/>
+    <xs:attributeGroup ref="aria.prop.valuenow"/>
+    <xs:attribute name="aria-valuetext" type="xs:string"/>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.spinbutton">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="spinbutton"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.status">
+    <xs:annotation>
+      <xs:documentation>status</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.status"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.status">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="status"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.switch">
+    <xs:annotation>
+      <xs:documentation>switch</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.switch"/>
+    <xs:attributeGroup ref="aria.state.checked"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.switch">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="switch"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.tab">
+    <xs:annotation>
+      <xs:documentation>tab</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.tab"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.tab">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="tab"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.table">
+    <xs:annotation>
+      <xs:documentation>table</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.table"/>
+    <xs:attribute name="aria-colcount" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowcount" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.table">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="table"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.tablist">
+    <xs:annotation>
+      <xs:documentation>tablist</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.tablist"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.tablist">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="tablist"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.tabpanel">
+    <xs:annotation>
+      <xs:documentation>tabpanel</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.tabpanel"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.tabpanel">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="tabpanel"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.term">
+    <xs:annotation>
+      <xs:documentation>term</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.term"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.term">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="term"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common.attrs.aria.role.term">
+    <xs:attributeGroup ref="aria.term"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.textbox">
+    <xs:annotation>
+      <xs:documentation>textbox</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.textbox"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-autocomplete">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="inline"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="both"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-multiline">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-placeholder" type="xs:string"/>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.textbox">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="textbox"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.timer">
+    <xs:annotation>
+      <xs:documentation>timer</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.timer"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.timer">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="timer"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.toolbar">
+    <xs:annotation>
+      <xs:documentation>toolbar</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.toolbar"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.toolbar">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="toolbar"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.tooltip">
+    <xs:annotation>
+      <xs:documentation>tooltip</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.tooltip"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.tooltip">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="tooltip"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.tree">
+    <xs:annotation>
+      <xs:documentation>tree</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.tree"/>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.tree">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="tree"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.treegrid">
+    <xs:annotation>
+      <xs:documentation>treegrid</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.treegrid"/>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-colcount" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-rowcount" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.treegrid">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="treegrid"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.treeitem">
+    <xs:annotation>
+      <xs:documentation>treeitem</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.treeitem"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.treeitem">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="treeitem"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!-- ##################################################################### -->
+  <xs:attributeGroup name="aria.doc-abstract">
+    <xs:annotation>
+      <xs:documentation>https://w3c.github.io/aria/aria/dpub.html</xs:documentation>
+    </xs:annotation>
+    <xs:attributeGroup ref="aria.role.doc-abstract"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-abstract">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-abstract"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-acknowledgments">
+    <xs:attributeGroup ref="aria.role.doc-acknowledgments"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-acknowledgments">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-acknowledgments"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-afterword">
+    <xs:attributeGroup ref="aria.role.doc-afterword"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-afterword">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-afterword"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-appendix">
+    <xs:attributeGroup ref="aria.role.doc-appendix"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-appendix">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-appendix"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-backlink">
+    <xs:attributeGroup ref="aria.role.doc-backlink"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-backlink">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-backlink"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-biblioentry">
+    <xs:attributeGroup ref="aria.role.doc-biblioentry"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-biblioentry">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-biblioentry"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-bibliography">
+    <xs:attributeGroup ref="aria.role.doc-bibliography"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-bibliography">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-bibliography"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-biblioref">
+    <xs:attributeGroup ref="aria.role.doc-biblioref"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-biblioref">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-biblioref"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-chapter">
+    <xs:attributeGroup ref="aria.role.doc-chapter"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-chapter">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-chapter"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-colophon">
+    <xs:attributeGroup ref="aria.role.doc-colophon"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-colophon">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-colophon"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-conclusion">
+    <xs:attributeGroup ref="aria.role.doc-conclusion"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-conclusion">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-conclusion"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-cover">
+    <xs:attributeGroup ref="aria.role.doc-cover"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-cover">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-cover"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-credit">
+    <xs:attributeGroup ref="aria.role.doc-credit"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-credit">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-credit"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-credits">
+    <xs:attributeGroup ref="aria.role.doc-credits"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-credits">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-credits"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-dedication">
+    <xs:attributeGroup ref="aria.role.doc-dedication"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-dedication">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-dedication"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-endnote">
+    <xs:attributeGroup ref="aria.role.doc-endnote"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-endnote">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-endnote"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-endnotes">
+    <xs:attributeGroup ref="aria.role.doc-endnotes"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-endnotes">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-endnotes"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-epigraph">
+    <xs:attributeGroup ref="aria.role.doc-epigraph"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-epigraph">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-epigraph"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-epilogue">
+    <xs:attributeGroup ref="aria.role.doc-epilogue"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-epilogue">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-epilogue"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-errata">
+    <xs:attributeGroup ref="aria.role.doc-errata"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-errata">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-errata"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-example">
+    <xs:attributeGroup ref="aria.role.doc-example"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-example">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-example"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-footnote">
+    <xs:attributeGroup ref="aria.role.doc-footnote"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-footnote">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-footnote"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-foreword">
+    <xs:attributeGroup ref="aria.role.doc-foreword"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-foreword">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-foreword"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-glossary">
+    <xs:attributeGroup ref="aria.role.doc-glossary"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-glossary">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-glossary"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-glossref">
+    <xs:attributeGroup ref="aria.role.doc-glossref"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-glossref">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-glossref"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-index">
+    <xs:attributeGroup ref="aria.role.doc-index"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-index">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-index"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-introduction">
+    <xs:attributeGroup ref="aria.role.doc-introduction"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-introduction">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-introduction"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-noteref">
+    <xs:attributeGroup ref="aria.role.doc-noteref"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-noteref">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-noteref"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-notice">
+    <xs:attributeGroup ref="aria.role.doc-notice"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-notice">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-notice"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-pagebreak">
+    <xs:attributeGroup ref="aria.role.doc-pagebreak"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-pagebreak">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-pagebreak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-pagelist">
+    <xs:attributeGroup ref="aria.role.doc-pagelist"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-pagelist">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-pagelist"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-part">
+    <xs:attributeGroup ref="aria.role.doc-part"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-part">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-part"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-preface">
+    <xs:attributeGroup ref="aria.role.doc-preface"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-preface">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-preface"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-prologue">
+    <xs:attributeGroup ref="aria.role.doc-prologue"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-prologue">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-prologue"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-pullquote">
+    <xs:attributeGroup ref="aria.role.doc-pullquote"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-pullquote">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-pullquote"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-qna">
+    <xs:attributeGroup ref="aria.role.doc-qna"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-qna">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-qna"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-subtitle">
+    <xs:attributeGroup ref="aria.role.doc-subtitle"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-subtitle">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-subtitle"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-tip">
+    <xs:attributeGroup ref="aria.role.doc-tip"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-tip">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-tip"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.doc-toc">
+    <xs:attributeGroup ref="aria.role.doc-toc"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="aria.role.doc-toc">
+    <xs:attribute name="role" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="doc-toc"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+</xs:schema>

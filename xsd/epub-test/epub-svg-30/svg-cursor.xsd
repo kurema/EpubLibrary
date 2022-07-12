@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="epub-svg-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="epub-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:simpleType name="CursorValue.datatype">
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:complexType name="SVG.cursor.content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="svg:SVG.Description.class"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="cursor" substitutionGroup="svg:SVG.Cursor.class"/>
+  <xs:attributeGroup name="attlist.cursor">
+    <xs:attributeGroup ref="SVG.Core.attrib"/>
+    <xs:attributeGroup ref="svg:SVG.Conditional.attrib"/>
+    <xs:attributeGroup ref="xlink:SVG.XLinkRequired.attrib"/>
+    <xs:attributeGroup ref="SVG.External.attrib"/>
+    <xs:attribute name="x" type="svg:Coordinate.datatype"/>
+    <xs:attribute name="y" type="svg:Coordinate.datatype"/>
+  </xs:attributeGroup>
+</xs:schema>
