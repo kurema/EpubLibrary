@@ -26,13 +26,8 @@ jobs:
         rm -rf main/xsd/epub-test
         cd epub/src/main/resources/com/adobe/epubcheck/schema/30
         for f in `ls *.rnc`; do mkdir -p ../../../../../../../../../main/xsd/epub-test/30/${f%.rnc}; trang -I rnc -O xsd $f ../../../../../../../../../main/xsd/epub-test/30/${f%.rnc}/${f%.rnc}.xsd 2> ../../../../../../../../../main/xsd/epub-test/30/${f%.rnc}/errors.txt || echo Ignoring error...; done
-
-    - name: Run trang 20
-      continue-on-error: true
-      run: |
-        rm -rf main/xsd/epub-test
-        cd epub/src/main/resources/com/adobe/epubcheck/schema/20
-        for f in `ls *.rnc`; do mkdir -p ../../../../../../../../../main/xsd/epub-test/20/${f%.rnc}; trang -I rnc -O xsd $f ../../../../../../../../../main/xsd/epub-test/20/${f%.rnc}/${f%.rnc}.xsd 2> ../../../../../../../../../main/xsd/epub-test/20/${f%.rnc}/errors.txt || echo Ignoring error...; done
+        cd ../20/rng
+        for f in `ls *.rng`; do mkdir -p ../../../../../../../../../../main/xsd/epub-test/20/${f%.rng}; trang -I rng -O xsd $f ../../../../../../../../../../main/xsd/epub-test/20/${f%.rng}/${f%.rng}.xsd 2> ../../../../../../../../../../main/xsd/epub-test/20/${f%.rng}/errors.txt || echo Ignoring error...; done
 
     - name: Git push
       run: |
