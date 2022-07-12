@@ -11,11 +11,12 @@ jobs:
       run: |
         Get-ChildItem ".\xsd\epub-test\30\" | ForEach-Object {
           $fn = $_.FullName + "\" + $_.BaseName + ".xsd"
-          echo $fn
+          $outdir = ".CS\Models\Epub30\" + $_.BaseName
+          New-Item -Path $outdir -ItemType Directory -Force
           if(-not( Test-Path -Path $fn )){
             return
           }
-          Start-Process -FilePath "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe" -ArgumentList $fn,"/classes","/language:CS","/namespace:kurema.EpubLibrary.Models.Epub30","-outputdir:'.\CS\Models\Epub30'" -Wait
+          Start-Process -FilePath "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe" -ArgumentList $fn,"/classes","/language:CS","/namespace:kurema.EpubLibrary.Models.Epub30","/outputdir:'${outdir}'" -Wait
         }
-        tree .
+        tree /f .
       
