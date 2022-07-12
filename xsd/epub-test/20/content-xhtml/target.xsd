@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Target Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:attributeGroup name="link.attrib">
+    <xs:attributeGroup ref="target.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="form.attlist">
+    <xs:attributeGroup ref="target.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="target.attrib">
+    <xs:attribute name="target"/>
+  </xs:attributeGroup>
+</xs:schema>

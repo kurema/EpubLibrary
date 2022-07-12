@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:container" xmlns:xmldsig="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:container" xmlns:xmlenc="http://www.w3.org/2001/04/xmlenc#">
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/04/xmlenc#" schemaLocation="xenc-schema.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+  <xs:element name="encryption">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="xmlenc:EncryptedData"/>
+        <xs:element ref="xmlenc:EncryptedKey"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

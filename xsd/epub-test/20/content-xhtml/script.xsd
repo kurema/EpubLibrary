@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Script Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="script" substitutionGroup="xhtml:Script.class">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="xhtml:script.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="script.attlist">
+    <xs:attribute name="charset"/>
+    <xs:attribute name="type" use="required"/>
+    <xs:attribute name="src" type="svg:URI.datatype"/>
+    <xs:attribute name="defer">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="defer"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute ref="xml:space"/>
+  </xs:attributeGroup>
+  <xs:element name="noscript" substitutionGroup="xhtml:Script.class">
+    <xs:complexType>
+      <xs:group ref="xhtml:Block.model"/>
+      <xs:attributeGroup ref="xhtml:noscript.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="noscript.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="Script.class" abstract="true"/>
+</xs:schema>

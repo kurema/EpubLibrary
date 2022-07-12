@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="epub-svg-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg11-inc.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:element name="p">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:p.inner">
+          <xs:attributeGroup ref="xhtml:p.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="p.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="p.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <!-- REVISIT lists in span? -->
+  <xs:element name="hr">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:hr.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hr.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="separator"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-pagebreak"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.separator"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!-- ##################################################################### -->
+  <xs:element name="pre">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:pre.inner">
+          <xs:attributeGroup ref="xhtml:pre.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="pre.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="pre.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <!-- ##################################################################### -->
+  <xs:element name="ul">
+    <xs:complexType>
+      <xs:group ref="xhtml:ul.inner"/>
+      <xs:attributeGroup ref="xhtml:ul.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="ul.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="directory"/>
+          <xs:enumeration value="group"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="listbox"/>
+          <xs:enumeration value="menu"/>
+          <xs:enumeration value="menubar"/>
+          <xs:enumeration value="radiogroup"/>
+          <xs:enumeration value="tablist"/>
+          <xs:enumeration value="toolbar"/>
+          <xs:enumeration value="tree"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:group name="ul.inner">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="xhtml:li.elem"/>
+        <xs:group ref="common.elem.script-supporting"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="li.elem">
+    <xs:annotation>
+      <xs:documentation>Unordered List Item: &lt;li&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="li">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:li.inner">
+              <xs:attributeGroup ref="xhtml:li.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="li.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="listitem"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="treeitem"/>
+          <xs:enumeration value="separator"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-biblioentry"/>
+          <xs:enumeration value="doc-endnote"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.listitem"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="li.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+  <xs:element name="ol">
+    <xs:complexType>
+      <xs:group ref="xhtml:ol.inner"/>
+      <xs:attributeGroup ref="xhtml:ol.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="ol.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="start" type="common.data.integer"/>
+    <xs:attribute name="reversed">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="reversed"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="type">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="1"/>
+          <xs:enumeration value="a"/>
+          <xs:enumeration value="A"/>
+          <xs:enumeration value="i"/>
+          <xs:enumeration value="I"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="directory"/>
+          <xs:enumeration value="group"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="listbox"/>
+          <xs:enumeration value="menu"/>
+          <xs:enumeration value="menubar"/>
+          <xs:enumeration value="radiogroup"/>
+          <xs:enumeration value="tablist"/>
+          <xs:enumeration value="toolbar"/>
+          <xs:enumeration value="tree"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="ol.attrs.start">
+    <xs:attribute name="start" use="required" type="common.data.integer"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="ol.attrs.reversed">
+    <xs:attribute name="reversed" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="reversed"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="ol.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="1"/>
+          <xs:enumeration value="a"/>
+          <xs:enumeration value="A"/>
+          <xs:enumeration value="i"/>
+          <xs:enumeration value="I"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="ol.inner">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="xhtml:oli.elem"/>
+        <xs:group ref="common.elem.script-supporting"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="oli.elem">
+    <xs:annotation>
+      <xs:documentation>Ordered List Item: &lt;li&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="li">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:oli.inner">
+              <xs:attributeGroup ref="xhtml:oli.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="oli.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="value" type="common.data.integer"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="listitem"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="treeitem"/>
+          <xs:enumeration value="separator"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-biblioentry"/>
+          <xs:enumeration value="doc-endnote"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.listitem"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="oli.attrs.value">
+    <xs:attribute name="value" use="required" type="common.data.integer"/>
+  </xs:attributeGroup>
+  <xs:complexType name="oli.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+  <!-- ##################################################################### -->
+  <xs:element name="dl">
+    <xs:complexType>
+      <xs:group ref="xhtml:dl.inner"/>
+      <xs:attributeGroup ref="xhtml:dl.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="dl.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="group"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+  </xs:attributeGroup>
+  <xs:group name="dl.inner">
+    <xs:choice>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="xhtml:dt"/>
+          <xs:group ref="common.elem.script-supporting"/>
+        </xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="xhtml:dd.elem"/>
+          <xs:group ref="common.elem.script-supporting"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="xhtml:dldiv.elem"/>
+        <xs:group ref="common.elem.script-supporting"/>
+      </xs:choice>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="common.elem.script-supporting"/>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="dt">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:dt.inner">
+          <xs:attributeGroup ref="xhtml:dt.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="dt.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="term"/>
+          <xs:enumeration value="listitem"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.term"/>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:complexType name="dt.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+  <xs:group name="dd.elem">
+    <xs:annotation>
+      <xs:documentation>Definition Description: &lt;dd&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="dd">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:dd.inner">
+              <xs:attributeGroup ref="xhtml:dd.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="dd.elem.phrasing">
+    <xs:sequence>
+      <xs:element name="dd">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:dd.inner.phrasing">
+              <xs:attributeGroup ref="xhtml:dd.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="dd.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.definition"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="definition"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="dd.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+  <xs:complexType name="dd.inner.phrasing" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <!-- ##################################################################### -->
+  <xs:group name="div.elem">
+    <xs:annotation>
+      <xs:documentation>Miscellaneous Elements</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="div">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:div.inner">
+              <xs:attributeGroup ref="xhtml:div.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="div.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="div.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+  <xs:group name="dldiv.elem">
+    <xs:sequence>
+      <xs:element name="div">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:dldiv.inner">
+              <xs:attributeGroup ref="xhtml:div.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:complexType name="dldiv.inner">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="xhtml:dt"/>
+        <xs:group ref="common.elem.script-supporting"/>
+      </xs:choice>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="xhtml:dd.elem"/>
+        <xs:group ref="common.elem.script-supporting"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="legend">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:legend.inner">
+          <xs:attributeGroup ref="xhtml:legend.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="legend.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+  </xs:attributeGroup>
+  <xs:complexType name="legend.inner" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:group ref="common.inner.phrasing"/>
+      <xs:element ref="xhtml:h1"/>
+      <xs:element ref="xhtml:h2"/>
+      <xs:element ref="xhtml:h3"/>
+      <xs:element ref="xhtml:h4"/>
+      <xs:element ref="xhtml:h5"/>
+      <xs:element ref="xhtml:h6"/>
+      <xs:element ref="xhtml:hgroup"/>
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>

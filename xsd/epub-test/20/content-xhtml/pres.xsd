@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="hr">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:hr.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hr.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="b">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:b.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="b.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="big">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:big.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="big.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="i">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:i.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="i.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="small">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:small.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="small.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="sub">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:sub.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="sub.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="sup">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:sup.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="sup.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="tt">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:tt.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="tt.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+</xs:schema>

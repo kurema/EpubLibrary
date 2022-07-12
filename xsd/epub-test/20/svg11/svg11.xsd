@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:include schemaLocation="svg-structure.xsd"/>
+  <xs:include schemaLocation="svg-conditional.xsd"/>
+  <xs:include schemaLocation="svg-image.xsd"/>
+  <xs:include schemaLocation="svg-style.xsd"/>
+  <xs:include schemaLocation="svg-shape.xsd"/>
+  <xs:include schemaLocation="svg-text.xsd"/>
+  <xs:include schemaLocation="svg-marker.xsd"/>
+  <xs:include schemaLocation="svg-profile.xsd"/>
+  <xs:include schemaLocation="svg-gradient.xsd"/>
+  <xs:include schemaLocation="svg-pattern.xsd"/>
+  <xs:include schemaLocation="svg-clip.xsd"/>
+  <xs:include schemaLocation="svg-mask.xsd"/>
+  <xs:include schemaLocation="svg-filter.xsd"/>
+  <xs:include schemaLocation="svg-cursor.xsd"/>
+  <xs:include schemaLocation="svg-hyperlink.xsd"/>
+  <xs:include schemaLocation="svg-view.xsd"/>
+  <xs:include schemaLocation="svg-script.xsd"/>
+  <xs:include schemaLocation="svg-animation.xsd"/>
+  <xs:include schemaLocation="svg-font.xsd"/>
+  <xs:include schemaLocation="svg-extensibility.xsd"/>
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+</xs:schema>

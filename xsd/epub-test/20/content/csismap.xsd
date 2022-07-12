@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Client-side Image Map Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="area">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:area.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="area.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attribute name="href" type="svg:URI.datatype"/>
+    <xs:attributeGroup ref="xhtml:shape.attrib"/>
+    <xs:attributeGroup ref="xhtml:coords.attrib"/>
+    <xs:attribute name="nohref">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="nohref"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="alt" use="required"/>
+    <xs:attribute name="tabindex"/>
+    <xs:attribute name="accesskey"/>
+    <xs:attributeGroup ref="target.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="map">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:group ref="xhtml:Block.class"/>
+        <xs:element ref="xhtml:area"/>
+      </xs:choice>
+      <xs:attributeGroup ref="xhtml:map.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="map.attlist">
+    <xs:attributeGroup ref="CommonIdRequired.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="usemap.attlist">
+    <xs:attribute name="usemap"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shape.attrib">
+    <xs:attribute name="shape">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="rect"/>
+          <xs:enumeration value="circle"/>
+          <xs:enumeration value="poly"/>
+          <xs:enumeration value="default"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="coords.attrib">
+    <xs:attribute name="coords"/>
+  </xs:attributeGroup>
+</xs:schema>

@@ -1,0 +1,1402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="epub-xhtml-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-xhtml-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:attributeGroup name="common-form.attrs">
+    <xs:annotation>
+      <xs:documentation> RELAX NG Schema for HTML 5: Web Forms 1.0 markup                  #</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="name" type="xhtml:form.data.nonemptystring"/>
+    <xs:attribute name="disabled">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="disabled"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common-form.attrs.form"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common-form.attrs.name">
+    <xs:attribute name="name" use="required" type="xhtml:form.data.nonemptystring"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="common-form.attrs.disabled">
+    <xs:attribute name="disabled" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="disabled"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-form.attrs.readonly">
+    <xs:attribute name="readonly" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="readonly"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-form.attrs.maxlength">
+    <xs:attribute name="maxlength" use="required" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-form.attrs.size">
+    <xs:attribute name="size" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <!-- REVISIT tabindex goes in common.attrs -->
+  <xs:attributeGroup name="input.attrs.checked">
+    <xs:annotation>
+      <xs:documentation>Shared attributes for &lt;input&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="checked" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="checked"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="input.text.elem">
+    <xs:annotation>
+      <xs:documentation>Text Field: &lt;input type='text'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.text.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.text.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attribute name="type">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="text"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="maxlength" type="common.data.integer.non-negative"/>
+    <xs:attribute name="readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="readonly"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="size" type="common.data.integer.positive"/>
+    <xs:attribute name="value" type="xhtml:form.data.stringwithoutlinebreaks"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="textbox"/>
+          <xs:enumeration value="combobox"/>
+          <xs:enumeration value="searchbox"/>
+          <xs:enumeration value="spinbutton"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.textbox"/>
+    <xs:attribute name="aria-placeholder" type="xs:string"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-valuemax" type="common.data.float"/>
+    <xs:attribute name="aria-valuemin" type="common.data.float"/>
+    <xs:attribute name="aria-valuenow" type="common.data.float"/>
+    <xs:attribute name="aria-valuetext" type="xs:string"/>
+    <xs:attribute name="autocomplete" type="xs:string"/>
+    <xs:attribute name="dirname" type="xhtml:form.data.nonemptystring"/>
+    <xs:attribute name="list" type="common.data.idref"/>
+    <xs:attribute name="pattern" type="xhtml:form.data.pattern"/>
+    <xs:attribute name="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="required"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="placeholder" type="xhtml:form.data.stringwithoutlinebreaks"/>
+    <xs:attribute name="minlength" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.text.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="text"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.text.attrs.value">
+    <xs:attribute name="value" use="required" type="xhtml:form.data.stringwithoutlinebreaks"/>
+  </xs:attributeGroup>
+  <xs:group name="input.elem">
+    <xs:choice>
+      <xs:group ref="xhtml:input.text.elem"/>
+      <xs:group ref="xhtml:input.password.elem"/>
+      <xs:group ref="xhtml:input.checkbox.elem"/>
+      <xs:group ref="xhtml:input.radio.elem"/>
+      <xs:group ref="xhtml:input.button.elem"/>
+      <xs:group ref="xhtml:input.submit.elem"/>
+      <xs:group ref="xhtml:input.reset.elem"/>
+      <xs:group ref="xhtml:input.file.elem"/>
+      <xs:group ref="xhtml:input.hidden.elem"/>
+      <xs:group ref="xhtml:input.image.elem"/>
+      <xs:group ref="xhtml:input.datetime-local.elem"/>
+      <xs:group ref="xhtml:input.date.elem"/>
+      <xs:group ref="xhtml:input.month.elem"/>
+      <xs:group ref="xhtml:input.time.elem"/>
+      <xs:group ref="xhtml:input.week.elem"/>
+      <xs:group ref="xhtml:input.number.elem"/>
+      <xs:group ref="xhtml:input.range.elem"/>
+      <xs:group ref="xhtml:input.email.elem"/>
+      <xs:group ref="xhtml:input.url.elem"/>
+      <xs:group ref="xhtml:input.search.elem"/>
+      <xs:group ref="xhtml:input.tel.elem"/>
+      <xs:group ref="xhtml:input.color.elem"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="input.password.elem">
+    <xs:annotation>
+      <xs:documentation>Password Field: &lt;input type='password'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.password.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.password.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.password.attrs.type"/>
+    <xs:attribute name="maxlength" type="common.data.integer.non-negative"/>
+    <xs:attribute name="readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="readonly"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="size" type="common.data.integer.positive"/>
+    <xs:attribute name="value" type="xhtml:form.data.stringwithoutlinebreaks"/>
+    <xs:attribute name="autocomplete" type="xs:string"/>
+    <xs:attribute name="list" type="common.data.idref"/>
+    <xs:attribute name="pattern" type="xhtml:form.data.pattern"/>
+    <xs:attribute name="placeholder" type="xhtml:form.data.stringwithoutlinebreaks"/>
+    <xs:attribute name="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="required"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="minlength" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.password.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="password"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.password.attrs.value">
+    <xs:attribute name="value" use="required" type="xhtml:form.data.stringwithoutlinebreaks"/>
+  </xs:attributeGroup>
+  <xs:group name="input.checkbox.elem">
+    <xs:annotation>
+      <xs:documentation>Checkbox: &lt;input type='checkbox'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.checkbox.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.checkbox.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.checkbox.attrs.type"/>
+    <xs:attribute name="checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="checked"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="checkbox"/>
+          <xs:enumeration value="button"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="switch"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.checkbox"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-pressed">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attributeGroup ref="xhtml:shared-input.attrs"/>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.checkbox.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="checkbox"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.checkbox.attrs.value">
+    <xs:attribute name="value" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:group name="input.radio.elem">
+    <xs:annotation>
+      <xs:documentation>Radiobutton: &lt;input type='radio'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.radio.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.radio.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.radio.attrs.type"/>
+    <xs:attribute name="checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="checked"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="menuitemradio"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.radio"/>
+    <xs:attributeGroup ref="xhtml:shared-input.attrs"/>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.radio.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="radio"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.radio.attrs.value">
+    <xs:attribute name="value" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:group name="input.button.elem">
+    <xs:annotation>
+      <xs:documentation>Scripting Hook Button: &lt;input type='button'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.button.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.button.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.button.attrs.type"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+          <xs:enumeration value="link"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="switch"/>
+          <xs:enumeration value="tab"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.button"/>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="xhtml:shared-input.attrs"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.button.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="button"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.button.attrs.value">
+    <xs:attribute name="value" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <!-- REVISIT should this be enabled by a scripting module only? -->
+  <xs:group name="input.submit.elem">
+    <xs:annotation>
+      <xs:documentation>Submit Button: &lt;input type='submit'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.submit.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.submit.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.submit.attrs.type"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.button"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="xhtml:shared-input.attrs"/>
+    <xs:attribute name="formaction" type="common.data.uri.non-empty"/>
+    <xs:attribute name="formenctype" type="xhtml:shared-form.attrs.formenctype.data"/>
+    <xs:attribute name="formmethod" type="xhtml:shared-form.attrs.formmethod.data"/>
+    <xs:attribute name="formtarget" type="common.data.browsing-context-or-keyword"/>
+    <xs:attribute name="formnovalidate">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="formnovalidate"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.submit.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="submit"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.submit.attrs.value">
+    <xs:attribute name="value" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:group name="input.reset.elem">
+    <xs:annotation>
+      <xs:documentation>Reset Button: &lt;input type='reset'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.reset.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.reset.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.reset.attrs.type"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.button"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="xhtml:shared-input.attrs"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.reset.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="reset"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.reset.attrs.value">
+    <xs:attribute name="value" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <!-- REVISIT does reset make sense outside a form? -->
+  <xs:group name="input.file.elem">
+    <xs:annotation>
+      <xs:documentation>File Upload: &lt;input type='file'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.file.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.file.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.file.attrs.type"/>
+    <xs:attribute name="accept" type="xhtml:form.data.mimetypelist"/>
+    <xs:attributeGroup ref="xhtml:shared-input.attrs"/>
+    <xs:attribute name="multiple">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="multiple"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="capture">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="user"/>
+          <xs:enumeration value="environment"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.file.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="file"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.file.attrs.accept">
+    <xs:attribute name="accept" use="required" type="xhtml:form.data.mimetypelist"/>
+  </xs:attributeGroup>
+  <xs:group name="input.hidden.elem">
+    <xs:annotation>
+      <xs:documentation>Hidden String: &lt;input type='hidden'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.hidden.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.hidden.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.hidden.attrs.type"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="autocomplete" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.hidden.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="hidden"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.hidden.attrs.value">
+    <xs:attribute name="value" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:group name="input.image.elem">
+    <xs:annotation>
+      <xs:documentation>Image Submit Button: &lt;input type='image'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="input">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:input.image.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="input.image.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:input.image.attrs.type"/>
+    <xs:attributeGroup ref="xhtml:input.image.attrs.alt"/>
+    <xs:attribute name="src" type="common.data.uri.non-empty"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+          <xs:enumeration value="link"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="switch"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.button"/>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="xhtml:shared-input.attrs"/>
+    <xs:attribute name="formaction" type="common.data.uri.non-empty"/>
+    <xs:attribute name="formenctype" type="xhtml:shared-form.attrs.formenctype.data"/>
+    <xs:attribute name="formmethod" type="xhtml:shared-form.attrs.formmethod.data"/>
+    <xs:attribute name="formtarget" type="common.data.browsing-context-or-keyword"/>
+    <xs:attribute name="formnovalidate">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="formnovalidate"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="height" type="common.data.integer.non-negative"/>
+    <xs:attribute name="width" type="common.data.integer.non-negative"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.image.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="image"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.image.attrs.alt">
+    <xs:attribute name="alt" use="required" type="xhtml:form.data.nonemptystring"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="input.image.attrs.src">
+    <xs:attribute name="src" use="required" type="common.data.uri.non-empty"/>
+  </xs:attributeGroup>
+  <xs:element name="textarea">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="xhtml:textarea.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="textarea.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attribute name="readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="readonly"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.textbox"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="textbox"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-placeholder" type="xs:string"/>
+    <xs:attribute name="maxlength" type="common.data.integer.non-negative"/>
+    <xs:attribute name="minlength" type="common.data.integer.non-negative"/>
+    <xs:attribute name="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="required"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="placeholder" type="xs:string"/>
+    <xs:attribute name="dirname" type="xhtml:form.data.nonemptystring"/>
+    <xs:attribute name="rows" type="common.data.integer.positive"/>
+    <xs:attribute name="wrap">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="hard"/>
+          <xs:enumeration value="soft"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="cols" type="common.data.integer.positive"/>
+    <xs:attribute name="autocomplete">
+      <xs:simpleType>
+        <xs:union memberTypes="common.data.autocomplete.any">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="on"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="off"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!-- This is ugly. -->
+  <xs:attributeGroup name="textarea.attrs.cols">
+    <xs:attribute name="cols" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="textarea.attrs.rows">
+    <xs:attribute name="rows" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <!--
+    Due to limitations with interleave, handling single/multiple selection
+    enforcement in RELAX NG seems to be possible but really awkward.
+    Tried it. Leaving it to Schematron.
+  -->
+  <xs:element name="option">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="xhtml:option.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="option.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="disabled">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="disabled"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="selected"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="label" type="xhtml:form.data.nonemptystring"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.option"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="option"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="option.attrs.selected">
+    <xs:attribute name="selected" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="selected"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="option.attrs.label">
+    <xs:attribute name="label" use="required" type="xhtml:form.data.nonemptystring"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="option.attrs.value">
+    <xs:attribute name="value" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:element name="optgroup">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:optgroup.inner">
+          <xs:attributeGroup ref="xhtml:optgroup.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="optgroup.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:optgroup.attrs.label"/>
+    <xs:attribute name="disabled">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="disabled"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.group"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="group"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="optgroup.attrs.label">
+    <xs:attribute name="label" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:complexType name="optgroup.inner">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="xhtml:option"/>
+      <xs:group ref="common.elem.script-supporting"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="select">
+    <xs:complexType>
+      <xs:group ref="xhtml:select.inner"/>
+      <xs:attributeGroup ref="xhtml:select.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="select.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attribute name="size" type="common.data.integer.positive"/>
+    <xs:attribute name="multiple">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="multiple"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="listbox"/>
+          <xs:enumeration value="combobox"/>
+          <xs:enumeration value="menu"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-multiselectable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-activedescendant" type="common.data.idref"/>
+    <xs:attribute name="aria-expanded">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-autocomplete">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="inline"/>
+          <xs:enumeration value="list"/>
+          <xs:enumeration value="both"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-readonly">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="required"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="autocomplete">
+      <xs:simpleType>
+        <xs:union memberTypes="common.data.autocomplete.any">
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="on"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:simpleType>
+            <xs:restriction base="xs:token">
+              <xs:enumeration value="off"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="select.attrs.size">
+    <xs:attribute name="size" use="required" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="select.attrs.multiple">
+    <xs:attribute name="multiple" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="multiple"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="select.inner">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="xhtml:optgroup"/>
+        <xs:element ref="xhtml:option"/>
+        <xs:group ref="common.elem.script-supporting"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="button.attrs.value">
+    <xs:annotation>
+      <xs:documentation>Shared Definitions for Complex Button</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="value" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:complexType name="button.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:group name="button.submit.elem">
+    <xs:annotation>
+      <xs:documentation>Complex Submit Button: &lt;button type='submit'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="button">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:button.inner">
+              <xs:attributeGroup ref="xhtml:button.submit.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="button.submit.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attribute name="type">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="submit"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+          <xs:enumeration value="checkbox"/>
+          <xs:enumeration value="link"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="tab"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.button"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="formaction" type="common.data.uri.non-empty"/>
+    <xs:attribute name="formenctype" type="xhtml:shared-form.attrs.formenctype.data"/>
+    <xs:attribute name="formmethod" type="xhtml:shared-form.attrs.formmethod.data"/>
+    <xs:attribute name="formtarget" type="common.data.browsing-context-or-keyword"/>
+    <xs:attribute name="formnovalidate">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="formnovalidate"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="button.submit.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="submit"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="button.elem">
+    <xs:choice>
+      <xs:group ref="xhtml:button.submit.elem"/>
+      <xs:group ref="xhtml:button.reset.elem"/>
+      <xs:group ref="xhtml:button.button.elem"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="button.reset.elem">
+    <xs:annotation>
+      <xs:documentation>Complex Reset Button: &lt;button type='reset'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="button">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:button.inner">
+              <xs:attributeGroup ref="xhtml:button.reset.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="button.reset.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:button.reset.attrs.type"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+          <xs:enumeration value="checkbox"/>
+          <xs:enumeration value="link"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="switch"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.button"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="button.reset.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="reset"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="button.button.elem">
+    <xs:annotation>
+      <xs:documentation>Complex Push Button: &lt;button type='button'&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="button">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:button.inner">
+              <xs:attributeGroup ref="xhtml:button.button.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="button.button.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+    <xs:attributeGroup ref="xhtml:button.button.attrs.type"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+          <xs:enumeration value="checkbox"/>
+          <xs:enumeration value="link"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="switch"/>
+          <xs:enumeration value="tab"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.button"/>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="button.button.attrs.type">
+    <xs:attribute name="type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="button"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="form">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:form.inner">
+          <xs:attributeGroup ref="xhtml:form.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="form.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="action" type="common.data.uri.non-empty"/>
+    <xs:attribute name="method" type="xhtml:form.attrs.method.data"/>
+    <xs:attribute name="enctype" type="xhtml:form.attrs.enctype.data"/>
+    <xs:attribute name="name" type="xhtml:form.data.nonemptystring"/>
+    <xs:attribute name="accept-charset" type="xs:string"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="form"/>
+          <xs:enumeration value="search"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.form"/>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="novalidate">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="novalidate"/>
+          <xs:enumeration value=""/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="target" type="common.data.browsing-context-or-keyword"/>
+    <xs:attribute name="autocomplete">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="on"/>
+          <xs:enumeration value="off"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="form.attrs.action">
+    <xs:attribute name="action" use="required" type="common.data.uri.non-empty"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="form.attrs.method">
+    <xs:attribute name="method" use="required" type="xhtml:form.attrs.method.data"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="form.attrs.method.data">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="get"/>
+      <xs:enumeration value="post"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="form.attrs.enctype">
+    <xs:attribute name="enctype" use="required" type="xhtml:form.attrs.enctype.data"/>
+  </xs:attributeGroup>
+  <xs:simpleType name="form.attrs.enctype.data">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="application/x-www-form-urlencoded"/>
+      <xs:enumeration value="multipart/form-data"/>
+      <xs:enumeration value="text/plain"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="form.attrs.accept-charset">
+    <xs:attribute name="accept-charset" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:complexType name="form.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+  <xs:element name="fieldset">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:fieldset.inner"/>
+      <xs:attributeGroup ref="xhtml:fieldset.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="fieldset.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="group"/>
+          <xs:enumeration value="radiogroup"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.group"/>
+    <xs:attribute name="aria-required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-orientation">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="vertical"/>
+          <xs:enumeration value="horizontal"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="xhtml:common-form.attrs"/>
+  </xs:attributeGroup>
+  <xs:group name="fieldset.inner">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="xhtml:legend"/>
+      <xs:group ref="common.inner.flow"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="label">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:label.inner">
+          <xs:attributeGroup ref="xhtml:label.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="label.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="for" type="common.data.idref"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="label.attrs.for">
+    <xs:attribute name="for" use="required" type="common.data.idref"/>
+  </xs:attributeGroup>
+  <xs:complexType name="label.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <!-- REVISIT making obvious guess -->
+</xs:schema>

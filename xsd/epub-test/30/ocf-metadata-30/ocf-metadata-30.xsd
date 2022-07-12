@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.idpf.org/2013/metadata" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:metadata="http://www.idpf.org/2013/metadata" xmlns:epub="http://www.idpf.org/2007/ops">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="package-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/opf" schemaLocation="opf.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub-prefix-attr.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="metadata">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="metadata:mr.metadata.content">
+          <xs:attributeGroup ref="metadata:mr.metadata.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meta" type="dc:opf.epub3.meta.content"/>
+  <xs:element name="link">
+    <xs:complexType>
+      <xs:attributeGroup ref="dc:opf.href.attr"/>
+      <xs:attributeGroup ref="dc:opf.rel.attr"/>
+      <xs:attribute name="id" type="dc:datatype.ID"/>
+      <xs:attribute name="refines" type="dc:datatype.URI"/>
+      <xs:attribute name="media-type" type="dc:datatype.mimetype"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- Duplicated only for changing the namespace. -->
+  <xs:group name="opf.dc.elems">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="dc:identifier"/>
+        <xs:element ref="dc:title"/>
+        <xs:element ref="dc:language"/>
+        <xs:element ref="dc:date"/>
+        <xs:element ref="dc:source"/>
+        <xs:element ref="dc:type"/>
+        <xs:element ref="dc:format"/>
+        <xs:element ref="dc:creator"/>
+        <xs:element ref="dc:subject"/>
+        <xs:element ref="dc:description"/>
+        <xs:element ref="dc:publisher"/>
+        <xs:element ref="dc:contributor"/>
+        <xs:element ref="dc:relation"/>
+        <xs:element ref="dc:coverage"/>
+        <xs:element ref="dc:rights"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="mr.metadata.attlist">
+    <xs:attributeGroup ref="dc:opf.unique.identifier.attr"/>
+    <xs:attribute name="prefix"/>
+    <xs:attribute name="id" type="dc:datatype.ID"/>
+    <xs:attributeGroup ref="dc:opf.i18n.attrs"/>
+    <xs:attribute name="version">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="3.0"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="mr.metadata.content">
+    <xs:complexContent>
+      <xs:extension base="dc:opf.metadata.content"/>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

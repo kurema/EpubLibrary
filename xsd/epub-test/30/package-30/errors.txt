@@ -1,0 +1,1 @@
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/30/package-30.rnc:23:30: warning: choice between attributes and children cannot be represented; approximating

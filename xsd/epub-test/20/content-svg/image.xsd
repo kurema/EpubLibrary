@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Image Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="img">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:img.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="img.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attribute name="src" use="required" type="svg:URI.datatype"/>
+    <xs:attribute name="alt" use="required"/>
+    <xs:attribute name="longdesc" type="svg:URI.datatype"/>
+    <xs:attribute name="height"/>
+    <xs:attribute name="width"/>
+    <xs:attribute name="ismap">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ismap"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="xhtml:usemap.attlist"/>
+  </xs:attributeGroup>
+</xs:schema>

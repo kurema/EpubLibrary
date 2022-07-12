@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.idpf.org/2007/ops" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="epub-nav-30.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="trigger">
+    <xs:complexType>
+      <xs:attributeGroup ref="epub:epub.trigger.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="epub.trigger.attlist">
+    <xs:attribute name="id" type="common.data.id"/>
+    <xs:attributeGroup ref="epub:epub.trigger.action.attr"/>
+    <xs:attributeGroup ref="epub:epub.trigger.ref.attr"/>
+    <xs:attributeGroup ref="epub:xml.events.event.attr"/>
+    <xs:attributeGroup ref="epub:xml.events.observer.attr"/>
+    <xs:attribute ref="ev:defaultAction"/>
+    <xs:attribute ref="ev:phase"/>
+    <xs:attribute ref="ev:propagate"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="epub.trigger.action.attr">
+    <xs:attribute name="action" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="show"/>
+          <xs:enumeration value="hide"/>
+          <xs:enumeration value="play"/>
+          <xs:enumeration value="pause"/>
+          <xs:enumeration value="resume"/>
+          <xs:enumeration value="mute"/>
+          <xs:enumeration value="unmute"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="epub.trigger.ref.attr">
+    <xs:attribute name="ref" use="required" type="xhtml:datatype.IDREF"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="xml.events.event.attr">
+    <xs:attribute ref="ev:event" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="xml.events.observer.attr">
+    <xs:attribute ref="ev:observer" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="xml.events.defaultAction.attr">
+    <xs:attribute ref="ev:defaultAction" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="xml.events.phase.attr">
+    <xs:attribute ref="ev:phase" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="xml.events.propagate.attr">
+    <xs:attribute ref="ev:propagate" use="required"/>
+  </xs:attributeGroup>
+</xs:schema>

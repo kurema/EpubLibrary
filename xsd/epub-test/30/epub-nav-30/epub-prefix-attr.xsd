@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="epub-nav-30.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:attributeGroup name="epub.prefix.attr">
+    <xs:attribute name="prefix" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="epub.prefix.attr.ns">
+    <xs:attribute ref="epub:prefix" use="required"/>
+  </xs:attributeGroup>
+</xs:schema>

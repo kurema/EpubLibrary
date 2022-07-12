@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Object Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="object">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="xhtml:param"/>
+        <xs:group ref="xhtml:Flow.model"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="xhtml:object.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="object.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attribute name="declare">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="declare"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="classid" type="svg:URI.datatype"/>
+    <xs:attribute name="codebase" type="svg:URI.datatype"/>
+    <xs:attribute name="data" type="svg:URI.datatype"/>
+    <xs:attribute name="type"/>
+    <xs:attribute name="codetype"/>
+    <xs:attribute name="archive"/>
+    <xs:attribute name="standby"/>
+    <xs:attribute name="height"/>
+    <xs:attribute name="width"/>
+    <xs:attribute name="name"/>
+    <xs:attribute name="tabindex"/>
+    <xs:attributeGroup ref="xhtml:usemap.attlist"/>
+  </xs:attributeGroup>
+</xs:schema>

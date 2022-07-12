@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- List Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="dl" substitutionGroup="xhtml:List.class">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="xhtml:dt"/>
+        <xs:element ref="xhtml:dd"/>
+      </xs:choice>
+      <xs:attributeGroup ref="xhtml:dl.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="dl.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="dt">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:dt.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="dt.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="dd">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Flow.model"/>
+      <xs:attributeGroup ref="xhtml:dd.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="dd.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="ol" substitutionGroup="xhtml:List.class">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="xhtml:li"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="xhtml:ol.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="ol.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="ul" substitutionGroup="xhtml:List.class">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="xhtml:li"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="xhtml:ul.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="ul.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="li">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Flow.model"/>
+      <xs:attributeGroup ref="xhtml:li.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="li.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="List.class" abstract="true"/>
+</xs:schema>

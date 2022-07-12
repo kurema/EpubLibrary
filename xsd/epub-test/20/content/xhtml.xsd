@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:include schemaLocation="struct.xsd"/>
+  <xs:include schemaLocation="text.xsd"/>
+  <xs:include schemaLocation="hypertext.xsd"/>
+  <xs:include schemaLocation="list.xsd"/>
+  <xs:include schemaLocation="image.xsd"/>
+  <xs:include schemaLocation="base.xsd"/>
+  <xs:include schemaLocation="link.xsd"/>
+  <xs:include schemaLocation="meta.xsd"/>
+  <xs:include schemaLocation="param.xsd"/>
+  <xs:include schemaLocation="object.xsd"/>
+  <xs:include schemaLocation="bdo.xsd"/>
+  <xs:include schemaLocation="pres.xsd"/>
+  <xs:include schemaLocation="edit.xsd"/>
+  <xs:include schemaLocation="applet.xsd"/>
+  <xs:include schemaLocation="style.xsd"/>
+  <xs:include schemaLocation="script.xsd"/>
+  <xs:include schemaLocation="table.xsd"/>
+  <xs:include schemaLocation="csismap.xsd"/>
+  <xs:include schemaLocation="iframe.xsd"/>
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+</xs:schema>

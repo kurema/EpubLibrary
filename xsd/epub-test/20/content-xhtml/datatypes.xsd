@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Datatypes Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <!-- Length defined for cellpadding/cellspacing -->
+  <!-- nn for pixels or nn% for percentage length -->
+  <!-- space-separated list of link types -->
+  <xs:simpleType name="LinkTypes.datatype">
+    <xs:restriction base="svg:NMTOKENS.datatype"/>
+  </xs:simpleType>
+  <!-- single or comma-separated list of media descriptors -->
+  <!-- pixel, percentage, or relative -->
+  <!-- one or more digits (NUMBER) -->
+  <!-- integer representing length in pixels -->
+  <!-- script expression -->
+  <!-- textual content -->
+  <!-- Imported Datatypes ................................ -->
+  <!-- a single character from [ISO10646] -->
+  <!-- a character encoding, as per [RFC2045] -->
+  <!-- a space separated list of character encodings, as per [RFC2045] -->
+  <!-- media type, as per [RFC2045] -->
+  <!-- comma-separated list of media types, as per [RFC2045] -->
+  <!-- date and time information. ISO date format -->
+  <!-- formal public identifier, as per [ISO8879] -->
+  <!-- a language code, as per [RFC1766] -->
+  <xs:simpleType name="LanguageCode.datatype">
+    <xs:restriction base="xs:language"/>
+  </xs:simpleType>
+  <!-- a Uniform Resource Identifier, see [URI] -->
+  <xs:simpleType name="URI.datatype">
+    <xs:restriction base="xs:anyURI"/>
+  </xs:simpleType>
+  <!-- a space-separated list of Uniform Resource Identifiers, see [URI] -->
+  <xs:simpleType name="NMTOKEN.datatype">
+    <xs:restriction base="xs:NMTOKEN"/>
+  </xs:simpleType>
+  <xs:simpleType name="NMTOKENS.datatype">
+    <xs:restriction base="xs:NMTOKENS"/>
+  </xs:simpleType>
+  <xs:simpleType name="ID.datatype">
+    <xs:restriction base="xs:ID"/>
+  </xs:simpleType>
+  <xs:simpleType name="IDREF.datatype">
+    <xs:restriction base="xs:IDREF"/>
+  </xs:simpleType>
+  <xs:simpleType name="IDREFS.datatype">
+    <xs:restriction base="xs:IDREFS"/>
+  </xs:simpleType>
+</xs:schema>

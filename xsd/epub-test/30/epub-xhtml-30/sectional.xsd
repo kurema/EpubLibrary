@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="epub-xhtml-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-xhtml-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:element name="h1">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:h1.inner">
+          <xs:attributeGroup ref="xhtml:h1.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="h1.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="heading"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-subtitle"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.heading"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="h1.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="h2">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:h2.inner">
+          <xs:attributeGroup ref="xhtml:h2.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="h2.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="heading"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-subtitle"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.heading"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="h2.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="h3">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:h3.inner">
+          <xs:attributeGroup ref="xhtml:h3.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="h3.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="heading"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-subtitle"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.heading"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="h3.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="h4">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:h4.inner">
+          <xs:attributeGroup ref="xhtml:h4.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="h4.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="heading"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-subtitle"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.heading"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="h4.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="h5">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:h5.inner">
+          <xs:attributeGroup ref="xhtml:h5.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="h5.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="heading"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-subtitle"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.heading"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="h5.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="h6">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:h6.inner">
+          <xs:attributeGroup ref="xhtml:h6.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="h6.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="heading"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="presentation"/>
+          <xs:enumeration value="none"/>
+          <xs:enumeration value="doc-subtitle"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.heading"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="h6.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="hgroup">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:hgroup.inner">
+          <xs:attributeGroup ref="xhtml:hgroup.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="hgroup.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="hgroup.inner">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:choice>
+        <xs:element ref="xhtml:h1"/>
+        <xs:element ref="xhtml:h2"/>
+        <xs:element ref="xhtml:h3"/>
+        <xs:element ref="xhtml:h4"/>
+        <xs:element ref="xhtml:h5"/>
+        <xs:element ref="xhtml:h6"/>
+      </xs:choice>
+      <xs:group ref="common.elem.script-supporting"/>
+    </xs:choice>
+  </xs:complexType>
+  <!-- ##################################################################### -->
+  <xs:element name="address">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:address.inner">
+          <xs:attributeGroup ref="xhtml:address.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="address.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="address.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+  <!-- ##################################################################### -->
+  <xs:element name="blockquote">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:blockquote.inner">
+          <xs:attributeGroup ref="xhtml:blockquote.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="blockquote.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="cite" type="common.data.uri"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="blockquote.attrs.cite">
+    <xs:attribute name="cite" use="required" type="common.data.uri"/>
+  </xs:attributeGroup>
+  <xs:complexType name="blockquote.inner" mixed="true">
+    <xs:group ref="common.inner.flow"/>
+  </xs:complexType>
+</xs:schema>

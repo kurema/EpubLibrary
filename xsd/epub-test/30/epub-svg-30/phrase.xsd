@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="epub-svg-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg11-inc.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:group name="a.elem.phrasing">
+    <xs:annotation>
+      <xs:documentation> RELAX NG Schema for HTML 5: Phrase Markup                         #</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:group ref="xhtml:a.href.elem.phrasing"/>
+      <xs:group ref="xhtml:a.nohref.elem.phrasing"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="a.elem.flow">
+    <xs:choice>
+      <xs:group ref="xhtml:a.href.elem.flow"/>
+      <xs:group ref="xhtml:a.nohref.elem.flow"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="a.href.elem.phrasing">
+    <xs:sequence>
+      <xs:element name="a">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:a.inner.phrasing">
+              <xs:attributeGroup ref="xhtml:a.href.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="a.href.elem.flow">
+    <xs:sequence>
+      <xs:element name="a">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:a.inner.flow">
+              <xs:attributeGroup ref="xhtml:a.href.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="a.nohref.elem.phrasing">
+    <xs:sequence>
+      <xs:element name="a">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:a.inner.phrasing">
+              <xs:attributeGroup ref="xhtml:a.nohref.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="a.nohref.elem.flow">
+    <xs:sequence>
+      <xs:element name="a">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="xhtml:a.inner.flow">
+              <xs:attributeGroup ref="xhtml:a.nohref.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="a.href.attrs">
+    <xs:attributeGroup ref="xhtml:a.attrs"/>
+    <xs:attributeGroup ref="xhtml:shared-hyperlink.attrs.href"/>
+    <xs:attribute name="role">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="button"/>
+          <xs:enumeration value="checkbox"/>
+          <xs:enumeration value="link"/>
+          <xs:enumeration value="menuitem"/>
+          <xs:enumeration value="menuitemcheckbox"/>
+          <xs:enumeration value="menuitemradio"/>
+          <xs:enumeration value="option"/>
+          <xs:enumeration value="radio"/>
+          <xs:enumeration value="switch"/>
+          <xs:enumeration value="tab"/>
+          <xs:enumeration value="treeitem"/>
+          <xs:enumeration value="doc-backlink"/>
+          <xs:enumeration value="doc-biblioref"/>
+          <xs:enumeration value="doc-glossref"/>
+          <xs:enumeration value="doc-noteref"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="common.attrs.aria.implicit.link"/>
+    <xs:attribute name="aria-pressed">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-checked">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="mixed"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-posinset" type="common.data.integer.positive"/>
+    <xs:attribute name="aria-setsize" type="common.data.integer.non-negative"/>
+    <xs:attribute name="aria-selected">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+          <xs:enumeration value="undefined"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="aria-level" type="common.data.integer.positive"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.nohref.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attribute name="name" type="common.data.id"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.attrs">
+    <xs:attributeGroup ref="common.attrs.basic"/>
+    <xs:attributeGroup ref="common.attrs.i18n"/>
+    <xs:attributeGroup ref="common.attrs.present"/>
+    <xs:attributeGroup ref="common.attrs.other"/>
+    <xs:attribute name="name" type="common.data.id"/>
+    <xs:attribute name="download" type="xs:string"/>
+    <xs:attribute name="target" type="common.data.browsing-context-or-keyword"/>
+    <xs:attribute name="rel" type="xs:string"/>
+    <xs:attribute name="hreflang" type="common.data.langcode"/>
+    <xs:attribute name="type" type="common.data.mimetype"/>
+    <xs:attribute name="ping" type="common.data.uris.http.or.https"/>
+    <xs:attribute name="referrerpolicy">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="no-referrer"/>
+          <xs:enumeration value="no-referrer-when-downgrade"/>
+          <xs:enumeration value="same-origin"/>
+          <xs:enumeration value="origin"/>
+          <xs:enumeration value="strict-origin"/>
+          <xs:enumeration value="origin-when-cross-origin"/>
+          <xs:enumeration value="strict-origin-when-cross-origin"/>
+          <xs:enumeration value="unsafe-url"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="xhtml:common.attrs.microdata"/>
+    <xs:attributeGroup ref="xhtml:common.attrs.rdfa.no-rel-rev"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="a.attrs.name">
+    <xs:attribute name="name" use="required" type="common.data.id"/>
+  </xs:attributeGroup>
+  <xs:complexType name="a.inner.phrasing" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:complexType name="a.inner.flow" mixed="true">
+    <xs:group ref="common.inner.transparent.flow"/>
+  </xs:complexType>
+  <xs:attributeGroup name="shared-hyperlink.attrs.download">
+    <xs:annotation>
+      <xs:documentation>Shared hyperlink attributes</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="download" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-hyperlink.attrs.href">
+    <xs:attribute name="href" use="required" type="common.data.uri"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-hyperlink.attrs.target">
+    <xs:attribute name="target" use="required" type="common.data.browsing-context-or-keyword"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-hyperlink.attrs.rel">
+    <xs:attribute name="rel" use="required" type="xs:string"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-hyperlink.attrs.hreflang">
+    <xs:attribute name="hreflang" use="required" type="common.data.langcode"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-hyperlink.attrs.media">
+    <xs:attribute name="media" use="required" type="common.data.mediaquery"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-hyperlink.attrs.type">
+    <xs:attribute name="type" use="required" type="common.data.mimetype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="shared-hyperlink.attrs.ping">
+    <xs:attribute name="ping" use="required" type="common.data.uris.http.or.https"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="referrerpolicy">
+    <xs:attribute name="referrerpolicy" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value=""/>
+          <xs:enumeration value="no-referrer"/>
+          <xs:enumeration value="no-referrer-when-downgrade"/>
+          <xs:enumeration value="same-origin"/>
+          <xs:enumeration value="origin"/>
+          <xs:enumeration value="strict-origin"/>
+          <xs:enumeration value="origin-when-cross-origin"/>
+          <xs:enumeration value="strict-origin-when-cross-origin"/>
+          <xs:enumeration value="unsafe-url"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="em">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:em.inner">
+          <xs:attributeGroup ref="xhtml:em.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="em.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="em.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="strong">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:strong.inner">
+          <xs:attributeGroup ref="xhtml:strong.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="strong.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="strong.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="small">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:small.inner">
+          <xs:attributeGroup ref="xhtml:small.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="small.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="small.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="mark">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:mark.inner">
+          <xs:attributeGroup ref="xhtml:mark.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="mark.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="mark.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="abbr">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:abbr.inner">
+          <xs:attributeGroup ref="xhtml:abbr.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="abbr.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="abbr.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="dfn">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:dfn.inner">
+          <xs:attributeGroup ref="xhtml:dfn.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="dfn.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="dfn.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="i">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:i.inner">
+          <xs:attributeGroup ref="xhtml:i.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="i.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="i.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="b">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:b.inner">
+          <xs:attributeGroup ref="xhtml:b.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="b.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="b.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="s">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:s.inner">
+          <xs:attributeGroup ref="xhtml:s.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="s.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="s.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="u">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:u.inner">
+          <xs:attributeGroup ref="xhtml:u.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="u.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="u.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="code">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:code.inner">
+          <xs:attributeGroup ref="xhtml:code.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="code.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="code.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="var">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:var.inner">
+          <xs:attributeGroup ref="xhtml:var.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="var.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="var.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="samp">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:samp.inner">
+          <xs:attributeGroup ref="xhtml:samp.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="samp.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="samp.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="kbd">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:kbd.inner">
+          <xs:attributeGroup ref="xhtml:kbd.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="kbd.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="kbd.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="sup">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:sup.inner">
+          <xs:attributeGroup ref="xhtml:sup.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="sup.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="sup.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="sub">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:sub.inner">
+          <xs:attributeGroup ref="xhtml:sub.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="sub.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="sub.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="q">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:q.inner">
+          <xs:attributeGroup ref="xhtml:q.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="q.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attribute name="cite" type="common.data.uri"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="q.attrs.cite">
+    <xs:attribute name="cite" use="required" type="common.data.uri"/>
+  </xs:attributeGroup>
+  <xs:complexType name="q.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="cite">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:cite.inner">
+          <xs:attributeGroup ref="xhtml:cite.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="cite.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="cite.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="span">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:span.inner">
+          <xs:attributeGroup ref="xhtml:span.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="span.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="span.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <!-- REVISIT allow ol and ul? -->
+  <xs:element name="bdo">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:bdo.inner">
+          <xs:attributeGroup ref="xhtml:bdo.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="bdo.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="bdo.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="bdi">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:bdi.inner">
+          <xs:attributeGroup ref="xhtml:bdi.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="bdi.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:complexType name="bdi.inner" mixed="true">
+    <xs:group ref="common.inner.phrasing"/>
+  </xs:complexType>
+  <xs:element name="br">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:br.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="br.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+  <xs:element name="wbr">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:wbr.attrs"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="wbr.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+    <xs:attributeGroup ref="common.attrs.aria"/>
+  </xs:attributeGroup>
+</xs:schema>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:elements="http://purl.org/dc/elements/1.1/" xmlns:x="http://www.w3.org/2001/XMLSchema-instance" xmlns:o="http://openebook.org/namespaces/oeb-package/1.0/">
+  <xs:import namespace="http://openebook.org/namespaces/oeb-package/1.0/" schemaLocation="o.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/opf" schemaLocation="opf1.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="x.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!--
+    Title:
+        Relax NG Schema for the Open Packaging
+         Format (OPF) version 2.0
+    
+    Version:
+        2.0
+    
+    Revision:
+        20070222
+    
+    Authors:
+        This Version 2.0 :
+             Peter Sorotokin <psorotok@adobe.com>
+  -->
+  <xs:attributeGroup name="OPF20.optional-id-attribute">
+    <xs:attribute name="id" type="xs:ID"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF20.optional-xml-lang-attribute">
+    <xs:attribute ref="xml:lang"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF20.optional-file-as-attribute">
+    <xs:attribute ref="opf:file-as"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF20.optional-role-attribute">
+    <xs:attribute ref="opf:role"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF20.optional-scheme-attribute">
+    <xs:attribute ref="opf:scheme"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF20.optional-event-attribute">
+    <xs:attribute ref="opf:event"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF20.optional-xsi-type">
+    <xs:attribute ref="x:type"/>
+  </xs:attributeGroup>
+  <xs:complexType name="OPF20.package-content">
+    <xs:sequence>
+      <xs:element ref="opf:metadata"/>
+      <xs:element ref="opf:manifest"/>
+      <xs:element ref="opf:spine"/>
+      <xs:element minOccurs="0" ref="opf:tours"/>
+      <xs:element minOccurs="0" ref="opf:guide"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF20.metadata-content">
+    <xs:choice>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="opf:dc-metadata"/>
+        <xs:element ref="opf:x-metadata"/>
+      </xs:choice>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="elements:title"/>
+        <xs:element ref="elements:language"/>
+        <xs:element ref="elements:identifier"/>
+        <xs:element ref="elements:DC.optional-metadata-element"/>
+        <xs:element ref="opf:meta"/>
+        <xs:group ref="elements:OPF20.any-other-element"/>
+      </xs:choice>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="OPF20.dc-metadata-content">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="elements:title"/>
+      <xs:element ref="elements:language"/>
+      <xs:element ref="elements:identifier"/>
+      <xs:element ref="elements:DC.optional-metadata-element"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="identifier">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="elements:DC.metadata-required-content">
+          <xs:attribute name="id" type="xs:ID"/>
+          <xs:attributeGroup ref="elements:OPF20.optional-xsi-type"/>
+          <xs:attributeGroup ref="elements:OPF20.optional-scheme-attribute"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="title">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="language">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xsi-type"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DC.optional-metadata-element" abstract="true"/>
+  <xs:element name="contributor" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-file-as-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-role-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="coverage" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="creator" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-file-as-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-role-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xsi-type"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-event-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="format" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xsi-type"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="publisher" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="relation" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rights" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="source" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="subject" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="type" substitutionGroup="elements:DC.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF20.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF20.optional-xsi-type"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="DC.metadata-required-content">
+    <xs:restriction base="xs:token">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OPF20.x-metadata-content">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="opf:meta"/>
+      <xs:group ref="elements:OPF20.any-other-element"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="OPF20.manifest-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="opf:item"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF20.spine-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="opf:itemref"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF20.tours-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="opf:tour"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF20.tour-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="opf:site"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF20.guide-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="opf:reference"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:group name="OPF20.any-other-element">
+    <xs:sequence>
+      <xs:any processContents="skip"/>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

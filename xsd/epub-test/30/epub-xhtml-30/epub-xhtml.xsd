@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Credit: integration adapted from the Nu Html Checker drivers -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:include schemaLocation="datatypes.xsd"/>
+  <xs:include schemaLocation="meta.xsd"/>
+  <xs:include schemaLocation="phrase.xsd"/>
+  <xs:include schemaLocation="block.xsd"/>
+  <xs:include schemaLocation="sectional.xsd"/>
+  <xs:include schemaLocation="structural.xsd"/>
+  <xs:include schemaLocation="revision.xsd"/>
+  <xs:include schemaLocation="embed.xsd"/>
+  <xs:include schemaLocation="ruby.xsd"/>
+  <xs:include schemaLocation="media.xsd"/>
+  <xs:include schemaLocation="core-scripting.xsd"/>
+  <xs:include schemaLocation="tables.xsd"/>
+  <xs:include schemaLocation="form-datatypes.xsd"/>
+  <xs:include schemaLocation="web-forms.xsd"/>
+  <xs:include schemaLocation="web-forms2.xsd"/>
+  <xs:include schemaLocation="applications.xsd"/>
+  <xs:include schemaLocation="data.xsd"/>
+  <xs:include schemaLocation="microdata.xsd"/>
+  <xs:include schemaLocation="web-components.xsd"/>
+  <xs:include schemaLocation="rdfa.xsd"/>
+  <xs:import schemaLocation="epub-xhtml-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-xhtml-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <!--
+    #####################################################################
+    
+     XHTML validation based on the schemas from the Nu Html Checker,
+     with the following changes:
+       - datatypes replaced to use the patterns in datatype.rnc
+       - title element not required (a missing title element will be
+         reported as a WARNING in Schematron
+       - allows meta http-equiv in encoding declaration state
+       - allows the border attribute on tables
+       - allow EPUB extensions (epub:type, epub:switch, epub:trigger,
+         ssml:* attributes, etc)
+    
+    #####################################################################
+  -->
+  <!-- XHTML flavor # -->
+  <!-- HTML 4 compat # -->
+  <!-- ##################################################################### -->
+  <!--
+    Note: these are too simplistic. The Nu HTML Checker performs
+    a significant part of the checking in its Java-based datatype
+    library.
+  -->
+  <!--
+    make the title element optional, since one could see the publication title
+    as defining a proper "higher-level protocol"
+    the lack of `title` will however raise a WARNING in a Schematron rule 
+  -->
+  <xs:complexType name="head.inner">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="xhtml:title"/>
+      <xs:element ref="xhtml:base"/>
+      <xs:group ref="common.inner.metadata"/>
+    </xs:choice>
+  </xs:complexType>
+  <!--
+    Allow http-equiv in encoding declaration state in XHTML too
+    (W3C allows that, but not WHATWG)
+  -->
+  <xs:group name="meta.http-equiv.content-type.elem">
+    <xs:sequence>
+      <xs:element name="meta">
+        <xs:complexType>
+          <xs:attributeGroup ref="xhtml:meta.http-equiv.content-type.attrs"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!--
+    Make http-equiv case-insensitive
+    This is an ugly hack. Case-insensitiveness would better be solved
+    at parsing time.
+  -->
+  <xs:attributeGroup name="meta.http-equiv.attrs.http-equiv.content-type">
+    <xs:attribute name="http-equiv" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[cC][oO][nN][tT][eE][nN][tT]-[tT][yY][pP][eE]"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.http-equiv.refresh">
+    <xs:attribute name="http-equiv" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[rR][eE][fF][rR][eE][sS][hH]"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.http-equiv.default-style">
+    <xs:attribute name="http-equiv" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[dD][eE][fF][aA][uU][lL][tT]-[sS][tT][yY][lL][eE]"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.http-equiv.content-security-policy">
+    <xs:attribute name="http-equiv" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[cC][oO][nN][tT][eE][nN][tT]-[sS][eE][cC][uU][rR][iI][tT][yY]-[pP][oO][lL][iI][cC][yY]"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="meta.http-equiv.attrs.http-equiv.x-ua-compatible">
+    <xs:attribute name="http-equiv" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[xX]-[uU][aA]-[cC][oO][mM][pP][aA][tT][iI][bB][lL][eE]"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <!-- More tweaks for W3C-allowed features -->
+  <!-- Elements -->
+  <!-- Attributes -->
+</xs:schema>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Structure Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <!--
+    <start>
+      <ref name="html"/>
+    </start>
+  -->
+  <xs:element name="title">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="xhtml:title.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="title.attlist">
+    <xs:attributeGroup ref="I18n.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="head">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:head.content">
+          <xs:attributeGroup ref="xhtml:head.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="head.attlist">
+    <xs:attributeGroup ref="I18n.attrib"/>
+    <xs:attributeGroup ref="xhtml:profile.attlist"/>
+  </xs:attributeGroup>
+  <xs:complexType name="head.content">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="xhtml:title"/>
+      <xs:element ref="xhtml:base"/>
+      <xs:element ref="xhtml:link"/>
+      <xs:element ref="xhtml:meta"/>
+      <xs:element ref="xhtml:style"/>
+      <xs:element ref="xhtml:script"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:attributeGroup name="profile.attlist">
+    <xs:attribute name="profile" type="svg:URI.datatype"/>
+  </xs:attributeGroup>
+  <xs:element name="body">
+    <xs:complexType>
+      <xs:group ref="xhtml:Block.model"/>
+      <xs:attributeGroup ref="xhtml:body.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="body.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="html">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="xhtml:head"/>
+        <xs:element ref="xhtml:body"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="xhtml:html.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="html.attlist">
+    <xs:attributeGroup ref="xhtml:XHTML.version.attrib"/>
+    <xs:attributeGroup ref="I18n.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="XHTML.version.attrib">
+    <xs:attribute name="version"/>
+  </xs:attributeGroup>
+</xs:schema>

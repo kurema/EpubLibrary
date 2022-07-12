@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="epub-xhtml-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-xhtml-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:element name="template">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:template.inner">
+          <xs:attributeGroup ref="xhtml:template.attrs"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="template.attrs">
+    <xs:attributeGroup ref="common.attrs"/>
+  </xs:attributeGroup>
+  <xs:complexType name="template.inner" mixed="true">
+    <xs:choice>
+      <xs:group ref="common.inner.metadata"/>
+      <xs:group ref="common.inner.flow"/>
+      <xs:group ref="xhtml:ol.inner"/>
+      <xs:group ref="xhtml:ul.inner"/>
+      <xs:group ref="xhtml:dl.inner"/>
+      <xs:group ref="xhtml:figure.inner"/>
+      <xs:group ref="xhtml:ruby.inner"/>
+      <xs:group ref="xhtml:object.inner.flow"/>
+      <xs:group ref="xhtml:object.inner.phrasing"/>
+      <xs:group ref="xhtml:video.inner.flow"/>
+      <xs:group ref="xhtml:video.inner.phrasing"/>
+      <xs:group ref="xhtml:audio.inner.flow"/>
+      <xs:group ref="xhtml:audio.inner.phrasing"/>
+      <xs:group ref="xhtml:table.inner"/>
+      <xs:group ref="xhtml:colgroup.inner"/>
+      <xs:group ref="xhtml:thead.inner"/>
+      <xs:group ref="xhtml:tbody.inner"/>
+      <xs:group ref="xhtml:tfoot.inner"/>
+      <xs:group ref="xhtml:tr.inner"/>
+      <xs:group ref="xhtml:fieldset.inner"/>
+      <xs:group ref="xhtml:select.inner"/>
+      <xs:group ref="xhtml:details.inner"/>
+    </xs:choice>
+    <xs:attributeGroup ref="xhtml:video.inner.flow"/>
+    <xs:attributeGroup ref="xhtml:colgroup.inner"/>
+  </xs:complexType>
+  <!-- also allow <script> wherever <template> is allowed -->
+  <xs:attributeGroup name="attr.any">
+    <xs:anyAttribute processContents="skip"/>
+  </xs:attributeGroup>
+</xs:schema>

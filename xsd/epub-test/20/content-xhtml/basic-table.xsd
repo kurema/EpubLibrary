@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Basic Tables Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:attributeGroup name="table.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attribute name="summary"/>
+    <xs:attribute name="width"/>
+    <xs:attribute name="border"/>
+    <xs:attributeGroup ref="xhtml:frame.attrib"/>
+    <xs:attributeGroup ref="xhtml:rules.attrib"/>
+    <xs:attribute name="cellspacing"/>
+    <xs:attribute name="cellpadding"/>
+  </xs:attributeGroup>
+  <xs:element name="caption">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:caption.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="caption.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="tr">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="xhtml:th"/>
+        <xs:element ref="xhtml:td"/>
+      </xs:choice>
+      <xs:attributeGroup ref="xhtml:tr.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="tr.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attributeGroup ref="xhtml:CellHAlign.attrib"/>
+    <xs:attributeGroup ref="xhtml:CellVAlign.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="th.attlist">
+    <xs:attributeGroup ref="xhtml:Cell.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="td.attlist">
+    <xs:attributeGroup ref="xhtml:Cell.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="Cell.attrib">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attribute name="abbr"/>
+    <xs:attribute name="axis"/>
+    <xs:attribute name="headers" type="svg:IDREFS.datatype"/>
+    <xs:attributeGroup ref="xhtml:scope.attrib"/>
+    <xs:attribute name="rowspan"/>
+    <xs:attribute name="colspan"/>
+    <xs:attributeGroup ref="xhtml:CellHAlign.attrib"/>
+    <xs:attributeGroup ref="xhtml:CellVAlign.attrib"/>
+  </xs:attributeGroup>
+</xs:schema>

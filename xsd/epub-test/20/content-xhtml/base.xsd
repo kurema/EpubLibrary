@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Base Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="base">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:base.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="base.attlist">
+    <xs:attribute name="href" use="required" type="svg:URI.datatype"/>
+    <xs:attributeGroup ref="target.attrib"/>
+  </xs:attributeGroup>
+</xs:schema>

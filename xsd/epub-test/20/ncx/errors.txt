@@ -1,0 +1,3 @@
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/20/rng/ncx.rng:81:14: warning: cannot represent an optional group of attributes; approximating
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/20/rng/ncx.rng:95:14: warning: cannot represent an optional group of attributes; approximating
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/20/rng/ncx.rng:169:14: warning: cannot represent an optional group of attributes; approximating

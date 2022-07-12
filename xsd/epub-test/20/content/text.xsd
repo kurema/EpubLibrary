@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Text Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="br">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:br.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="br.attlist">
+    <xs:attributeGroup ref="Core.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="span">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:span.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="span.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="abbr">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:abbr.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="abbr.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="acronym">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:acronym.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="acronym.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="cite">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:cite.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="cite.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="code">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:code.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="code.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="dfn">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:dfn.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="dfn.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="em">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:em.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="em.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="kbd">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:kbd.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="kbd.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="q">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:q.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="q.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attribute name="cite" type="svg:URI.datatype"/>
+  </xs:attributeGroup>
+  <xs:element name="samp">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:samp.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="samp.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="strong">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:strong.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="strong.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="var">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:var.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="var.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="div">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Flow.model"/>
+      <xs:attributeGroup ref="xhtml:div.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="div.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="p">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:p.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="p.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="address">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:address.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="address.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:element name="blockquote">
+    <xs:complexType>
+      <xs:group ref="xhtml:Block.model"/>
+      <xs:attributeGroup ref="xhtml:blockquote.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="blockquote.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attribute name="cite" type="svg:URI.datatype"/>
+  </xs:attributeGroup>
+  <xs:element name="pre">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Inline.model"/>
+      <xs:attributeGroup ref="xhtml:pre.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="pre.attlist">
+    <xs:attributeGroup ref="Common.attrib"/>
+    <xs:attribute ref="xml:space"/>
+  </xs:attributeGroup>
+  <xs:element name="h1" substitutionGroup="xhtml:Heading.class"/>
+  <xs:element name="h2" substitutionGroup="xhtml:Heading.class"/>
+  <xs:element name="h3" substitutionGroup="xhtml:Heading.class"/>
+  <xs:element name="h4" substitutionGroup="xhtml:Heading.class"/>
+  <xs:element name="h5" substitutionGroup="xhtml:Heading.class"/>
+  <xs:element name="h6" substitutionGroup="xhtml:Heading.class"/>
+  <xs:attributeGroup name="Heading.attrib">
+    <xs:attributeGroup ref="Common.attrib"/>
+  </xs:attributeGroup>
+  <xs:complexType name="Heading.content" mixed="true">
+    <xs:group ref="xhtml:Inline.model"/>
+  </xs:complexType>
+  <xs:element name="Heading.class" abstract="true">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="xhtml:Heading.content">
+          <xs:attributeGroup ref="xhtml:Heading.attrib"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="Block.class">
+    <xs:choice>
+      <xs:choice>
+        <xs:element ref="xhtml:address"/>
+        <xs:element ref="xhtml:blockquote"/>
+        <xs:element ref="xhtml:div"/>
+        <xs:element ref="xhtml:p"/>
+        <xs:element ref="xhtml:pre"/>
+        <xs:element ref="xhtml:Heading.class"/>
+      </xs:choice>
+      <xs:element ref="xhtml:List.class"/>
+      <xs:element ref="xhtml:hr"/>
+      <xs:element ref="xhtml:Edit.class"/>
+      <xs:element ref="xhtml:Script.class"/>
+      <xs:element ref="xhtml:table"/>
+      <xs:element ref="svg:svg"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="Inline.class">
+    <xs:choice>
+      <xs:choice>
+        <xs:element ref="xhtml:abbr"/>
+        <xs:element ref="xhtml:acronym"/>
+        <xs:element ref="xhtml:br"/>
+        <xs:element ref="xhtml:cite"/>
+        <xs:element ref="xhtml:code"/>
+        <xs:element ref="xhtml:dfn"/>
+        <xs:element ref="xhtml:em"/>
+        <xs:element ref="xhtml:kbd"/>
+        <xs:element ref="xhtml:q"/>
+        <xs:element ref="xhtml:samp"/>
+        <xs:element ref="xhtml:span"/>
+        <xs:element ref="xhtml:strong"/>
+        <xs:element ref="xhtml:var"/>
+      </xs:choice>
+      <xs:element ref="xhtml:a"/>
+      <xs:element ref="xhtml:img"/>
+      <xs:element ref="xhtml:object"/>
+      <xs:element ref="xhtml:bdo"/>
+      <xs:choice>
+        <xs:element ref="xhtml:b"/>
+        <xs:element ref="xhtml:big"/>
+        <xs:element ref="xhtml:i"/>
+        <xs:element ref="xhtml:small"/>
+        <xs:element ref="xhtml:sub"/>
+        <xs:element ref="xhtml:sup"/>
+        <xs:element ref="xhtml:tt"/>
+      </xs:choice>
+      <xs:element ref="xhtml:Edit.class"/>
+      <xs:element ref="xhtml:applet"/>
+      <xs:element ref="xhtml:Script.class"/>
+      <xs:element ref="xhtml:map"/>
+      <xs:element ref="xhtml:iframe"/>
+      <xs:element ref="svg:svg"/>
+    </xs:choice>
+  </xs:group>
+  <xs:group name="Inline.model">
+    <xs:sequence>
+      <xs:group minOccurs="0" maxOccurs="unbounded" ref="xhtml:Inline.class"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- This is redefined by the legacy module to include inlines. -->
+  <xs:group name="Block.mix">
+    <xs:sequence>
+      <xs:group ref="xhtml:Block.class"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Block.model">
+    <xs:sequence>
+      <xs:group maxOccurs="unbounded" ref="xhtml:Block.mix"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="Flow.model">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:group ref="xhtml:Inline.class"/>
+        <xs:group ref="xhtml:Block.class"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

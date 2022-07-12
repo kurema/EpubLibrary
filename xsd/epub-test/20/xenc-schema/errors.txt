@@ -1,0 +1,2 @@
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/20/rng/xenc-schema.rng:67:55: warning: choice between attributes and children cannot be represented; approximating
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/20/rng/xenc-schema.rng:63:58: warning: choice between attributes and children cannot be represented; approximating

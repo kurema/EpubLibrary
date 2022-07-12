@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.idpf.org/2007/ops" xmlns:ops="http://www.idpf.org/2007/ops">
+  <xs:include schemaLocation="ops-switch.xsd"/>
+  <!-- OPS module -->
+</xs:schema>

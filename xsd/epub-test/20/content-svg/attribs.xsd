@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Common Attributes Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:attributeGroup name="id.attrib">
+    <xs:attribute name="id" type="svg:ID.datatype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="class.attrib">
+    <xs:attribute name="class"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="title.attrib">
+    <xs:attribute name="title"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="Core.attrib">
+    <xs:attributeGroup ref="id.attrib"/>
+    <xs:attributeGroup ref="class.attrib"/>
+    <xs:attributeGroup ref="title.attrib"/>
+    <xs:attribute name="style"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="lang.attrib">
+    <xs:attribute ref="xml:lang"/>
+    <xs:attribute name="lang" type="svg:LanguageCode.datatype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="I18n.attrib">
+    <xs:attributeGroup ref="lang.attrib"/>
+    <xs:attribute name="dir">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="ltr"/>
+          <xs:enumeration value="rtl"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="Common.attrib">
+    <xs:attributeGroup ref="Core.attrib"/>
+    <xs:attributeGroup ref="I18n.attrib"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="CommonIdRequired.attrib">
+    <xs:attribute name="id" use="required" type="svg:ID.datatype"/>
+    <xs:attributeGroup ref="class.attrib"/>
+    <xs:attributeGroup ref="title.attrib"/>
+    <xs:attributeGroup ref="I18n.attrib"/>
+  </xs:attributeGroup>
+</xs:schema>

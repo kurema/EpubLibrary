@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Iframe Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="iframe">
+    <xs:complexType mixed="true">
+      <xs:group ref="xhtml:Flow.model"/>
+      <xs:attributeGroup ref="xhtml:iframe.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="iframe.attlist">
+    <xs:attributeGroup ref="Core.attrib"/>
+    <xs:attribute name="longdesc" type="svg:URI.datatype"/>
+    <xs:attribute name="src" type="svg:URI.datatype"/>
+    <xs:attribute name="frameborder">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="1"/>
+          <xs:enumeration value="0"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="width"/>
+    <xs:attribute name="height"/>
+    <xs:attribute name="marginwidth"/>
+    <xs:attribute name="marginheight"/>
+    <xs:attribute name="scrolling">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="yes"/>
+          <xs:enumeration value="no"/>
+          <xs:enumeration value="auto"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+</xs:schema>

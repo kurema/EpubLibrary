@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+      This is the Mathematical Markup Language (MathML) 3.0, an XML
+      application for describing mathematical notation and capturing
+      both its structure and content.
+  
+      With additional changes for integration into the validator.nu
+      service.
+  
+      With additional changes for integration into EPUBCheck. 
+  
+      Copyright 1998-2010 W3C (MIT, ERCIM, Keio)
+      Copyright 2012 Mozilla Foundation
+      Copyright 2014-2019 W3C (MIT, ERCIM, Keio, Beihang)
+  
+      Use and distribution of this code are permitted under the terms
+      W3C Software Notice and License
+      http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1998/Math/MathML" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:include schemaLocation="mathml3-content.xsd"/>
+  <xs:include schemaLocation="mathml3-presentation.xsd"/>
+  <xs:include schemaLocation="mathml3-common.xsd"/>
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="epub-nav-30.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+</xs:schema>

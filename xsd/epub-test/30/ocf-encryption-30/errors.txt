@@ -1,0 +1,1 @@
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/30/ocf-encryption-30.rnc:7:17: error: sorry, nested grammars are not yet supported

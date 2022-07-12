@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:oasis:names:tc:opendocument:xmlns:container" xmlns:rendition="http://www.idpf.org/2013/rendition" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:container">
+  <xs:include schemaLocation="datatypes.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2013/rendition" schemaLocation="container.xsd"/>
+  <xs:element name="container">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="ns1:ocf.container.content">
+          <xs:attributeGroup ref="ns1:ocf.container.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="ocf.container.attlist">
+    <xs:attribute name="version" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="1.0"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="ocf.container.content">
+    <xs:sequence>
+      <xs:element ref="ns1:rootfiles"/>
+      <xs:element minOccurs="0" ref="ns1:links"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="rootfiles" type="ns1:ocf.rootfiles.content"/>
+  <xs:complexType name="ocf.rootfiles.content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="ns1:rootfile"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="rootfile">
+    <xs:complexType>
+      <xs:attributeGroup ref="rendition:ocf.rootfile.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="links" type="ns1:ocf.links.content"/>
+  <xs:complexType name="ocf.links.content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="ns1:link"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="link">
+    <xs:complexType>
+      <xs:attributeGroup ref="ns1:ocf.link.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="ocf.link.attlist">
+    <xs:attribute name="href" use="required" type="ns1:datatype.URI"/>
+    <xs:attribute name="rel" use="required" type="ns1:datatype.space.separated.tokens"/>
+    <xs:attribute name="media-type" type="ns1:datatype.mimetype"/>
+  </xs:attributeGroup>
+</xs:schema>

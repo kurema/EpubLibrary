@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ##################################################################### -->
+  <xs:simpleType name="form.data.mimetypelist">
+    <xs:annotation>
+      <xs:documentation> RELAX NG Schema for HTML 5: Datatypes related to forms            #</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xhtml:datatype.html5.forms.mimetypelist"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.pattern">
+    <xs:annotation>
+      <xs:documentation>ECMAScript Regular Expression</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.datetime-local">
+    <xs:annotation>
+      <xs:documentation>Temporal</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xhtml:datatype.html5.datetime.local"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.date">
+    <xs:restriction base="xhtml:datatype.html5.date"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.month">
+    <xs:restriction base="xhtml:datatype.html5.month"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.week">
+    <xs:restriction base="xhtml:datatype.html5.week"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.time">
+    <xs:restriction base="xhtml:datatype.html5.time"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.emailaddress">
+    <xs:annotation>
+      <xs:documentation>Email</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xhtml:datatype.html5.emailaddress"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.emailaddresslist">
+    <xs:restriction base="xhtml:datatype.html5.emailaddresslist"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.color">
+    <xs:annotation>
+      <xs:documentation>Color</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xhtml:datatype.html5.color"/>
+  </xs:simpleType>
+  <!--
+    		xsd:string {
+    			pattern = "#[a-fA-F0-9]{6}"
+    		}
+  -->
+  <xs:simpleType name="form.data.stringwithoutlinebreaks">
+    <xs:annotation>
+      <xs:documentation>Text without line breaks</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xhtml:datatype.html5.forms.string.nolinebreaks"/>
+  </xs:simpleType>
+  <xs:simpleType name="form.data.nonemptystring">
+    <xs:annotation>
+      <xs:documentation>Non-empty string</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xhtml:datatype.string.nonempty"/>
+  </xs:simpleType>
+</xs:schema>

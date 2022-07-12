@@ -1,0 +1,2 @@
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/20/rng/opf20.rng:351:15: warning: cannot represent an optional group of attributes; approximating
+/home/runner/work/EpubLibrary/EpubLibrary/epub/src/main/resources/com/adobe/epubcheck/schema/20/rng/opf20.rng:498:15: warning: choice between attributes and children cannot be represented; approximating

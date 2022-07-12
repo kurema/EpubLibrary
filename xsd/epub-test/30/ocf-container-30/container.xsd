@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.idpf.org/2013/rendition" xmlns:rendition="http://www.idpf.org/2013/rendition" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:container">
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:container" schemaLocation="ocf-container-30.xsd"/>
+  <xs:attributeGroup name="ocf.rootfile.attlist">
+    <xs:attribute name="media" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\s*(((only|not)\s+)?all|\([^&gt;)]+\))(\s+and\s+\([^&gt;)]+\))*\s*(,\s*(((only|not)\s+)?all|\([^&gt;)]+\))(\s+and\s+\([^&gt;)]+\))*\s*)*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="layout" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="reflowable"/>
+          <xs:enumeration value="pre-paginated"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="language" form="qualified" type="ns1:datatype.languagecode"/>
+    <xs:attribute name="accessMode" form="qualified">
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list>
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="auditory"/>
+                  <xs:enumeration value="tactile"/>
+                  <xs:enumeration value="textual"/>
+                  <xs:enumeration value="visual"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:list>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="label" form="qualified"/>
+    <xs:attribute name="full-path" use="required" type="ns1:datatype.URI"/>
+    <xs:attribute name="media-type" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="application/oebps-package+xml"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="mr.rendition.attr">
+    <xs:attribute name="media" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="\s*(((only|not)\s+)?all|\([^&gt;)]+\))(\s+and\s+\([^&gt;)]+\))*\s*(,\s*(((only|not)\s+)?all|\([^&gt;)]+\))(\s+and\s+\([^&gt;)]+\))*\s*)*"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="mr.layout.attr">
+    <xs:attribute name="layout" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="reflowable"/>
+          <xs:enumeration value="pre-paginated"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="mr.language.attr">
+    <xs:attribute name="language" use="required" form="qualified" type="ns1:datatype.languagecode"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="mr.accessMode.attr">
+    <xs:attribute name="accessMode" use="required" form="qualified">
+      <xs:simpleType>
+        <xs:restriction>
+          <xs:simpleType>
+            <xs:list>
+              <xs:simpleType>
+                <xs:restriction base="xs:token">
+                  <xs:enumeration value="auditory"/>
+                  <xs:enumeration value="tactile"/>
+                  <xs:enumeration value="textual"/>
+                  <xs:enumeration value="visual"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:list>
+          </xs:simpleType>
+          <xs:minLength value="1"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="mr.label.attr">
+    <xs:attribute name="label" use="required" form="qualified"/>
+  </xs:attributeGroup>
+</xs:schema>

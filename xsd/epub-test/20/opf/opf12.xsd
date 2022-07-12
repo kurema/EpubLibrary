@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:elements="http://purl.org/dc/elements/1.1/" xmlns:x="http://www.w3.org/2001/XMLSchema-instance" xmlns:o="http://openebook.org/namespaces/oeb-package/1.0/">
+  <xs:import namespace="http://openebook.org/namespaces/oeb-package/1.0/" schemaLocation="o.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/opf" schemaLocation="opf1.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="x.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:attributeGroup name="OPF12.optional-id-attribute">
+    <xs:attribute name="id" type="xs:ID"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF12.optional-xml-lang-attribute">
+    <xs:attribute ref="xml:lang"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF12.optional-file-as-attribute">
+    <xs:attribute name="file-as"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF12.optional-role-attribute">
+    <xs:attribute name="role"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF12.optional-scheme-attribute">
+    <xs:attribute name="scheme"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="OPF12.optional-event-attribute">
+    <xs:attribute name="event"/>
+  </xs:attributeGroup>
+  <xs:complexType name="OPF12.package-content">
+    <xs:sequence>
+      <xs:element ref="o:metadata"/>
+      <xs:element ref="o:manifest"/>
+      <xs:element ref="o:spine"/>
+      <xs:element minOccurs="0" ref="o:tours"/>
+      <xs:element minOccurs="0" ref="o:guide"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF12.dc-metadata-content">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="elements:Title"/>
+      <xs:element ref="elements:Language"/>
+      <xs:element ref="elements:Identifier"/>
+      <xs:element ref="elements:DC-D.optional-metadata-element"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="Identifier">
+    <xs:complexType mixed="true">
+      <xs:attribute name="id" use="required" type="xs:ID"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-scheme-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Title">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Language">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DC-D.optional-metadata-element" abstract="true"/>
+  <xs:element name="Contributor" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-file-as-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-role-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Coverage" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Creator" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-file-as-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-role-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Date" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-event-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Description" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Format" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Publisher" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Relation" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rights" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Source" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Subject" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attributeGroup ref="elements:OPF12.optional-xml-lang-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Type" substitutionGroup="elements:DC-D.optional-metadata-element">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="OPF12.manifest-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="o:item"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF12.spine-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="o:itemref"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF12.tours-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="o:tour"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF12.tour-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="o:site"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OPF12.guide-content">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" ref="o:reference"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

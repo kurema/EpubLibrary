@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/XML/1998/namespace" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:elements="http://purl.org/dc/elements/1.1/" xmlns:x="http://www.w3.org/2001/XMLSchema-instance">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="opf20.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/opf" schemaLocation="opf.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="x.xsd"/>
+  <xs:attribute name="lang"/>
+</xs:schema>

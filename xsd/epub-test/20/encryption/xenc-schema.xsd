@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- http://www.xml.com/lpt/a/2002/01/23/relaxng.html -->
+<!-- http://www.oasis-open.org/committees/relax-ng/tutorial-20011203.html -->
+<!-- http://www.zvon.org/xxl/XMLSchemaTutorial/Output/ser_wildcards_st8.html -->
+<!-- http://lists.oasis-open.org/archives/relax-ng-comment/200206/maillist.html -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2001/04/xmlenc#" xmlns:xmldsig="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns1="urn:oasis:names:tc:opendocument:xmlns:container" xmlns:xmlenc="http://www.w3.org/2001/04/xmlenc#">
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="xsi.xsd"/>
+  <xs:import namespace="urn:oasis:names:tc:opendocument:xmlns:container" schemaLocation="encryption.xsd"/>
+  <!-- Used for DigestMethod, KeyInfoType and anyThing -->
+  <!--
+    Since xmldsig-core also has a start, I have to include it
+    in the include for redefinition.
+  -->
+  <!--
+    <start combine="choice">
+        <choice>
+             We get to define the permissible root elements! 
+            <element name="EncryptedData"><ref name="EncryptedDataType"/></element>
+            <element name="EncryptedKey"><ref name="EncryptedKeyType"/></element>
+        </choice>
+    </start>  
+  -->
+  <xs:group name="anyThing">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+    </xs:sequence>
+  </xs:group>
+  <!-- Import definitions from the xmldsig rng -->
+  <!--
+    Now redefined in the include statement
+    <define name="anyThing" combine="choice">
+        <notAllowed/>
+     </define>
+  -->
+  <!-- End import -->
+  <xs:complexType name="EncryptedDataType">
+    <xs:complexContent>
+      <xs:extension base="xmlenc:EncryptedType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EncryptedKeyType">
+    <xs:complexContent>
+      <xs:extension base="xmlenc:EncryptedType">
+        <xs:sequence>
+          <xs:element minOccurs="0" ref="xmlenc:ReferenceList"/>
+          <xs:element minOccurs="0" ref="xmlenc:CarriedKeyName"/>
+        </xs:sequence>
+        <xs:attribute name="Recipient" type="xs:string"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReferenceList" type="xmlenc:ReferenceListType"/>
+  <xs:element name="CarriedKeyName" type="xs:string"/>
+  <xs:complexType name="EncryptedType">
+    <xs:sequence>
+      <xs:element ref="xmlenc:EncryptionMethod"/>
+      <xs:element minOccurs="0" ref="xmldsig:KeyInfo"/>
+      <xs:element minOccurs="0" ref="xmlenc:CipherData"/>
+      <xs:element minOccurs="0" ref="xmlenc:EncryptionProperties"/>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:ID"/>
+    <xs:attribute name="Type" type="xs:anyURI"/>
+    <xs:attribute name="MimeType" type="xs:string"/>
+    <xs:attribute name="Encoding" type="xs:anyURI"/>
+    <xs:attribute ref="xsi:schemaLocation"/>
+  </xs:complexType>
+  <xs:element name="EncryptionMethod" type="xmlenc:EncryptionMethodType"/>
+  <xs:element name="CipherData" type="xmlenc:CipherDataType"/>
+  <xs:element name="EncryptionProperties" type="xmlenc:EncryptionPropertiesType"/>
+  <xs:complexType name="EncryptionMethodType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="xmlenc:KeySize"/>
+      <xs:element ref="xmlenc:OAEPparams"/>
+      <xs:element ref="xmldsig:DigestMethod"/>
+    </xs:choice>
+    <xs:attribute name="Algorithm" use="required" type="xs:anyURI"/>
+  </xs:complexType>
+  <xs:element name="KeySize" type="xs:integer"/>
+  <xs:element name="OAEPparams" type="xs:base64Binary"/>
+  <xs:complexType name="AgreementMethodType" mixed="true">
+    <xs:choice minOccurs="0" maxOccurs="unbounded">
+      <xs:element ref="xmlenc:KA-Nonce"/>
+      <xs:element ref="xmldsig:DigestMethod"/>
+      <xs:any namespace="http://www.w3.org/2000/09/xmldsig#" processContents="skip"/>
+      <xs:element ref="xmlenc:OriginatorKeyInfo"/>
+      <xs:element ref="xmlenc:RecipientKeyInfo"/>
+    </xs:choice>
+    <xs:attribute name="Algorithm" use="required" type="xs:anyURI"/>
+  </xs:complexType>
+  <xs:element name="KA-Nonce" type="xs:base64Binary"/>
+  <xs:element name="OriginatorKeyInfo" type="xmldsig:KeyInfoType"/>
+  <xs:element name="RecipientKeyInfo" type="xmldsig:KeyInfoType"/>
+  <xs:complexType name="ReferenceListType">
+    <xs:choice maxOccurs="unbounded">
+      <xs:element ref="xmlenc:DataReference"/>
+      <xs:element ref="xmlenc:KeyReference"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="DataReference">
+    <xs:complexType mixed="true">
+      <xs:attribute name="URI" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KeyReference">
+    <xs:complexType mixed="true">
+      <xs:attribute name="URI" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CipherDataType" abstract="true"/>
+  <xs:complexType name="CipherDataType">
+    <xs:sequence>
+      <xs:element ref="xmlenc:CipherDataType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CipherValue" substitutionGroup="xmlenc:CipherDataType" type="xs:base64Binary"/>
+  <xs:element name="CipherReference" substitutionGroup="xmlenc:CipherDataType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="xmlenc:Transforms"/>
+      </xs:sequence>
+      <xs:attribute name="URI" use="required" type="xs:anyURI"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Transforms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="xmldsig:Transform"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="EncryptionPropertiesType">
+    <xs:sequence>
+      <xs:element ref="xmlenc:EncryptionProperty"/>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:ID"/>
+    <xs:anyAttribute namespace="http://www.w3.org/XML/1998/namespace" processContents="skip"/>
+  </xs:complexType>
+  <xs:element name="EncryptionProperty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+      </xs:sequence>
+      <xs:attribute name="Target" type="xs:anyURI"/>
+      <xs:attribute name="Id" type="xs:ID"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EncryptedKey" type="xmlenc:EncryptedKeyType"/>
+  <xs:element name="AgreementMethod" type="xmlenc:AgreementMethodType"/>
+  <xs:element name="EncryptedData" type="xmlenc:EncryptedDataType"/>
+</xs:schema>

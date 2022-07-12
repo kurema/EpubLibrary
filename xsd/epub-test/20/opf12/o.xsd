@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://openebook.org/namespaces/oeb-package/1.0/" xmlns:elements="http://purl.org/dc/elements/1.1/" xmlns:o="http://openebook.org/namespaces/oeb-package/1.0/">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="opf12.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="package">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="elements:OPF12.package-content">
+          <xs:attribute name="unique-identifier" use="required" type="xs:IDREF"/>
+          <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metadata">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="o:dc-metadata"/>
+        <xs:element ref="o:x-metadata"/>
+      </xs:choice>
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dc-metadata">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="elements:OPF12.dc-metadata-content">
+          <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="x-metadata">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="o:meta"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="meta">
+    <xs:complexType>
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="content" use="required"/>
+      <xs:attribute name="scheme"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="manifest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="elements:OPF12.manifest-content">
+          <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attribute name="href" use="required"/>
+      <xs:attribute name="media-type" use="required"/>
+      <xs:attribute name="fallback" type="xs:IDREF"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="spine">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="elements:OPF12.spine-content">
+          <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="itemref">
+    <xs:complexType>
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attribute name="idref" use="required" type="xs:IDREF"/>
+      <xs:attribute name="linear">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="yes"/>
+            <xs:enumeration value="no"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tours">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="elements:OPF12.tours-content">
+          <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tour">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="elements:OPF12.tour-content">
+          <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+          <xs:attribute name="title" use="required"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="site">
+    <xs:complexType>
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attribute name="title" use="required"/>
+      <xs:attribute name="href" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="guide">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="elements:OPF12.guide-content">
+          <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reference">
+    <xs:complexType>
+      <xs:attributeGroup ref="elements:OPF12.optional-id-attribute"/>
+      <xs:attribute name="type" use="required"/>
+      <xs:attribute name="href" use="required"/>
+      <xs:attribute name="title"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

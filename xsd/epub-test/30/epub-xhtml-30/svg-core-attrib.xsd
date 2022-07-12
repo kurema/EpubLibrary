@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:mathml="http://www.w3.org/1998/Math/MathML" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub.xsd"/>
+  <xs:import namespace="http://www.w3.org/1998/Math/MathML" schemaLocation="epub-xhtml-mathml3.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xhtml" schemaLocation="epub-xhtml.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/10/synthesis" schemaLocation="epub-ssml-attrs.xsd"/>
+  <xs:import namespace="http://www.w3.org/2001/xml-events" schemaLocation="ev.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:attributeGroup name="SVG.base.attrib">
+    <xs:attributeGroup ref="xml:base1"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="SVG.lang.attrib">
+    <xs:attributeGroup ref="xml:lang1"/>
+    <xs:attribute name="lang" type="svg:LanguageCode.datatype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="SVG.space.attrib">
+    <xs:attributeGroup ref="xml:space1"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="SVG.tabindex.attrib">
+    <xs:attribute name="tabindex" type="svg:Integer.datatype"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="SVG.focusable.attrib">
+    <xs:attribute name="focusable">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="SVG.Core.extra.attrib">
+    <xs:attributeGroup ref="inkscape.attrs"/>
+    <xs:attribute ref="epub:type"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="SVG.Core.attrib">
+    <xs:attributeGroup ref="SVG.id.attrib"/>
+    <xs:attributeGroup ref="SVG.base.attrib"/>
+    <xs:attributeGroup ref="SVG.lang.attrib"/>
+    <xs:attributeGroup ref="SVG.space.attrib"/>
+    <xs:attributeGroup ref="SVG.tabindex.attrib"/>
+    <xs:attributeGroup ref="SVG.focusable.attrib"/>
+    <xs:attributeGroup ref="SVG.Core.extra.attrib"/>
+    <xs:attributeGroup ref="aria.global"/>
+  </xs:attributeGroup>
+</xs:schema>

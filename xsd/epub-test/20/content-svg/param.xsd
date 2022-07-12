@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Param Module -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg">
+  <xs:import schemaLocation="local.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="svg-xlink-attrib.xsd"/>
+  <xs:import namespace="http://www.w3.org/2000/svg" schemaLocation="content-svg.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="svg-core-attrib.xsd"/>
+  <xs:element name="param">
+    <xs:complexType>
+      <xs:attributeGroup ref="xhtml:param.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="param.attlist">
+    <xs:attributeGroup ref="id.attrib"/>
+    <xs:attribute name="name" use="required"/>
+    <xs:attribute name="value"/>
+    <xs:attribute name="valuetype">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="data"/>
+          <xs:enumeration value="ref"/>
+          <xs:enumeration value="object"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="type"/>
+  </xs:attributeGroup>
+</xs:schema>
