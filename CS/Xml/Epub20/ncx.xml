@@ -1,0 +1,6 @@
+<xsd xmlns='http://microsoft.com/dotnet/tools/xsd/'>
+  <generateClasses language='CS' namespace='kurema.Epub.Xml.Epub20.Ncx' options="properties">
+    <schema>../../../xsd/epub-test/20/ncx/ncx.xsd</schema>
+    <schema>../../../xsd/epub-test/20/ncx/xml.xsd</schema>
+  </generateClasses>
+</xsd>

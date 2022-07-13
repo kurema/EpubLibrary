@@ -1,0 +1,6 @@
+<xsd xmlns='http://microsoft.com/dotnet/tools/xsd/'>
+  <generateClasses language='CS' namespace='kurema.Epub.Xml.Epub30.OcfContainer' options="properties">
+    <schema>../../../xsd/epub-test/30/ocf-container-30/container.xsd</schema>
+    <schema>../../../xsd/epub-test/30/ocf-container-30/ocf-container-30.xsd</schema>
+  </generateClasses>
+</xsd>

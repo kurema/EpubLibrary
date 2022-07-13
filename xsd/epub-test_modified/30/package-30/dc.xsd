@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:epub="http://www.idpf.org/2007/ops">
+  <xs:import namespace="http://www.idpf.org/2007/opf" schemaLocation="package-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub-prefix-attr.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="identifier">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attribute name="id" type="opf:datatype.ID"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="title">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="language">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.languagecode">
+          <xs:attribute name="id" type="opf:datatype.ID"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="date">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attribute name="id" type="opf:datatype.ID"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="source">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="type">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attribute name="id" type="opf:datatype.ID"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="format">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attribute name="id" type="opf:datatype.ID"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="creator">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="subject">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="publisher">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="contributor">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="relation">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="coverage">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rights">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="opf:datatype.string.nonempty">
+          <xs:attributeGroup ref="opf:opf.dc.attlist"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

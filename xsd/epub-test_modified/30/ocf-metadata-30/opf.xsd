@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.idpf.org/2007/opf" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:metadata="http://www.idpf.org/2013/metadata" xmlns:epub="http://www.idpf.org/2007/ops">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="package-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub-prefix-attr.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2013/metadata" schemaLocation="ocf-metadata-30.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:group name="metadata">
+    <xs:sequence>
+      <xs:element name="metadata">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="dc:opf.metadata.content">
+              <xs:attribute name="id" type="dc:datatype.ID"/>
+              <xs:attributeGroup ref="dc:opf.i18n.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="manifest">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dc:opf.manifest.content">
+          <xs:attributeGroup ref="dc:opf.manifest.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:attributeGroup ref="dc:opf.item.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="spine">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dc:opf.spine.content">
+          <xs:attributeGroup ref="dc:opf.spine.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="itemref">
+    <xs:complexType>
+      <xs:attributeGroup ref="dc:opf.itemref.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="guide">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="opf:reference"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reference">
+    <xs:complexType>
+      <xs:attributeGroup ref="dc:opf.href.attr"/>
+      <xs:attribute name="type" use="required"/>
+      <xs:attribute name="title"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bindings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="opf:mediaType"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mediaType">
+    <xs:complexType>
+      <xs:attributeGroup ref="dc:opf.bindings.mediaType.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="collection">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dc:opf.collection.content">
+          <xs:attributeGroup ref="dc:opf.collection.attlist"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="metadata1">
+    <xs:sequence>
+      <xs:element name="metadata">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="dc:opf.collection.metadata.content">
+              <xs:attribute name="id" type="dc:datatype.ID"/>
+              <xs:attributeGroup ref="dc:opf.i18n.attrs"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="meta" type="dc:opf.epub3.meta.content"/>
+  <xs:element name="link">
+    <xs:complexType>
+      <xs:attributeGroup ref="dc:opf.href.attr"/>
+      <xs:attribute name="rel" type="dc:datatype.properties"/>
+      <xs:attribute name="id" type="dc:datatype.ID"/>
+      <xs:attribute name="media-type" type="dc:datatype.mimetype"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

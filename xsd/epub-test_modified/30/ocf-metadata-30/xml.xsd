@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/XML/1998/namespace" xmlns:opf="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:metadata="http://www.idpf.org/2013/metadata" xmlns:epub="http://www.idpf.org/2007/ops">
+  <xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="package-30.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/opf" schemaLocation="opf.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2007/ops" schemaLocation="epub-prefix-attr.xsd"/>
+  <xs:import namespace="http://www.idpf.org/2013/metadata" schemaLocation="ocf-metadata-30.xsd"/>
+  <xs:attribute name="lang">
+    <xs:simpleType>
+      <xs:union memberTypes="dc:datatype.languagecode">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value=""/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:union>
+    </xs:simpleType>
+  </xs:attribute>
+</xs:schema>
