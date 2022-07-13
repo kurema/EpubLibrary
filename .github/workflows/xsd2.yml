@@ -13,7 +13,7 @@ jobs:
         Remove-Item *.cs
         Get-ChildItem "." -Filter *.xml | ForEach-Object {
           $outdir = ".\$($_.BaseName)"
-          if (Test-Path -Path $outdir) Remove-Item -Force -Path $outdir
+          if (Test-Path -Path $outdir) { Remove-Item -Force -Path $outdir }
           $outdir = (New-Item -Path $outdir -ItemType Directory -Force).FullName
           cmd.exe /c """C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" /p:""${_}"" /o:${outdir}"
         }
@@ -21,7 +21,7 @@ jobs:
         Remove-Item *.cs
         Get-ChildItem "." -Filter *.xml | ForEach-Object {
           $outdir = ".\$($_.BaseName)"
-          if (Test-Path -Path $outdir) Remove-Item -Force -Path $outdir
+          if (Test-Path -Path $outdir) { Remove-Item -Force -Path $outdir }
           $outdir = (New-Item -Path $outdir -ItemType Directory -Force).FullName
           cmd.exe /c """C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" /p:""${_}"" /o:${outdir}"
         }        
