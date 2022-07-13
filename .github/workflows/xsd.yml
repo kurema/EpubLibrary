@@ -1,3 +1,5 @@
+# This yaml does not work as expected. It's not deleted for future reference.
+
 name: Run xsd.exe
 on:
   workflow_dispatch:
