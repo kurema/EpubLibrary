@@ -1,0 +1,28 @@
+name: Run xsd.exe v2
+on:
+  workflow_dispatch:
+jobs:
+  Xsd:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Run xsd.exe
+      run: |
+        cd .\CS\Xml\Epub30
+        Get-ChildItem "." -Filter *.xml | ForEach-Object {
+          cmd.exe /c """C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" /p:""${_}"""
+        }
+        cd ..\Epub20
+        Get-ChildItem "." -Filter *.xml | ForEach-Object {
+          cmd.exe /c """C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" /p:""${_}"""
+        }        
+    - name: Git it!
+      shell: bash
+      run: |
+        git config --local user.email "kurema_makoto_software@yahoo.co.jp"
+        git config --local user.name "kurema"
+        git add --all
+        git commit -m "Run xsd.exe" -a 
+        git pull
+        git push origin master        
