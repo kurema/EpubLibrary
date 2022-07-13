@@ -12,14 +12,14 @@ jobs:
         cd .\CS\Xml\Epub30
         Remove-Item *.cs
         Get-ChildItem "." -Filter *.xml | ForEach-Object {
-          Remove-Item ".\$($_.BaseName)"
+          Remove-Item -Force ".\$($_.BaseName)"
           $outdir = (New-Item -Path ".\$($_.BaseName)" -ItemType Directory -Force).FullName
           cmd.exe /c """C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" /p:""${_}"" /o:${outdir}"
         }
         cd ..\Epub20
         Remove-Item *.cs
         Get-ChildItem "." -Filter *.xml | ForEach-Object {
-          Remove-Item ".\$($_.BaseName)"
+          Remove-Item -Force ".\$($_.BaseName)"
           $outdir = (New-Item -Path ".\$($_.BaseName)" -ItemType Directory -Force).FullName
           cmd.exe /c """C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" /p:""${_}"" /o:${outdir}"
         }        
