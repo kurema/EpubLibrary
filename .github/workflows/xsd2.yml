@@ -17,6 +17,7 @@ jobs:
           }
           $outdir = (New-Item -Path "$($_.BaseName)" -ItemType Directory -Force).FullName
           cmd.exe /c """C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" /p:""${_}"" /o:""${outdir}"""
+          Rename-Item "${outdir}\*.cs" -NewName "${outdir}\$($_.BaseName).cs"
         }
         cd ..\Epub20
         Get-ChildItem "." -Filter *.xml | ForEach-Object {
@@ -26,6 +27,7 @@ jobs:
           }
           $outdir = (New-Item -Path "$($_.BaseName)" -ItemType Directory -Force).FullName
           cmd.exe /c """C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\xsd.exe"" /p:""${_}"" /o:""${outdir}"""
+          Rename-Item "${outdir}\*.cs" -NewName "${outdir}\$($_.BaseName).cs"
         }        
     - name: Git it!
       shell: bash

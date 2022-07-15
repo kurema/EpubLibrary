@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.idpf.org/2007/ops" xmlns:smil="http://www.w3.org/ns/SMIL" xmlns:epub="http://www.idpf.org/2007/ops">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:import namespace="http://www.w3.org/ns/SMIL" schemaLocation="media-overlay-30.xsd"/>
+  <xs:attributeGroup name="common.attrs.basic">
+    <xs:annotation>
+      <xs:documentation>We can't use common.attrs.other since we have
+to reset the definition of the class of attributes
+where epub:type is added in the nav doc schema, and
+common.attrs.other is augmented by other schemas.
+We therefore augment common.attrs (and also attribute
+lists that are not based on common.attrs) </xs:documentation>
+    </xs:annotation>
+    <xs:attribute ref="epub:type"/>
+  </xs:attributeGroup>
+  <xs:attribute name="type" type="smil:datatype.properties"/>
+  <xs:attributeGroup name="epub.type.attr">
+    <xs:attribute ref="epub:type" use="required"/>
+  </xs:attributeGroup>
+</xs:schema>

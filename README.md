@@ -20,13 +20,13 @@ We got a lot of errors during the conversion but couldn't fix it.
 | -- | -- | -- |
 | Origin | 9 | 16 |
 | XML Schema | 7 | 16 |
-| C# | 3 | 5 |
+| C# | 4 | 5 |
 
 ```mermaid
 pie title Survival rate (EPUB 3.0)
   "Failed on trang" : 2
-  "Failed on xsd.exe" : 4
-  "Successful conversion" : 3
+  "Failed on xsd.exe" : 3
+  "Successful conversion" : 4
 ```
 
 ```mermaid
