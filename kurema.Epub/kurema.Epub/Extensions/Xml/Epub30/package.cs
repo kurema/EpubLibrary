@@ -20,14 +20,11 @@ namespace kurema.Epub.Xml.Epub30.Package
         }
     }
 
-    partial class metadata
+    partial class opfpackagecontentMetadata
     {
-        public metadata()
+        public opfpackagecontentMetadata()
         {
-            
+            Items = new object[0];
         }
-
-
-
     }
 }

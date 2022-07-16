@@ -37,3 +37,7 @@ pie title Survival rate (EPUB 2.0)
   "Failed on xsd.exe" : 11
   "Successful conversion" : 5
 ```
+
+## Limitation
+Generated *.cs file may be incomplete. Read [this](https://social.msdn.microsoft.com/forums/en-US/707c8a47-a29f-4262-b052-ac66dc99d604/nested-xml-attribute-groups).
+
