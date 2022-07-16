@@ -24,9 +24,22 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.w3.org/ns/SMIL", IsNullable=false)]
     public partial class smil : smilcontent {
         
+        private smilVersion versionField;
+        
         private string idField;
         
         private string prefixField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public smilVersion version {
+            get {
+                return this.versionField;
+            }
+            set {
+                this.versionField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType="NCName")]
@@ -49,6 +62,17 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
                 this.prefixField = value;
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.w3.org/ns/SMIL")]
+    public enum smilVersion {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("3.0")]
+        Item30,
     }
     
     /// <remarks/>
@@ -137,6 +161,32 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.w3.org/ns/SMIL")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.w3.org/ns/SMIL", IsNullable=false)]
     public partial class par : smilparcontent {
+        
+        private string typeField;
+        
+        private string idField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://www.idpf.org/2007/ops", DataType="NMTOKENS")]
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="NCName")]
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -183,6 +233,8 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
         
         private string idField;
         
+        private string srcField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType="NCName")]
         public string id {
@@ -191,6 +243,17 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
             }
             set {
                 this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string src {
+            get {
+                return this.srcField;
+            }
+            set {
+                this.srcField = value;
             }
         }
     }
@@ -209,6 +272,8 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
         private string clipBeginField;
         
         private string clipEndField;
+        
+        private string srcField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType="NCName")]
@@ -242,6 +307,17 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
                 this.clipEndField = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
+        public string src {
+            get {
+                return this.srcField;
+            }
+            set {
+                this.srcField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -255,6 +331,12 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
         
         private object[] itemsField;
         
+        private string typeField;
+        
+        private string idField;
+        
+        private string textrefField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("par", typeof(par))]
         [System.Xml.Serialization.XmlElementAttribute("seq", typeof(seq))]
@@ -264,6 +346,39 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
             }
             set {
                 this.itemsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://www.idpf.org/2007/ops", DataType="NMTOKENS")]
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="NCName")]
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://www.idpf.org/2007/ops", DataType="anyURI")]
+        public string textref {
+            get {
+                return this.textrefField;
+            }
+            set {
+                this.textrefField = value;
             }
         }
     }
@@ -277,7 +392,33 @@ namespace kurema.Epub.Xml.Epub30.MediaOverlay {
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.w3.org/ns/SMIL", IsNullable=false)]
     public partial class body : smilbodycontent {
         
+        private string typeField;
+        
+        private string idField;
+        
         private string textrefField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://www.idpf.org/2007/ops", DataType="NMTOKENS")]
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="NCName")]
+        public string id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://www.idpf.org/2007/ops", DataType="anyURI")]

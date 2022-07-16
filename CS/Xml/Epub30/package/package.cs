@@ -230,7 +230,9 @@ namespace kurema.Epub.Xml.Epub30.Package {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.idpf.org/2007/opf")]
-    public partial class opfpackagecontentMetadata : opfmetadatacontent1 {
+    public partial class opfpackagecontentMetadata {
+        
+        private object[] itemsField;
         
         private string idField;
         
@@ -239,6 +241,33 @@ namespace kurema.Epub.Xml.Epub30.Package {
         private opfcollectionmetadatacontentMetaDir dirField;
         
         private bool dirFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("contributor", typeof(contributor), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("coverage", typeof(coverage), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("creator", typeof(creator), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("date", typeof(date), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("description", typeof(description), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("format", typeof(format), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("identifier", typeof(identifier), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("language", typeof(language), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("publisher", typeof(publisher), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("relation", typeof(relation), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("rights", typeof(rights), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("source", typeof(source), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("subject", typeof(subject), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("title", typeof(title), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("type", typeof(type), Namespace="http://purl.org/dc/elements/1.1/")]
+        [System.Xml.Serialization.XmlElementAttribute("link", typeof(opfcollectionmetadatacontentLink))]
+        [System.Xml.Serialization.XmlElementAttribute("meta", typeof(opfpackagecontentMetadataMeta))]
+        public object[] Items {
+            get {
+                return this.itemsField;
+            }
+            set {
+                this.itemsField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType="NCName")]
@@ -281,44 +310,6 @@ namespace kurema.Epub.Xml.Epub30.Package {
             }
             set {
                 this.dirFieldSpecified = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName="opf.metadata.content", Namespace="http://www.idpf.org/2007/opf")]
-    public partial class opfmetadatacontent1 {
-        
-        private object[] itemsField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("contributor", typeof(contributor), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("coverage", typeof(coverage), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("creator", typeof(creator), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("date", typeof(date), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("description", typeof(description), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("format", typeof(format), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("identifier", typeof(identifier), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("language", typeof(language), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("publisher", typeof(publisher), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("relation", typeof(relation), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("rights", typeof(rights), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("source", typeof(source), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("subject", typeof(subject), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("title", typeof(title), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("type", typeof(type), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("link", typeof(opfmetadatacontentLink))]
-        [System.Xml.Serialization.XmlElementAttribute("meta", typeof(opfmetadatacontentMeta))]
-        public object[] Items {
-            get {
-                return this.itemsField;
-            }
-            set {
-                this.itemsField = value;
             }
         }
     }
@@ -385,7 +376,7 @@ namespace kurema.Epub.Xml.Epub30.Package {
         [System.Xml.Serialization.XmlElementAttribute("subject", typeof(subject), Namespace="http://purl.org/dc/elements/1.1/")]
         [System.Xml.Serialization.XmlElementAttribute("title", typeof(title), Namespace="http://purl.org/dc/elements/1.1/")]
         [System.Xml.Serialization.XmlElementAttribute("type", typeof(type), Namespace="http://purl.org/dc/elements/1.1/")]
-        [System.Xml.Serialization.XmlElementAttribute("link", typeof(opfmetadatacontentLink))]
+        [System.Xml.Serialization.XmlElementAttribute("link", typeof(opfcollectionmetadatacontentLink))]
         [System.Xml.Serialization.XmlElementAttribute("meta", typeof(opfcollectionmetadatacontentMeta))]
         public object[] Items {
             get {
@@ -907,7 +898,7 @@ namespace kurema.Epub.Xml.Epub30.Package {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.idpf.org/2007/opf")]
-    public partial class opfmetadatacontentLink {
+    public partial class opfcollectionmetadatacontentLink {
         
         private string hrefField;
         
@@ -1519,7 +1510,7 @@ namespace kurema.Epub.Xml.Epub30.Package {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.idpf.org/2007/opf")]
-    public partial class opfmetadatacontentMeta {
+    public partial class opfpackagecontentMetadataMeta {
     }
     
     /// <remarks/>
