@@ -5,4 +5,8 @@
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <Folder Include="Extensions\Xml\Epub30\" />
+	</ItemGroup>
+
 </Project>

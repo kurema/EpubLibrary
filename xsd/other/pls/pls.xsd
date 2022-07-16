@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This is a draft schema for the XML language defined in the 
+  Pronunciation Lexicon Specification 
+  (latest version at <http://www.w3.org/TR/pronunciation-lexicon/>)
+  At the time of writing, the scpecification as well as this schema are
+  subject to change, and no guarantee is made on their accuracy or the fact
+  that they are in sync.
+  Last modified: $Date: 2008/10/13 14:03:02 $
+  
+  Copyright &#251; 2006 World Wide Web Consortium, (Massachusetts Institute
+  of Technology, ERCIM, Keio University). All Rights Reserved. See
+  http://www.w3.org/Consortium/Legal/.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:p="http://www.w3.org/2005/01/pronunciation-lexicon">
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:element name="lexicon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="p:meta"/>
+        <xs:element minOccurs="0" ref="p:metadata"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="p:lexeme"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="1.0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="p:anyAttribute"/>
+      <xs:attribute ref="xml:base"/>
+      <xs:attribute ref="xml:lang" use="required"/>
+      <xs:attributeGroup ref="p:alphabet.att.type"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="alphabet.att.type">
+    <xs:attribute name="alphabet" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:pattern value="ipa|(x-.*)"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="meta">
+    <xs:complexType>
+      <xs:attribute name="name"/>
+      <xs:attribute name="http-equiv"/>
+      <xs:attribute name="content" use="required"/>
+      <xs:attributeGroup ref="p:anyAttribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="metadata">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="anything">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:attributeGroup name="anything">
+    <xs:anyAttribute processContents="skip"/>
+  </xs:attributeGroup>
+  <xs:element name="lexeme">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="p:grapheme"/>
+        <xs:choice>
+          <xs:element ref="p:phoneme"/>
+          <xs:element ref="p:alias"/>
+        </xs:choice>
+        <xs:element ref="p:example"/>
+      </xs:choice>
+      <xs:attribute ref="xml:id"/>
+      <xs:attribute name="role">
+        <xs:simpleType>
+          <xs:restriction>
+            <xs:simpleType>
+              <xs:list itemType="xs:QName"/>
+            </xs:simpleType>
+            <xs:length value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="p:anyAttribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="grapheme">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="xs:anyType">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:minLength value="1"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:attributeGroup ref="p:anyAttribute"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="prefer.att.type">
+    <xs:attribute name="prefer" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="true"/>
+          <xs:enumeration value="false"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="phoneme">
+    <xs:complexType mixed="true">
+      <xs:attribute name="prefer">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="alphabet">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="ipa|(x-.*)"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="p:anyAttribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="alias">
+    <xs:complexType mixed="true">
+      <xs:attribute name="prefer">
+        <xs:simpleType>
+          <xs:restriction base="xs:token">
+            <xs:enumeration value="true"/>
+            <xs:enumeration value="false"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="p:anyAttribute"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="example">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:restriction base="xs:anyType">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:minLength value="1"/>
+            </xs:restriction>
+          </xs:simpleType>
+          <xs:attributeGroup ref="p:anyAttribute"/>
+        </xs:restriction>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="anyAttribute">
+    <xs:anyAttribute processContents="skip"/>
+  </xs:attributeGroup>
+</xs:schema>

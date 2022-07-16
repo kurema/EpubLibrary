@@ -14,7 +14,9 @@ graph LR
   B -- xsd.exe --> C(*.cs)
 ```
 
-We got a lot of errors during the conversion but couldn't fix it.
+We got a lot of errors during the conversion but couldn't fix some.
+Failed files include well-known formats such as XHTML, SVG and XML Security.
+Some may be already supported by the runtime.
 
 | Stage | 3.0 | 2.0 |
 | -- | -- | -- |

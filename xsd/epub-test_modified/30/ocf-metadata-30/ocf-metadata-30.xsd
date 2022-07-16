@@ -8,8 +8,18 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="metadata:mr.metadata.content">
-          <xs:attributeGroup ref="metadata:mr.metadata.attlist"/>
-        </xs:extension>
+			<xs:attributeGroup ref="dc:opf.unique.identifier.attr"/>
+			<xs:attribute name="prefix"/>
+			<xs:attribute name="id" type="dc:datatype.ID"/>
+			<xs:attributeGroup ref="dc:opf.i18n.attrs"/>
+			<xs:attribute name="version">
+				<xs:simpleType>
+					<xs:restriction base="xs:token">
+						<xs:enumeration value="3.0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:extension>
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
@@ -45,19 +55,6 @@
       </xs:choice>
     </xs:sequence>
   </xs:group>
-  <xs:attributeGroup name="mr.metadata.attlist">
-    <xs:attributeGroup ref="dc:opf.unique.identifier.attr"/>
-    <xs:attribute name="prefix"/>
-    <xs:attribute name="id" type="dc:datatype.ID"/>
-    <xs:attributeGroup ref="dc:opf.i18n.attrs"/>
-    <xs:attribute name="version">
-      <xs:simpleType>
-        <xs:restriction base="xs:token">
-          <xs:enumeration value="3.0"/>
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:attributeGroup>
   <xs:complexType name="mr.metadata.content">
     <xs:complexContent>
       <xs:extension base="dc:opf.metadata.content"/>

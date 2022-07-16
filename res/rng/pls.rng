@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This is a draft schema for the XML language defined in the 
+    Pronunciation Lexicon Specification 
+    (latest version at <http://www.w3.org/TR/pronunciation-lexicon/>)
+    At the time of writing, the scpecification as well as this schema are
+    subject to change, and no guarantee is made on their accuracy or the fact
+    that they are in sync.
+    Last modified: $Date: 2008/10/13 14:03:02 $
+    
+    Copyright &#251; 2006 World Wide Web Consortium, (Massachusetts Institute
+    of Technology, ERCIM, Keio University). All Rights Reserved. See
+    http://www.w3.org/Consortium/Legal/.
+-->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    
+    <start>
+        <ref name="lexicon.elt.type"/>
+    </start>
+    
+    <define name="lexicon.elt.type">
+        <element name="lexicon">
+            <!-- attributes -->      
+            <attribute name="version"><value>1.0</value></attribute>            
+            <ref name="anyAttribute"/>       
+            <optional>
+                <attribute name="xml:base"><data type="anyURI"/></attribute>
+            </optional>
+            <attribute name="xml:lang"/>
+            <ref name="alphabet.att.type"/>
+            <!-- subelements -->
+            <zeroOrMore>
+                <ref name="meta.elt.type"/>
+            </zeroOrMore>
+            
+            <optional>
+                <ref name="metadata.elt.type"/>
+            </optional>        
+            <zeroOrMore> 
+                <ref name="lexeme.elt.type"/>
+            </zeroOrMore>
+        </element>
+    </define>
+    
+    <define name="alphabet.att.type">
+        
+        <attribute name="alphabet">
+            <data type="string">
+                <param name="pattern">ipa|(x-.*)</param>
+            </data>
+        </attribute>
+    </define>
+    
+    <define name="meta.elt.type">
+        <element name="meta">
+            
+            <!-- attributes -->      
+            <choice>
+                <attribute name="name"/>
+                <attribute name="http-equiv"/>
+            </choice>
+            <attribute name="content"/>
+            <ref name="anyAttribute"/>       
+        </element>
+        <!-- no subelements -->      
+    </define>
+    
+    <define name="metadata.elt.type">
+        <element name="metadata">
+            <!-- no attributes -->      
+            <!-- any subelements -->
+            <zeroOrMore>
+                <choice>
+                    <text/>
+                    <element>
+                        <anyName/>
+                        
+                        <ref name="anything"/>
+                    </element>
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+    
+    <define name="anything">
+        <zeroOrMore>
+            <attribute>
+                
+                <anyName/>
+            </attribute>
+        </zeroOrMore>
+        <mixed>
+            <zeroOrMore>
+                <element>
+                    <anyName/>
+                    <ref name="anything"/>
+                </element>
+                
+            </zeroOrMore>
+        </mixed>
+    </define>
+    
+    <define name="lexeme.elt.type">
+        <element name="lexeme">
+            <!-- attributes -->
+            <optional>
+                <attribute name="xml:id"/>
+            </optional>
+            
+            <optional>
+                <attribute name="role">
+                    <!-- list of whitespace separated QNames -->
+                    <list>
+                        <data type="QName"/>
+                    </list>
+                </attribute>
+            </optional>
+            <ref name="anyAttribute"/>       
+            <!-- subelements: 4.4 "The <lexeme> element contains one or more <grapheme> elements, one or more pronunciations (either by <phoneme> or <alias> elements or a combination of both), and zero or more <example> elements The children of the <lexeme> element can appear in any order" -->
+            
+            <interleave>
+                <oneOrMore>
+                    <ref name="grapheme.elt.type"/>
+                </oneOrMore>
+                <oneOrMore>
+                    <choice>
+                        <ref name="phoneme.elt.type"/>
+                        <ref name="alias.elt.type"/>
+                    </choice>
+                    
+                </oneOrMore>
+                <zeroOrMore>
+                    <ref name="example.elt.type"/>
+                </zeroOrMore>
+            </interleave>
+        </element>
+    </define>
+    
+    <define name="grapheme.elt.type">
+        <element name="grapheme">
+            
+            <data type="string">
+                <param name="minLength">1</param>
+            </data>
+            <ref name="anyAttribute"/>       
+        </element>
+    </define>
+    
+    <define name="prefer.att.type">
+        <attribute name="prefer" a:defaultValue="false">
+            <choice>
+                
+                <value>true</value>
+                <value>false</value>
+            </choice>
+        </attribute>
+    </define>
+    
+    <define name="phoneme.elt.type">
+        <element name="phoneme">
+            
+            <!-- attributes: -->
+            <optional>
+                <ref name="prefer.att.type"/>
+            </optional>
+            <optional>
+                <ref name="alphabet.att.type"/>
+            </optional>
+            <ref name="anyAttribute"/>       
+            <!-- contents: -->
+            <text/>
+            
+        </element>
+    </define>
+    
+    <define name="alias.elt.type">
+        <element name="alias">
+            <!-- attributes: -->
+            <optional>
+                <ref name="prefer.att.type"/>
+            </optional>
+            <ref name="anyAttribute"/>       
+            <!-- contents: -->
+            <text/>
+        </element>
+    </define>
+    
+    <define name="example.elt.type">
+        <element name="example">
+            <!-- no attributes from PLS namespace -->
+            <ref name="anyAttribute"/>       
+            <!-- contents: -->
+            
+            <data type="string">
+                <param name="minLength">1</param>
+            </data>
+        </element>
+    </define>
+    
+    <define name="anyAttribute">
+        <zeroOrMore>
+            <attribute>
+                <anyName>
+                    <except>                        
+                        <nsName ns="http://www.w3.org/XML/1998/namespace"/>
+                        <nsName/>                       
+                        <nsName ns=""/>
+                    </except>
+                </anyName>
+            </attribute>
+        </zeroOrMore>        
+        </define>
+</grammar>

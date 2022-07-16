@@ -8,18 +8,15 @@
 		<xs:complexType>
 			<xs:complexContent>
 				<xs:extension base="opf:opf.package.content">
-					<xs:attributeGroup ref="opf:opf.package.attlist"/>
+					<xs:attributeGroup ref="opf:opf.version.attr"/>
+					<xs:attributeGroup ref="opf:opf.unique.identifier.attr"/>
+					<xs:attribute name="id" type="opf:datatype.ID"/>
+					<xs:attribute name="prefix"/>
+					<xs:attributeGroup ref="opf:opf.i18n.attrs"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:attributeGroup name="opf.package.attlist">
-		<xs:attributeGroup ref="opf:opf.version.attr"/>
-		<xs:attributeGroup ref="opf:opf.unique.identifier.attr"/>
-		<xs:attribute name="id" type="opf:datatype.ID"/>
-		<xs:attribute name="prefix"/>
-		<xs:attributeGroup ref="opf:opf.i18n.attrs"/>
-	</xs:attributeGroup>
 	<xs:attributeGroup name="opf.version.attr">
 		<xs:attribute name="version" use="required">
 			<xs:simpleType>
@@ -94,13 +91,6 @@
 	<xs:simpleType name="opf.epub3.meta.content">
 		<xs:restriction base="opf:datatype.string.nonempty"/>
 	</xs:simpleType>
-	<xs:attributeGroup name="opf.epub3.meta.content">
-		<xs:attributeGroup ref="opf:opf.property.attr"/>
-		<xs:attribute name="refines" type="opf:datatype.URI"/>
-		<xs:attribute name="id" type="opf:datatype.ID"/>
-		<xs:attribute name="scheme" type="opf:datatype.property"/>
-		<xs:attributeGroup ref="opf:opf.i18n.attrs"/>
-	</xs:attributeGroup>
 	<xs:attributeGroup name="opf.epub2.meta.content">
 		<xs:attribute name="name" use="required"/>
 		<xs:attribute name="content" use="required"/>
@@ -120,9 +110,6 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
-	<xs:attributeGroup name="opf.property.attr">
-		<xs:attribute name="property" use="required" type="opf:datatype.property"/>
-	</xs:attributeGroup>
 	<xs:attributeGroup name="opf.rel.attr">
 		<xs:attribute name="rel" use="required" type="opf:datatype.properties"/>
 	</xs:attributeGroup>
@@ -382,7 +369,11 @@
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="opf:opf.epub3.meta.content">
-							<xs:attributeGroup ref="opf:opf.epub3.meta.content"/>
+							<xs:attribute name="property" use="required" type="opf:datatype.property"/>
+							<xs:attribute name="refines" type="opf:datatype.URI"/>
+							<xs:attribute name="id" type="opf:datatype.ID"/>
+							<xs:attribute name="scheme" type="opf:datatype.property"/>
+							<xs:attributeGroup ref="opf:opf.i18n.attrs"/>
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
