@@ -24,9 +24,41 @@ namespace kurema.Epub.Xml.Epub30.Package {
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.idpf.org/2007/opf", IsNullable=false)]
     public partial class package : opfpackagecontent {
         
+        private packageVersion versionField;
+        
+        private string uniqueidentifierField;
+        
         private string idField;
         
         private string prefixField;
+        
+        private string langField;
+        
+        private opfcollectionmetadatacontentMetaDir dirField;
+        
+        private bool dirFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public packageVersion version {
+            get {
+                return this.versionField;
+            }
+            set {
+                this.versionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute("unique-identifier", DataType="NCName")]
+        public string uniqueidentifier {
+            get {
+                return this.uniqueidentifierField;
+            }
+            set {
+                this.uniqueidentifierField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType="NCName")]
@@ -49,6 +81,63 @@ namespace kurema.Epub.Xml.Epub30.Package {
                 this.prefixField = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://www.w3.org/XML/1998/namespace")]
+        public string lang {
+            get {
+                return this.langField;
+            }
+            set {
+                this.langField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public opfcollectionmetadatacontentMetaDir dir {
+            get {
+                return this.dirField;
+            }
+            set {
+                this.dirField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool dirSpecified {
+            get {
+                return this.dirFieldSpecified;
+            }
+            set {
+                this.dirFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.idpf.org/2007/opf")]
+    public enum packageVersion {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("3.0")]
+        Item30,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.idpf.org/2007/opf")]
+    public enum opfcollectionmetadatacontentMetaDir {
+        
+        /// <remarks/>
+        ltr,
+        
+        /// <remarks/>
+        rtl,
     }
     
     /// <remarks/>
@@ -147,7 +236,7 @@ namespace kurema.Epub.Xml.Epub30.Package {
         
         private string langField;
         
-        private opfcollectioncontentMetadataDir dirField;
+        private opfcollectionmetadatacontentMetaDir dirField;
         
         private bool dirFieldSpecified;
         
@@ -175,7 +264,7 @@ namespace kurema.Epub.Xml.Epub30.Package {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public opfcollectioncontentMetadataDir dir {
+        public opfcollectionmetadatacontentMetaDir dir {
             get {
                 return this.dirField;
             }
@@ -194,19 +283,6 @@ namespace kurema.Epub.Xml.Epub30.Package {
                 this.dirFieldSpecified = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.idpf.org/2007/opf")]
-    public enum opfcollectioncontentMetadataDir {
-        
-        /// <remarks/>
-        ltr,
-        
-        /// <remarks/>
-        rtl,
     }
     
     /// <remarks/>
@@ -920,13 +996,32 @@ namespace kurema.Epub.Xml.Epub30.Package {
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.idpf.org/2007/opf")]
     public partial class opfcollectionmetadatacontentMeta {
         
+        private string propertyField;
+        
         private string refinesField;
         
         private string idField;
         
         private string schemeField;
         
+        private string langField;
+        
+        private opfcollectionmetadatacontentMetaDir dirField;
+        
+        private bool dirFieldSpecified;
+        
         private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="NMTOKEN")]
+        public string property {
+            get {
+                return this.propertyField;
+            }
+            set {
+                this.propertyField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType="anyURI")]
@@ -958,6 +1053,39 @@ namespace kurema.Epub.Xml.Epub30.Package {
             }
             set {
                 this.schemeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://www.w3.org/XML/1998/namespace")]
+        public string lang {
+            get {
+                return this.langField;
+            }
+            set {
+                this.langField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public opfcollectionmetadatacontentMetaDir dir {
+            get {
+                return this.dirField;
+            }
+            set {
+                this.dirField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool dirSpecified {
+            get {
+                return this.dirFieldSpecified;
+            }
+            set {
+                this.dirFieldSpecified = value;
             }
         }
         
@@ -1032,7 +1160,7 @@ namespace kurema.Epub.Xml.Epub30.Package {
         
         private string langField;
         
-        private opfcollectioncontentMetadataDir dirField;
+        private opfcollectionmetadatacontentMetaDir dirField;
         
         private bool dirFieldSpecified;
         
@@ -1060,7 +1188,7 @@ namespace kurema.Epub.Xml.Epub30.Package {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public opfcollectioncontentMetadataDir dir {
+        public opfcollectionmetadatacontentMetaDir dir {
             get {
                 return this.dirField;
             }
