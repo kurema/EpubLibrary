@@ -5,6 +5,7 @@ This is almost same as [package-30](../package-30/README.md)
 
 * The xsd.exe couldn't comprehend the following. So it's simplified.
   * It's not perfect in that both can occur only 0 now, which is not good.
+* Some fix for xsd.exe's [limitation](https://social.msdn.microsoft.com/forums/en-US/707c8a47-a29f-4262-b052-ac66dc99d604/nested-xml-attribute-groups?forum=asmxandxml&prof=required).
 
 ```XSD
       <xs:choice>
@@ -14,12 +15,4 @@ This is almost same as [package-30](../package-30/README.md)
           <xs:group maxOccurs="unbounded" ref="opf:opf.collection.link"/>
         </xs:sequence>
       </xs:choice>
-```
-
-```diff
-321a322,323
->       <xs:choice>
->         <xs:element maxOccurs="unbounded" ref="opf:collection"/>
-325a328
->       </xs:choice>
 ```

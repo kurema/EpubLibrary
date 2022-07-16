@@ -7,16 +7,13 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="smil:smil.content">
-          <xs:attributeGroup ref="smil:smil.attlist"/>
-        </xs:extension>
+			<xs:attributeGroup ref="smil:smil.version.attr"/>
+			<xs:attribute name="id" type="smil:datatype.ID"/>
+			<xs:attribute ref="epub:prefix"/>
+		</xs:extension>
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:attributeGroup name="smil.attlist">
-    <xs:attributeGroup ref="smil:smil.version.attr"/>
-    <xs:attribute name="id" type="smil:datatype.ID"/>
-    <xs:attribute ref="epub:prefix"/>
-  </xs:attributeGroup>
   <xs:complexType name="smil.content">
     <xs:sequence>
       <xs:element minOccurs="0" ref="smil:head"/>
@@ -38,15 +35,12 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="smil:smil.body.content">
-          <xs:attributeGroup ref="smil:smil.body.attlist"/>
-        </xs:extension>
+			<xs:attributeGroup ref="smil:smil.tc.attrs"/>
+			<xs:attribute ref="epub:textref"/>
+		</xs:extension>
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:attributeGroup name="smil.body.attlist">
-    <xs:attributeGroup ref="smil:smil.tc.attrs"/>
-    <xs:attribute ref="epub:textref"/>
-  </xs:attributeGroup>
   <xs:complexType name="smil.body.content">
     <xs:choice maxOccurs="unbounded">
       <xs:element ref="smil:seq"/>
@@ -59,25 +53,19 @@
 			  <xs:element ref="smil:seq"/>
 			  <xs:element ref="smil:par"/>
 		  </xs:choice>
-          <xs:attributeGroup ref="smil:smil.seq.attlist"/>
-    </xs:complexType>
+		<xs:attributeGroup ref="smil:smil.tc.attrs"/>
+		<xs:attributeGroup ref="smil:epub.textref.attr"/>
+	</xs:complexType>
   </xs:element>
-  <xs:attributeGroup name="smil.seq.attlist">
-    <xs:attributeGroup ref="smil:smil.tc.attrs"/>
-    <xs:attributeGroup ref="smil:epub.textref.attr"/>
-  </xs:attributeGroup>
   <xs:element name="par">
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="smil:smil.par.content">
-          <xs:attributeGroup ref="smil:smil.par.attlist"/>
-        </xs:extension>
+			<xs:attributeGroup ref="smil:smil.tc.attrs"/>
+		</xs:extension>
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:attributeGroup name="smil.par.attlist">
-    <xs:attributeGroup ref="smil:smil.tc.attrs"/>
-  </xs:attributeGroup>
   <xs:complexType name="smil.par.content">
     <xs:sequence>
       <xs:element ref="smil:text"/>
@@ -86,24 +74,18 @@
   </xs:complexType>
   <xs:element name="text">
     <xs:complexType>
-      <xs:attributeGroup ref="smil:smil.text.attlist"/>
-    </xs:complexType>
+		<xs:attribute name="id" type="smil:datatype.ID"/>
+		<xs:attributeGroup ref="smil:smil.src.attr"/>
+	</xs:complexType>
   </xs:element>
-  <xs:attributeGroup name="smil.text.attlist">
-    <xs:attribute name="id" type="smil:datatype.ID"/>
-    <xs:attributeGroup ref="smil:smil.src.attr"/>
-  </xs:attributeGroup>
   <xs:element name="audio">
     <xs:complexType>
-      <xs:attributeGroup ref="smil:smil.audio.attlist"/>
-    </xs:complexType>
+		<xs:attribute name="id" type="smil:datatype.ID"/>
+		<xs:attribute name="clipBegin" type="smil:datatype.smil.npt"/>
+		<xs:attribute name="clipEnd" type="smil:datatype.smil.npt"/>
+		<xs:attributeGroup ref="smil:smil.src.attr"/>
+	</xs:complexType>
   </xs:element>
-  <xs:attributeGroup name="smil.audio.attlist">
-    <xs:attribute name="id" type="smil:datatype.ID"/>
-    <xs:attribute name="clipBegin" type="smil:datatype.smil.npt"/>
-    <xs:attribute name="clipEnd" type="smil:datatype.smil.npt"/>
-    <xs:attributeGroup ref="smil:smil.src.attr"/>
-  </xs:attributeGroup>
   <xs:attributeGroup name="smil.tc.attrs">
     <xs:attribute ref="epub:type"/>
     <xs:attribute name="id" type="smil:datatype.ID"/>

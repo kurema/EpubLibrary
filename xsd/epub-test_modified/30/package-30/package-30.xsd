@@ -43,50 +43,56 @@
 		<xs:sequence>
 			<xs:element name="metadata">
 				<xs:complexType>
-					<xs:complexContent>
-						<xs:extension base="opf:opf.metadata.content">
-							<xs:attribute name="id" type="opf:datatype.ID"/>
-							<xs:attributeGroup ref="opf:opf.i18n.attrs"/>
-						</xs:extension>
-					</xs:complexContent>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="dc:identifier"/>
+						<xs:element ref="dc:title"/>
+						<xs:element ref="dc:language"/>
+						<xs:element ref="dc:date"/>
+						<xs:element ref="dc:source"/>
+						<xs:element ref="dc:type"/>
+						<xs:element ref="dc:format"/>
+						<xs:element ref="dc:creator"/>
+						<xs:element ref="dc:subject"/>
+						<xs:element ref="dc:description"/>
+						<xs:element ref="dc:publisher"/>
+						<xs:element ref="dc:contributor"/>
+						<xs:element ref="dc:relation"/>
+						<xs:element ref="dc:coverage"/>
+						<xs:element ref="dc:rights"/>
+
+						<xs:element name="meta">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="xs:anyType">
+										<xs:simpleType>
+											<xs:union memberTypes="opf:opf.epub3.meta.content">
+												<xs:simpleType>
+													<xs:restriction base="xs:token">
+														<xs:length value="0"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:union>
+										</xs:simpleType>
+										<xs:attribute name="property" type="opf:datatype.property"/>
+										<xs:attribute name="refines" type="opf:datatype.URI"/>
+										<xs:attribute name="id" type="opf:datatype.ID"/>
+										<xs:attribute name="scheme" type="opf:datatype.property"/>
+										<xs:attributeGroup ref="opf:opf.i18n.attrs"/>
+										<xs:attribute name="name"/>
+										<xs:attribute name="content"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+
+						<xs:group ref="opf:opf.link"/>
+					</xs:choice>
+					<xs:attribute name="id" type="opf:datatype.ID"/>
+					<xs:attributeGroup ref="opf:opf.i18n.attrs"/>
 				</xs:complexType>
 			</xs:element>
 		</xs:sequence>
 	</xs:group>
-	<xs:complexType name="opf.metadata.content">
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:group ref="opf:opf.dc.elems"/>
-			<!-- Modification from here -->
-			<xs:sequence>
-				<xs:element name="meta">
-					<xs:complexType>
-						<xs:simpleContent>
-							<xs:restriction base="xs:anyType">
-								<xs:simpleType>
-									<xs:union memberTypes="opf:opf.epub3.meta.content">
-										<xs:simpleType>
-											<xs:restriction base="xs:token">
-												<xs:length value="0"/>
-											</xs:restriction>
-										</xs:simpleType>
-									</xs:union>
-								</xs:simpleType>
-								<xs:attribute name="property" type="opf:datatype.property"/>
-								<xs:attribute name="refines" type="opf:datatype.URI"/>
-								<xs:attribute name="id" type="opf:datatype.ID"/>
-								<xs:attribute name="scheme" type="opf:datatype.property"/>
-								<xs:attributeGroup ref="opf:opf.i18n.attrs"/>
-								<xs:attribute name="name"/>
-								<xs:attribute name="content"/>
-							</xs:restriction>
-						</xs:simpleContent>
-					</xs:complexType>
-				</xs:element>
-			</xs:sequence>
-			<!-- To here -->
-			<xs:group ref="opf:opf.link"/>
-		</xs:choice>
-	</xs:complexType>
 
 	<xs:simpleType name="opf.epub3.meta.content">
 		<xs:restriction base="opf:datatype.string.nonempty"/>
@@ -119,27 +125,6 @@
 	<xs:attributeGroup name="opf.refines.attr">
 		<xs:attribute name="refines" use="required" type="opf:datatype.URI"/>
 	</xs:attributeGroup>
-	<xs:group name="opf.dc.elems">
-		<xs:sequence>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="dc:identifier"/>
-				<xs:element ref="dc:title"/>
-				<xs:element ref="dc:language"/>
-				<xs:element ref="dc:date"/>
-				<xs:element ref="dc:source"/>
-				<xs:element ref="dc:type"/>
-				<xs:element ref="dc:format"/>
-				<xs:element ref="dc:creator"/>
-				<xs:element ref="dc:subject"/>
-				<xs:element ref="dc:description"/>
-				<xs:element ref="dc:publisher"/>
-				<xs:element ref="dc:contributor"/>
-				<xs:element ref="dc:relation"/>
-				<xs:element ref="dc:coverage"/>
-				<xs:element ref="dc:rights"/>
-			</xs:choice>
-		</xs:sequence>
-	</xs:group>
 	<xs:attributeGroup name="opf.dc.attlist">
 		<xs:attribute name="id" type="opf:datatype.ID"/>
 		<xs:attributeGroup ref="opf:opf.i18n.attrs"/>

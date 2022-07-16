@@ -6,7 +6,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Folder Include="Documents\" />
 	  <Folder Include="Extensions\Xml\Epub30\" />
+	  <Folder Include="Xml\Others\" />
 	</ItemGroup>
 
 </Project>
