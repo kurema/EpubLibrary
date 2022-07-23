@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kurema.Epub", "kurema.Epub\kurema.Epub.csproj", "{588041ED-6DB5-4C7B-9A9A-81EE610AA0B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kurema.Epub", "kurema.Epub\kurema.Epub.csproj", "{588041ED-6DB5-4C7B-9A9A-81EE610AA0B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kurema.Epub.W3C", "kurema.Epub.W3C\kurema.Epub.W3C.csproj", "{58A25B25-49C0-4C73-8A70-DF58062FB6DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{588041ED-6DB5-4C7B-9A9A-81EE610AA0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{588041ED-6DB5-4C7B-9A9A-81EE610AA0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{588041ED-6DB5-4C7B-9A9A-81EE610AA0B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A25B25-49C0-4C73-8A70-DF58062FB6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A25B25-49C0-4C73-8A70-DF58062FB6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A25B25-49C0-4C73-8A70-DF58062FB6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A25B25-49C0-4C73-8A70-DF58062FB6DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
