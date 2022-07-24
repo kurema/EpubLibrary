@@ -25,21 +25,3 @@ partial class package
         uniqueidentifier = DefaultUniqueIdentifier;
     }
 }
-
-partial class opfmanifestcontent
-{
-    public opfmanifestcontent()
-    {
-    }
-
-    public void AddItem(item newItem)
-    {
-        if(item is null)
-        {
-            item = new[] { newItem };
-            return;
-        }
-        Array.Resize(ref itemField, item.Length + 1);
-        itemField[item.Length - 1] = newItem;
-    }
-}

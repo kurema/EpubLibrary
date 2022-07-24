@@ -32,13 +32,13 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
         
         private lexiconVersion versionField;
         
-        private System.Xml.XmlAttribute[] anyAttrField;
-        
         private string baseField;
         
         private string langField;
         
         private string alphabetField;
+        
+        private System.Xml.XmlAttribute[] anyAttrField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("meta")]
@@ -84,17 +84,6 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
-        public System.Xml.XmlAttribute[] AnyAttr {
-            get {
-                return this.anyAttrField;
-            }
-            set {
-                this.anyAttrField = value;
-            }
-        }
-        
-        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://www.w3.org/XML/1998/namespace")]
         public string @base {
             get {
@@ -124,6 +113,17 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
             }
             set {
                 this.alphabetField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr {
+            get {
+                return this.anyAttrField;
+            }
+            set {
+                this.anyAttrField = value;
             }
         }
     }
@@ -288,33 +288,25 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.w3.org/2005/01/pronunciation-lexicon", IsNullable=false)]
     public partial class alias {
         
-        private aliasPrefer preferField;
-        
-        private bool preferFieldSpecified;
+        private preferdatatype preferField;
         
         private System.Xml.XmlAttribute[] anyAttrField;
         
         private string[] textField;
         
+        public alias() {
+            this.preferField = preferdatatype.@false;
+        }
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public aliasPrefer prefer {
+        [System.ComponentModel.DefaultValueAttribute(preferdatatype.@false)]
+        public preferdatatype prefer {
             get {
                 return this.preferField;
             }
             set {
                 this.preferField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool preferSpecified {
-            get {
-                return this.preferFieldSpecified;
-            }
-            set {
-                this.preferFieldSpecified = value;
             }
         }
         
@@ -344,8 +336,8 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.w3.org/2005/01/pronunciation-lexicon")]
-    public enum aliasPrefer {
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName="prefer.datatype", Namespace="http://www.w3.org/2005/01/pronunciation-lexicon")]
+    public enum preferdatatype {
         
         /// <remarks/>
         @true,
@@ -362,6 +354,32 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.w3.org/2005/01/pronunciation-lexicon")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.w3.org/2005/01/pronunciation-lexicon", IsNullable=false)]
     public partial class example {
+        
+        private System.Xml.XmlAttribute[] anyAttrField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr {
+            get {
+                return this.anyAttrField;
+            }
+            set {
+                this.anyAttrField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -372,6 +390,32 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.w3.org/2005/01/pronunciation-lexicon")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.w3.org/2005/01/pronunciation-lexicon", IsNullable=false)]
     public partial class grapheme {
+        
+        private System.Xml.XmlAttribute[] anyAttrField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr {
+            get {
+                return this.anyAttrField;
+            }
+            set {
+                this.anyAttrField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -383,9 +427,7 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
     [System.Xml.Serialization.XmlRootAttribute(Namespace="http://www.w3.org/2005/01/pronunciation-lexicon", IsNullable=false)]
     public partial class phoneme {
         
-        private phonemePrefer preferField;
-        
-        private bool preferFieldSpecified;
+        private preferdatatype preferField;
         
         private string alphabetField;
         
@@ -393,25 +435,19 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
         
         private string[] textField;
         
+        public phoneme() {
+            this.preferField = preferdatatype.@false;
+        }
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public phonemePrefer prefer {
+        [System.ComponentModel.DefaultValueAttribute(preferdatatype.@false)]
+        public preferdatatype prefer {
             get {
                 return this.preferField;
             }
             set {
                 this.preferField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool preferSpecified {
-            get {
-                return this.preferFieldSpecified;
-            }
-            set {
-                this.preferFieldSpecified = value;
             }
         }
         
@@ -447,19 +483,6 @@ namespace kurema.Epub.Xml.W3c.PronunciationLexiconSpecification {
                 this.textField = value;
             }
         }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://www.w3.org/2005/01/pronunciation-lexicon")]
-    public enum phonemePrefer {
-        
-        /// <remarks/>
-        @true,
-        
-        /// <remarks/>
-        @false,
     }
     
     /// <remarks/>
