@@ -8,8 +8,8 @@ namespace kurema.Epub.Documents;
 
 public class Archive
 {
-    public Rendition? RenditionMain { get; set; }
-    public List<Rendition> RenditionsSubs { get; set; } = new List<Rendition>();
+    public Rendition RenditionMain { get; set; } = new Rendition();
+    public List<Rendition> RenditionsSubs { get; } = new List<Rendition>();
 
     public System.IO.Stream? GetFile(string path)
     {

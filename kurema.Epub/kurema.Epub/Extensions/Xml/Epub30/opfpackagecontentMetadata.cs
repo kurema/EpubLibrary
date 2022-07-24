@@ -4,27 +4,19 @@ using System.Text;
 
 namespace kurema.Epub.Xml.Epub30.Package;
 
-partial class opfpackagecontentMetadata
+partial class opfmetadatacontent1
 {
-    public const string IdTitleMain = "main-title";
-    public const string IdLanguageMain = "main-language";
 
-    public opfpackagecontentMetadata()
+    public void AddItems(params IMetadataItem[] newItems)
     {
-        Items = new IMetadataItem[0];
-    }
 
-    public void AppendItem(IMetadataItem item)
-    {
-        if (Items is null)
-        {
-            Items = new IMetadataItem[] { item };
-            return;
-        }
-        var itemsTmp = this.Items;
-        Array.Resize(ref itemsTmp, Items.Length + 1);
-        itemsTmp[Items.Length - 1] = item;
-        this.Items = itemsTmp;
+/* プロジェクト 'kurema.Epub (NET6.0)' からのマージされていない変更
+前:
+        Documents.Functions.AddItemsToArray(ref itemsField, newItems);
+後:
+        Functions.AddItemsToArray(ref itemsField, newItems);
+*/
+        Epub.Helpers.Functions.AddItemsToArray(ref itemsField, newItems);
     }
 
     public void UpdateItemOfSameType<T>(T value, Func<T, bool> judge = null) where T : IMetadataItem
@@ -40,14 +32,26 @@ partial class opfpackagecontentMetadata
             }
         }
     nomatch:;
-        AppendItem(value);
+        AddItems(value);
     }
 
     public void SetRequiredValues(string identifier, string title, string language)
     {
-        UpdateItemOfSameType(new identifier() { id = package.DefaultUniqueIdentifier, Value = identifier }, v => v.id == package.DefaultUniqueIdentifier);
-        UpdateItemOfSameType(new title() { id = IdTitleMain, Value = title }, v => v.id == IdTitleMain);
-        UpdateItemOfSameType(new language() { id = IdLanguageMain, Value = language }, v => v.id == IdLanguageMain);
+        //This is not good in performance. Array.Resize() is called three times.
+
+/* プロジェクト 'kurema.Epub (NET6.0)' からのマージされていない変更
+前:
+        UpdateItemOfSameType(new identifier() { id = Documents.DefaultValues.UniqueIdentifier, Value = identifier }, v => v.id == Documents.DefaultValues.UniqueIdentifier);
+        UpdateItemOfSameType(new title() { id = Documents.DefaultValues.IdTitleMain, Value = title }, v => v.id == Documents.DefaultValues.IdTitleMain);
+        UpdateItemOfSameType(new language() { id = Documents.DefaultValues.IdLanguageMain, Value = language }, v => v.id == Documents.DefaultValues.IdLanguageMain);
+後:
+        UpdateItemOfSameType(new identifier() { id = DefaultValues.UniqueIdentifier, Value = identifier }, v => v.id == DefaultValues.UniqueIdentifier);
+        UpdateItemOfSameType(new title() { id = DefaultValues.IdTitleMain, Value = title }, v => v.id == DefaultValues.IdTitleMain);
+        UpdateItemOfSameType(new language() { id = DefaultValues.IdLanguageMain, Value = language }, v => v.id == DefaultValues.IdLanguageMain);
+*/
+        UpdateItemOfSameType(new identifier() { id = Helpers.DefaultValues.UniqueIdentifier, Value = identifier }, v => v.id == Helpers.DefaultValues.UniqueIdentifier);
+        UpdateItemOfSameType(new title() { id = Helpers.DefaultValues.IdTitleMain, Value = title }, v => v.id == Helpers.DefaultValues.IdTitleMain);
+        UpdateItemOfSameType(new language() { id = Helpers.DefaultValues.IdLanguageMain, Value = language }, v => v.id == Helpers.DefaultValues.IdLanguageMain);
     }
 }
 
@@ -68,5 +72,5 @@ partial class source : IMetadataItem { }
 partial class subject : IMetadataItem { }
 partial class title : IMetadataItem { }
 partial class type : IMetadataItem { }
-partial class link : IMetadataItem { }
-partial class meta : IMetadataItem { }
+partial class opfmetadatacontentLink : IMetadataItem { }
+partial class opfmetadatacontentMeta : IMetadataItem { }

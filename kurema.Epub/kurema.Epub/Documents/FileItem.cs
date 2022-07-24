@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
+using System.Threading.Tasks;
 
 #nullable enable
 
@@ -10,8 +11,8 @@ namespace kurema.Epub.Documents;
 
 public interface IFileItem
 {
-    void WriteToStream(Stream stream);
-    string Name { get; }
+    Task WriteToStream(Stream stream);
+    string Name { get; set; }
 }
 
 public class FileItemSerializer<T> : IFileItem where T : class
@@ -24,13 +25,36 @@ public class FileItemSerializer<T> : IFileItem where T : class
 
     public T? Value { get; set; }
 
-    public string Name { get; }
+    public string Name { get; set; }
 
-    public void WriteToStream(Stream stream)
+    public Task WriteToStream(Stream stream)
     {
         var xs = new XmlSerializer(typeof(T));
         var sw = new StreamWriter(stream);
         xs.Serialize(sw, Value);
+        return Task.CompletedTask;
+    }
+}
+
+public class FileItemString : IFileItem
+{
+    public FileItemString(string name, string content, Encoding? encoding = null)
+    {
+        Name = name ?? throw new ArgumentNullException(nameof(name));
+        if (content is null) throw new ArgumentException(nameof(content));
+        Content = new StringBuilder(content);
+        Encoding = encoding ?? Encoding.UTF8;
+    }
+
+    public string Name { get; set; }
+    public StringBuilder Content { get; }
+
+    public Encoding Encoding { get; set; }
+
+    public async Task WriteToStream(Stream stream)
+    {
+        var sw = new StreamWriter(stream, Encoding);
+        await sw.WriteAsync(Content.ToString());
     }
 }
 
@@ -42,11 +66,14 @@ public class FileItemDelegate : IFileItem
         StreamProvider = provider;
     }
 
-    public string Name { get; }
-    public Func<Stream?>? StreamProvider { get; }
+    public string Name { get; set; }
+    public Func<Stream?>? StreamProvider { get; set; }
 
-    public void WriteToStream(Stream stream)
+    public async Task WriteToStream(Stream stream)
     {
-        throw new NotImplementedException();
+        if (StreamProvider is null) return;
+        var result = StreamProvider.Invoke();
+        if (result is null) return;
+        await result.CopyToAsync(stream);
     }
 }

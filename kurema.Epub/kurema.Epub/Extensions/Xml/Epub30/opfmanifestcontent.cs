@@ -10,16 +10,13 @@ partial class opfmanifestcontent
 
     public void AddItems(params item[] newItems)
     {
-        if(item is null)
-        {
-            item = newItems;
-            return;
-        }
-        int currentLength = item.Length;
-        Array.Resize(ref itemField, currentLength + newItems.Length);
-        for (int i = 0; i < newItems.Length; i++)
-        {
-            itemField[currentLength + i] = newItems[i];
-        }
+
+/* プロジェクト 'kurema.Epub (NET6.0)' からのマージされていない変更
+前:
+        Documents.Functions.AddItemsToArray(ref this.itemField, newItems);
+後:
+        Functions.AddItemsToArray(ref this.itemField, newItems);
+*/
+        Epub.Helpers.Functions.AddItemsToArray(ref this.itemField, newItems);
     }
 }
