@@ -11,6 +11,7 @@ This repository contains:
 ```mermaid
 graph LR
   A(*.rnc/*.rng on epubcheck) -- trang --> B(xsd)
+  D(*.xsd/*.rnc on W3C) --> B
   B -- xsd.exe --> C(*.cs)
 ```
 
