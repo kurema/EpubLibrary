@@ -2,11 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 
+[assembly:System.Runtime.CompilerServices.InternalsVisibleTo("TestProject")]
+
 namespace kurema.Epub.Helpers;
 
-public static class Functions
+#nullable enable
+public static partial class Functions
 {
-    internal static void AddItemsToArray<T>(ref T[] array, T[] newItems) where T : class
+
+    
+    internal static void AddItemsToArray<T>(
+#if NET6_0_OR_GREATER
+        [System.Diagnostics.CodeAnalysis.NotNull] 
+#endif
+        ref T[]? array, params T[] newItems) where T : class
     {
         if (array is null)
         {

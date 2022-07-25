@@ -11,8 +11,8 @@ public class Archive
     public Rendition RenditionMain { get; set; } = new Rendition();
     public List<Rendition> RenditionsSubs { get; } = new List<Rendition>();
 
-    public System.IO.Stream? GetFile(string path)
+    public IEnumerable<IFileItem> GetFileItems()
     {
-        return null;
+        foreach (var item in RenditionMain.GetFileItems()) yield return item;
     }
 }

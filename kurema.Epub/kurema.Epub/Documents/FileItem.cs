@@ -55,6 +55,7 @@ public class FileItemString : IFileItem
     {
         var sw = new StreamWriter(stream, Encoding);
         await sw.WriteAsync(Content.ToString());
+        await sw.FlushAsync();
     }
 }
 
