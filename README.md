@@ -13,17 +13,18 @@ graph LR
   A(*.rnc/*.rng on epubcheck) -- trang --> B(xsd)
   D(*.xsd/*.rnc on W3C) --> B
   B -- xsd.exe --> C(*.cs)
+  C -- some work --> E(kurema.Epub)
 ```
 
 We got a lot of errors during the conversion but couldn't fix some.
 Failed files include well-known formats such as XHTML, SVG and XML Security.
 Some may be already supported by the runtime.
 
-| Stage | 3.0 | 2.0 |
-| -- | -- | -- |
-| Origin | 9 | 16 |
-| XML Schema | 7 | 16 |
-| C# | 4 | 5 |
+| Stage | 3.0 | 2.0 | Other |
+| -- | -- | -- | -- |
+| Origin | 9 | 16 | 2 |
+| XML Schema | 7 | 16 | 2 |
+| C# | 4 | 5 | 2 |
 
 ```mermaid
 pie title Survival rate (EPUB 3.0)
