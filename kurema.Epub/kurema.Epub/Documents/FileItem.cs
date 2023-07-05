@@ -17,7 +17,7 @@ public interface IFileItem
 
 public class FileItemSerializer<T> : IFileItem where T : class
 {
-    public FileItemSerializer(string name, T? value)
+    public FileItemSerializer(string name, T? value = null)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Value = value;
@@ -30,8 +30,14 @@ public class FileItemSerializer<T> : IFileItem where T : class
     public Task WriteToStream(Stream stream)
     {
         var xs = new XmlSerializer(typeof(T));
-        var sw = new StreamWriter(stream);
-        xs.Serialize(sw, Value);
+        xs.Serialize(stream, Value);
+        return Task.CompletedTask;
+    }
+
+    public Task LoadFromStream(Stream stream)
+    {
+        var xs = new XmlSerializer(typeof(T));
+        Value = (T?)xs.Deserialize(stream);
         return Task.CompletedTask;
     }
 }
@@ -76,5 +82,18 @@ public class FileItemDelegate : IFileItem
         var result = StreamProvider.Invoke();
         if (result is null) return;
         await result.CopyToAsync(stream);
+    }
+}
+
+public class FileItemCollection : List<IFileItem>
+{
+    public IFileItem? GetFromPath(string path)
+    {
+        path = path.ToUpperInvariant();
+        foreach(var item in this)
+        {
+            if (item.Name.ToUpperInvariant() == path) return item;
+        }
+        return null;
     }
 }

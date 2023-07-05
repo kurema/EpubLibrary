@@ -23,7 +23,7 @@ public class UnitTestFileItem
     public async Task Test2()
     {
         kurema.Epub.Xml.Epub30.OcfContainer.container container = new();
-        container.AddRootFile(new kurema.Epub.Xml.Epub30.OcfContainer.rootfile() { fullpath = "EPUB/package.opf", mediatype = kurema.Epub.Xml.Epub30.OcfContainer.rootfileMediatype.applicationoebpspackagexml });
+        container.AddRootFiles(new kurema.Epub.Xml.Epub30.OcfContainer.rootfile() { fullpath = "EPUB/package.opf", mediatype = kurema.Epub.Xml.Epub30.OcfContainer.rootfileMediatype.applicationoebpspackagexml });
         var item = new FileItemSerializer<kurema.Epub.Xml.Epub30.OcfContainer.container>("META-INF/container.xml", container);
         Assert.Equal("META-INF/container.xml", item.Name);
         {
