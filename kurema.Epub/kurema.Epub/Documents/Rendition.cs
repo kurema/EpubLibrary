@@ -14,7 +14,7 @@ public class Rendition
     //Definition of Rendition:
     //https://www.w3.org/publishing/epub3/epub-spec.html#dfn-rendition
 
-    public FileItemSerializer<package> Package { get; } = new(DefaultValues.PathPackage, new package());
+    public FileItemSerializable<package> Package { get; } = new(DefaultValues.PathPackage, new package());
 
     public List<IFileItem> Files { get; } = new();
     

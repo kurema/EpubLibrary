@@ -43,7 +43,7 @@ public class Archive
     {
         var result = new FileItemCollection
         {
-            new FileItemSerializer<container>(Helpers.DefaultValues.PathContainer, Container)
+            new FileItemSerializable<container>(Helpers.DefaultValues.PathContainer, Container)
         };
         result.AddRange(RenditionMain.GetFileItems());
         foreach (var item in RenditionsSubs) result.AddRange(item.GetFileItems());

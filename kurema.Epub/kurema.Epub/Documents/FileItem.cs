@@ -15,9 +15,9 @@ public interface IFileItem
     string Name { get; set; }
 }
 
-public class FileItemSerializer<T> : IFileItem where T : class
+public class FileItemSerializable<T> : IFileItem where T : class
 {
-    public FileItemSerializer(string name, T? value = null)
+    public FileItemSerializable(string name, T? value = null)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Value = value;
